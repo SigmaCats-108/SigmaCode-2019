@@ -1,10 +1,10 @@
 package frc.team108.robot2019.practiceBot;
 
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
@@ -61,6 +61,15 @@ public class Robot extends TimedRobot {
 		//XBOX Controller Initializations
 		controller = new XboxController(0);
 		
+		//Set the victors to 'follow' the talons
+		left2.follow(leftDrive);
+		left3.follow(leftDrive);
+		right2.follow(rightDrive);
+		right3.follow(rightDrive);
+		
+		rightDrive.setInverted(true);
+		right2.setInverted(true);
+		right3.setInverted(true);
 	}
 
 	/**
@@ -109,7 +118,7 @@ public class Robot extends TimedRobot {
 		
 		leftDrive.set(LY);
 		rightDrive.set(RY);
-		
+		right3.set(RY);
 		System.out.print(LY);
 		System.out.print(" --- ");
 		System.out.print(RY);

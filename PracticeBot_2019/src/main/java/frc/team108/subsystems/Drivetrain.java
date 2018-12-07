@@ -6,7 +6,7 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.team108.inputs.NavX;
-import frc.team108.robot.Robot;
+import frc.team108.Robot;
 
 public class Drivetrain
 {

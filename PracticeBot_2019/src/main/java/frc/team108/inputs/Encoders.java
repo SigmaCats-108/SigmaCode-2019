@@ -1,18 +1,14 @@
 package frc.team108.inputs;
 
-import frc.team108.subsystems.Drivetrain;
+import frc.team108.Robot;
 
 public class Encoders
 {
-    public int leftEncoderValue, rightEncoderValue;
-	public int  rVelocity, lVelocity;
-	public double rVelocityFPS, lVelocityFPS;
-
-	public int prevLEncoder, prevREncoder;
+    public int leftDrive, rightDrive;
 	
-	public void setEncoderValues()
+	public void updateEncoders()
 	{
-		leftEncoderValue = Drivetrain.getLeftEncoder();
-		rightEncoderValue = Drivetrain.getRightEncoder();
+		leftDrive = Robot.drivetrain.getLeftEncoder();
+		rightDrive = Robot.drivetrain.getRightEncoder();
 	}
 }

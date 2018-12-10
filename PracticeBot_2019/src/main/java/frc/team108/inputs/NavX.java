@@ -5,16 +5,20 @@ import edu.wpi.first.wpilibj.SPI;
 
 public class NavX
 {
-    public AHRS AHRS = new AHRS(SPI.Port.kMXP);
-    public double yaw, angle, pitch, roll, actualYaw, b;
+    public AHRS AHRS;
+    public double yaw, angle, pitch, roll;
 
-    public void setAngle()
+    public NavX()
+    {
+        AHRS = new AHRS(SPI.Port.kMXP);
+    }
+    
+    public void updateAHRS()
     {
         yaw = AHRS.getYaw();
         angle = AHRS.getAngle();
         pitch = AHRS.getPitch();
         roll = AHRS.getRoll();
-        setActualYaw();
     }
 
     public void resetAngle()
@@ -24,19 +28,6 @@ public class NavX
 
     public void testAngle()
     {
-        System.out.println("Yaw: " + yaw + "Yaw (Unclamped): " + angle + " Pitch: " + pitch + " Roll: " + roll);
-    }
-
-    public void setActualYaw()
-    {
-        if(yaw < 0)
-        {
-            b = Math.abs(yaw);
-            actualYaw = 360 - b;
-        }
-        else
-        {
-            actualYaw = yaw;
-        }
+        System.out.println("Yaw: " + yaw + " Yaw (Unclamped): " + angle + " Pitch: " + pitch + " Roll: " + roll);
     }
 }

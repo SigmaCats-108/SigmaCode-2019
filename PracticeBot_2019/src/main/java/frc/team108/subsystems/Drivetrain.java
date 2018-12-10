@@ -10,18 +10,18 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 public class Drivetrain
 {
 	//Motor Controller Declarations
-	private static WPI_TalonSRX  leftSRX;
-	private static WPI_VictorSPX  leftSPX1;
-	private static WPI_VictorSPX  leftSPX2;
-	private static WPI_TalonSRX  rightSRX;
-	private static WPI_VictorSPX  rightSPX1;
-	private static WPI_VictorSPX  rightSPX2;
+	private WPI_TalonSRX leftSRX;
+	private WPI_VictorSPX leftSPX1;
+	private WPI_VictorSPX leftSPX2;
+	private WPI_TalonSRX rightSRX;
+	private WPI_VictorSPX rightSPX1;
+	private WPI_VictorSPX rightSPX2;
 	
-	private static DifferentialDrive drive;
+	private DifferentialDrive drive;
 
-	public static void initializeDrivetrain()
+	public Drivetrain()
 	{
-		
+		//Assign DifferentialDrive Motors
 		drive = new DifferentialDrive(leftSRX, rightSRX);
 
 		//Assign Motor Controller Ports
@@ -45,13 +45,13 @@ public class Drivetrain
 		drive.setDeadband(0.03);
 	}
 
-	public static void tankDrive(double leftSpeed, double rightSpeed)
+	public void tankDrive(double leftSpeed, double rightSpeed)
 	{
-		drive.tankDrive(leftSpeed * .986, rightSpeed, false);
+		drive.tankDrive(leftSpeed * RobotMap.DRIVETRAIN_RIGHT_PGAIN, rightSpeed, false);
 	}
 
 	// Uses angle heading to drive in a straight line
-	public static void driveStraight(double yValue, double angle, double supposedAngle)
+	public void driveStraight(double yValue, double angle, double supposedAngle)
 	{
 		double constant;
 		double difference = supposedAngle - angle;
@@ -85,7 +85,7 @@ public class Drivetrain
 	 * @param tolerance Angle deadzone to prevent overshooting
 	 * @return Lets the code know when the robot is within the target range
 	 */
-	public static boolean toAngle(double targetAngle, double rotationRate, double tolerance, NavX navX)
+	public boolean toAngle(double targetAngle, double rotationRate, double tolerance, NavX navX)
 	{
 		double output;
 		double currentAngle = -navX.angle;
@@ -122,10 +122,10 @@ public class Drivetrain
 		return turnFinished;
 	}
 
-	static double turn_kp = 0.98; //change this to calibrate to avoid overshooting
-	static double leftDriveValue, rightDriveValue, motor_command;
+	double turn_kp = 0.98; //change this to calibrate to avoid overshooting
+	double leftDriveValue, rightDriveValue, motor_command;
 
-	public static void turn (double desired_angle, NavX navX, double leftDriveValue, double rightDriveValue)
+	public void turn (double desired_angle, NavX navX, double leftDriveValue, double rightDriveValue)
 	{
 		double angle_error = desired_angle - navX.yaw;
 		motor_command = angle_error * (1/180) * turn_kp;
@@ -134,22 +134,22 @@ public class Drivetrain
 		tankDrive(leftDriveValue, rightDriveValue);
 	}
 
-	public static int getLeftEncoder()
+	public int getLeftEncoder()
 	{
 		return leftSRX.getSelectedSensorPosition(0);
 	}
-	public static int getRightEncoder()
+	public int getRightEncoder()
 	{
 		return rightSRX.getSelectedSensorPosition(0);
 	}
 
-	public static void stop()
+	public void stop()
 	{
 		rightSRX.stopMotor();
 		leftSRX.stopMotor();
 	}
 
-	public static boolean stopped()
+	public boolean stopped()
 	{
 		if(rightSRX.getSelectedSensorVelocity(0) == 0 && leftSRX.getSelectedSensorVelocity(0) == 0)
 		{
@@ -161,19 +161,19 @@ public class Drivetrain
 		}
 	}
 
-	public static void testDrivetrainCurrent()
+	public void testDrivetrainCurrent()
 	{
 		System.out.println("Left Motor Current: " + leftSRX.getOutputCurrent());
 		System.out.println("Right Motor Current: " + rightSRX.getOutputCurrent());
 	}
 
-	public static void enableCurrentLimiting(double amps)
+	public void enableCurrentLimiting(double amps)
 	{
 		leftSRX.enableCurrentLimit(true);
 		rightSRX.enableCurrentLimit(true);
 	}
 	
-	public static void setToBrake()
+	public void setToBrake()
 	{
 		leftSRX.setNeutralMode(NeutralMode.Brake);
 		rightSRX.setNeutralMode(NeutralMode.Brake);
@@ -183,7 +183,7 @@ public class Drivetrain
 		rightSPX2.setNeutralMode(NeutralMode.Brake);
 	}
 	
-	public static void setToCoast()
+	public void setToCoast()
 	{
 		leftSRX.setNeutralMode(NeutralMode.Coast);
 		rightSRX.setNeutralMode(NeutralMode.Coast);

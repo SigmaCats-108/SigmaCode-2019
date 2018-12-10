@@ -1,29 +1,37 @@
 package frc.team108.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.ctre.phoenix.motorcontrol.NeutralMode;
-
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import frc.team108.RobotMap;
 import frc.team108.inputs.NavX;
-import frc.team108.Robot;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 
 public class Drivetrain
 {
 	//Motor Controller Declarations
-	//Ports 1,2,3
-	private static WPI_TalonSRX  leftSRX = new WPI_TalonSRX(1);
-	private static WPI_VictorSPX  leftSPX1 = new WPI_VictorSPX(2);
-	private static WPI_VictorSPX  leftSPX2 = new WPI_VictorSPX(3);
-	//Ports 4,5,6
-	private static WPI_TalonSRX  rightSRX = new WPI_TalonSRX(4);
-	private static WPI_VictorSPX  rightSPX1 = new WPI_VictorSPX(5);
-	private static WPI_VictorSPX  rightSPX2 = new WPI_VictorSPX(6);
+	private static WPI_TalonSRX  leftSRX;
+	private static WPI_VictorSPX  leftSPX1;
+	private static WPI_VictorSPX  leftSPX2;
+	private static WPI_TalonSRX  rightSRX;
+	private static WPI_VictorSPX  rightSPX1;
+	private static WPI_VictorSPX  rightSPX2;
 	
-	private static DifferentialDrive drive = new DifferentialDrive(leftSRX, rightSRX);
+	private static DifferentialDrive drive;
 
 	public static void initializeDrivetrain()
 	{
+		
+		drive = new DifferentialDrive(leftSRX, rightSRX);
+
+		//Assign Motor Controller Ports
+		leftSRX = new WPI_TalonSRX(RobotMap.DRIVETRAIN_LEFT_SRX);
+		leftSPX1 = new WPI_VictorSPX(RobotMap.DRIVETRAIN_LEFT_SPX1);
+		leftSPX2 = new WPI_VictorSPX(RobotMap.DRIVETRAIN_LEFT_SPX2);
+		rightSRX = new WPI_TalonSRX(RobotMap.DRIVETRAIN_RIGHT_SRX);
+		rightSPX1 = new WPI_VictorSPX(RobotMap.DRIVETRAIN_RIGHT_SPX1);
+		rightSPX2 = new WPI_VictorSPX(RobotMap.DRIVETRAIN_RIGHT_SPX2);
+
 		//Set up followers
 		leftSPX1.follow(leftSRX);
 		leftSPX2.follow(leftSRX);

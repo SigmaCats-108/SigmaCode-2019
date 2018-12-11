@@ -27,13 +27,7 @@ public class Robot extends IterativeRobot {
         navX.updateAHRS();
         encoders.updateEncoders();
     }
-
-    @Override
-    public void disabledInit() { }
-
-    @Override
-    public void disabledPeriodic() { }
-
+    
     @Override
     public void autonomousInit() { }
 

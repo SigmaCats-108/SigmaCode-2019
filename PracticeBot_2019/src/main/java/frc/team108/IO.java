@@ -10,7 +10,7 @@ public class IO
     public static boolean buttonA, buttonB, buttonX, buttonY, leftBumper, rightBumper, leftStick, rightStick;
     public static double leftTrigger, rightTrigger, leftAnalogX, leftAnalogY, rightAnalogX, rightAnalogY;
 
-    public static ProcessControllers()
+    public static void ProcessControllers()
     {
         buttonA = mainController.getRawButton(1);
         buttonB = mainController.getRawButton(2);

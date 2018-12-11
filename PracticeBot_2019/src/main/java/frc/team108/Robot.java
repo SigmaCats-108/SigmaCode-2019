@@ -24,7 +24,7 @@ public class Robot extends IterativeRobot {
     @Override
     public void robotPeriodic() 
     {
-        mainNavX.updateAHRS();
+        navX.updateAHRS();
         encoders.updateEncoders();
     }
 

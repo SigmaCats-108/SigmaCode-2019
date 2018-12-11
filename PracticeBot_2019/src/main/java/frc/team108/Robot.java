@@ -10,15 +10,15 @@ import frc.team108.subsystems.Drivetrain;
 public class Robot extends IterativeRobot {
 
     public static NavX navX;
-    public static Encoders encoders;
     public static Drivetrain drivetrain;
+    public static Encoders encoders;
 
     @Override
     public void robotInit() 
     {
         navX = new NavX();
-        encoders = new Encoders();
         drivetrain = new Drivetrain();
+        encoders = new Encoders();
     }
 
     @Override

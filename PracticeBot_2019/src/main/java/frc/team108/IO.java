@@ -6,7 +6,7 @@ public class IO
 {
     public static XboxController mainController = new XboxController(0);
 
-    // Controller Variables
+    // Main Controller Variables
     public static boolean buttonA, buttonB, buttonX, buttonY, leftBumper, rightBumper, leftStick, rightStick;
     public static double leftTrigger, rightTrigger, leftAnalogX, leftAnalogY, rightAnalogX, rightAnalogY;
 

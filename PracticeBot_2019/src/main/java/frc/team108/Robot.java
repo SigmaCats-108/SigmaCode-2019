@@ -1,24 +1,26 @@
 package frc.team108;
 
-import edu.wpi.first.wpilibj.IterativeRobot;
-import frc.team108.IO;
+import edu.wpi.first.wpilibj.TimedRobot;
 import frc.team108.autos.Autonomous;
 import frc.team108.inputs.NavX;
 import frc.team108.inputs.Encoders;
 import frc.team108.subsystems.Drivetrain;
 
-public class Robot extends IterativeRobot {
+public class Robot extends TimedRobot {
 
+    public static Autonomous autonomous;
     public static NavX navX;
-    public static Drivetrain drivetrain;
     public static Encoders encoders;
+    public static Drivetrain drivetrain;
+
 
     @Override
     public void robotInit() 
     {
+        autonomous = new Autonomous();
         navX = new NavX();
-        drivetrain = new Drivetrain();
         encoders = new Encoders();
+        drivetrain = new Drivetrain();
     }
 
     @Override
@@ -34,7 +36,7 @@ public class Robot extends IterativeRobot {
     @Override
     public void autonomousPeriodic()
     {
-        Autonomous.runAutonomous();
+        autonomous.runAutonomous();
     }
 
     @Override
@@ -43,8 +45,8 @@ public class Robot extends IterativeRobot {
     @Override
     public void teleopPeriodic()
     {
+        drivetrain.sigmaDrive(IO.leftAnalogY, IO.rightAnalogY);
         IO.ProcessControllers();
-        drivetrain.tankDrive(IO.leftAnalogY, IO.rightAnalogY);
     }
 
     @Override

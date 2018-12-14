@@ -23,9 +23,9 @@ public class IO
         leftTrigger = zeroValue(mainController.getRawAxis(2));
         rightTrigger = zeroValue(mainController.getRawAxis(3));
         leftAnalogX = zeroValue(mainController.getRawAxis(0));
-        leftAnalogY = zeroValue(mainController.getRawAxis(1));
         rightAnalogX = zeroValue(mainController.getRawAxis(4));
-        rightAnalogY = zeroValue(mainController.getRawAxis(5));
+        leftAnalogY = zeroValue(mainController.getRawAxis(1)) * -1;
+        rightAnalogY = zeroValue(mainController.getRawAxis(5)) * -1;
 
         if(buttonA)
         {

@@ -5,8 +5,8 @@ import frc.team108.Robot;
 public class Autonomous
 {
 
-    public static void runAutonomous()
+    public void runAutonomous()
     {
-        Robot.drivetrain.tankDrive(0, 0);
+        Robot.drivetrain.sigmaDrive(0.3, 0.3);
     }
 }

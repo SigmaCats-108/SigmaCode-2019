@@ -1,53 +1,49 @@
 package frc.team108.subsystems;
 
-import frc.team108.RobotMap;
-import frc.team108.inputs.NavX;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
+import frc.team108.RobotMap;
+import frc.team108.inputs.NavX;
 
 public class Drivetrain
 {
-	//Motor Controller Declarations
-	private WPI_TalonSRX leftSRX;
-	private WPI_VictorSPX leftSPX1;
-	private WPI_VictorSPX leftSPX2;
-	private WPI_TalonSRX rightSRX;
-	private WPI_VictorSPX rightSPX1;
-	private WPI_VictorSPX rightSPX2;
+	// Motor Controller Declarations
+	private static WPI_TalonSRX leftSRX = new WPI_TalonSRX(RobotMap.DRIVETRAIN_LEFT_SRX);
+	private static WPI_VictorSPX leftSPX1 = new WPI_VictorSPX(RobotMap.DRIVETRAIN_LEFT_SPX1);
+	private static WPI_VictorSPX leftSPX2 = new WPI_VictorSPX(RobotMap.DRIVETRAIN_LEFT_SPX2);
+	private static WPI_TalonSRX rightSRX = new WPI_TalonSRX(RobotMap.DRIVETRAIN_RIGHT_SRX);
+	private static WPI_VictorSPX rightSPX1 = new WPI_VictorSPX(RobotMap.DRIVETRAIN_RIGHT_SPX1);
+	private static WPI_VictorSPX rightSPX2 = new WPI_VictorSPX(RobotMap.DRIVETRAIN_RIGHT_SPX2);
 	
 	private DifferentialDrive drive;
 
 	public Drivetrain()
 	{
-		//Assign DifferentialDrive Motors
+		// Assign DifferentialDrive Motors
 		drive = new DifferentialDrive(leftSRX, rightSRX);
 
-		//Assign Motor Controller Ports
-		leftSRX = new WPI_TalonSRX(RobotMap.DRIVETRAIN_LEFT_SRX);
-		leftSPX1 = new WPI_VictorSPX(RobotMap.DRIVETRAIN_LEFT_SPX1);
-		leftSPX2 = new WPI_VictorSPX(RobotMap.DRIVETRAIN_LEFT_SPX2);
-		rightSRX = new WPI_TalonSRX(RobotMap.DRIVETRAIN_RIGHT_SRX);
-		rightSPX1 = new WPI_VictorSPX(RobotMap.DRIVETRAIN_RIGHT_SPX1);
-		rightSPX2 = new WPI_VictorSPX(RobotMap.DRIVETRAIN_RIGHT_SPX2);
-
-		//Set up followers
+		// Set up followers
 		leftSPX1.follow(leftSRX);
 		leftSPX2.follow(leftSRX);
 		rightSPX1.follow(rightSRX);
 		rightSPX2.follow(rightSRX);
+
+		/* 
+		// Invert right (reversed) motors
+		// Removed, as another function already accounts for inverted motors
 		rightSRX.setInverted(true);
 		rightSPX1.setInverted(true);
-		rightSPX2.setInverted(true);
+		rightSPX2.setInverted(true); */
 
 		// Sets drivetrain deadband, default is 0.02
 		drive.setDeadband(0.03);
 	}
 
-	public void tankDrive(double leftSpeed, double rightSpeed)
+	public void sigmaDrive(double leftSpeed, double rightSpeed)
 	{
-		drive.tankDrive(leftSpeed * RobotMap.DRIVETRAIN_RIGHT_PGAIN, rightSpeed, false);
+		drive.tankDrive(-leftSpeed * RobotMap.DRIVETRAIN_RIGHT_PGAIN, -rightSpeed, false);
 	}
 
 	// Uses angle heading to drive in a straight line
@@ -60,20 +56,20 @@ public class Drivetrain
 			if(difference > 0)
 			{
 				constant = 1 - (.02 * difference);
-				tankDrive(yValue, yValue * constant);
-				//System.out.println("Left speed: " + yValue + "; Right speed: " + yValue * constant);
+				sigmaDrive(yValue, yValue * constant);
+				// System.out.println("Left speed: " + yValue + "; Right speed: " + yValue * constant);
 			}
 			else 
 			{
 				difference = Math.abs(difference);
 				constant = 1 - (.02 * (difference));
-				tankDrive(yValue * constant, yValue);
-				//System.out.println("Left speed: " + yValue  * constant + "; Right speed: " + yValue);
+				sigmaDrive(yValue * constant, yValue);
+				// System.out.println("Left speed: " + yValue  * constant + "; Right speed: " + yValue);
 			}
 		}
 		else 
 		{
-			tankDrive(yValue, yValue);
+			sigmaDrive(yValue, yValue);
 		}
 	}
 
@@ -107,11 +103,11 @@ public class Drivetrain
 
 			if(angleDifference > 0)
 			{
-				tankDrive(-output, output);
+				sigmaDrive(-output, output);
 			}
 			else
 			{
-				tankDrive(output, -output);
+				sigmaDrive(output, -output);
 			}
 		}
 		else
@@ -122,7 +118,7 @@ public class Drivetrain
 		return turnFinished;
 	}
 
-	double turn_kp = 0.98; //change this to calibrate to avoid overshooting
+	double turn_kp = 0.98; // change this to calibrate to avoid overshooting
 	double leftDriveValue, rightDriveValue, motor_command;
 
 	public void turn (double desired_angle, NavX navX, double leftDriveValue, double rightDriveValue)
@@ -131,7 +127,7 @@ public class Drivetrain
 		motor_command = angle_error * (1/180) * turn_kp;
 		leftDriveValue += motor_command;
 		rightDriveValue -= motor_command;
-		tankDrive(leftDriveValue, rightDriveValue);
+		sigmaDrive(leftDriveValue, rightDriveValue);
 	}
 
 	public int getLeftEncoder()
@@ -143,23 +139,23 @@ public class Drivetrain
 		return rightSRX.getSelectedSensorPosition(0);
 	}
 
-	public void stop()
-	{
-		rightSRX.stopMotor();
-		leftSRX.stopMotor();
-	}
+	// public void stop()
+	// {
+	// 	rightSRX.stopMotor();
+	// 	leftSRX.stopMotor();
+	// }
 
-	public boolean stopped()
-	{
-		if(rightSRX.getSelectedSensorVelocity(0) == 0 && leftSRX.getSelectedSensorVelocity(0) == 0)
-		{
-			return true;
-		}
-		else 
-		{
-			return false;
-		}
-	}
+	// public boolean stopped()
+	// {
+	// 	if(rightSRX.getSelectedSensorVelocity(0) == 0 && leftSRX.getSelectedSensorVelocity(0) == 0)
+	// 	{
+	// 		return true;
+	// 	}
+	// 	else 
+	// 	{
+	// 		return false;
+	// 	}
+	// }
 
 	public void testDrivetrainCurrent()
 	{

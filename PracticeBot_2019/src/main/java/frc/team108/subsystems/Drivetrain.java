@@ -30,13 +30,6 @@ public class Drivetrain
 		rightSPX1.follow(rightSRX);
 		rightSPX2.follow(rightSRX);
 
-		/* 
-		// Invert right (reversed) motors
-		// Removed, as another function already accounts for inverted motors
-		rightSRX.setInverted(true);
-		rightSPX1.setInverted(true);
-		rightSPX2.setInverted(true); */
-
 		// Sets drivetrain deadband, default is 0.02
 		drive.setDeadband(0.03);
 	}
@@ -139,25 +132,25 @@ public class Drivetrain
 		return rightSRX.getSelectedSensorPosition(0);
 	}
 
-	// public void stop()
-	// {
-	// 	rightSRX.stopMotor();
-	// 	leftSRX.stopMotor();
-	// }
+	public void stop()
+	{
+		rightSRX.stopMotor();
+		leftSRX.stopMotor();
+	}
 
-	// public boolean stopped()
-	// {
-	// 	if(rightSRX.getSelectedSensorVelocity(0) == 0 && leftSRX.getSelectedSensorVelocity(0) == 0)
-	// 	{
-	// 		return true;
-	// 	}
-	// 	else 
-	// 	{
-	// 		return false;
-	// 	}
-	// }
+	public boolean stopped()
+	{
+		if(rightSRX.getSelectedSensorVelocity(0) == 0 && leftSRX.getSelectedSensorVelocity(0) == 0)
+		{
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
+	}
 
-	public void testDrivetrainCurrent()
+	public void testCurrent()
 	{
 		System.out.println("Left Motor Current: " + leftSRX.getOutputCurrent());
 		System.out.println("Right Motor Current: " + rightSRX.getOutputCurrent());

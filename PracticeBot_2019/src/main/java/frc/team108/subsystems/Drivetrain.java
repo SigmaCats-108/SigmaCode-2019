@@ -150,16 +150,10 @@ public class Drivetrain
 		}
 	}
 
-	public void testCurrent()
+	public void testSpeed()
 	{
-		System.out.println("Left Motor Current: " + leftSRX.getOutputCurrent());
-		System.out.println("Right Motor Current: " + rightSRX.getOutputCurrent());
-	}
-
-	public void enableCurrentLimiting(double amps)
-	{
-		leftSRX.enableCurrentLimit(true);
-		rightSRX.enableCurrentLimit(true);
+		System.out.println("Left Motor Speed: " + leftSRX.get());
+		System.out.println("Right Motor Speed: " + rightSRX.get());
 	}
 	
 	public void setToBrake()

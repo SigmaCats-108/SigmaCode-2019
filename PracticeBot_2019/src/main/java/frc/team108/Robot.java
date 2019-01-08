@@ -31,7 +31,8 @@ public class Robot extends TimedRobot {
     {
         navX.updateAHRS();
         encoders.updateEncoders();
-        encoders.testEncoders();
+        //encoders.testEncoders();
+        drivetrain.testSpeed();
     }
     
     @Override

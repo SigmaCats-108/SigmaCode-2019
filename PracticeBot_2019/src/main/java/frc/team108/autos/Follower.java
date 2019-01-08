@@ -10,8 +10,8 @@ import frc.team108.RobotMap;
 
 public class Follower
 {
-	double leftSpeed;
-	double rightSpeed;
+	private double leftSpeed;
+	private double rightSpeed;
 
 	private Trajectory.Config trajectoryConfig = new Trajectory.Config(Trajectory.FitMethod.HERMITE_CUBIC, Trajectory.Config.SAMPLES_HIGH, RobotMap.ROBOT_TIME_STEP, RobotMap.ROBOT_MAX_VELOCITY, RobotMap.ROBOT_MAX_ACCELERATION, RobotMap.ROBOT_MAX_JERK);
 
@@ -28,8 +28,8 @@ public class Follower
 
 	public void setupFollower()
 	{
-		leftFollower.configureEncoder(Robot.encoders.leftDrive, 1000, 4);
-		rightFollower.configureEncoder(Robot.encoders.rightDrive, 1000, 4);
+		leftFollower.configureEncoder(Robot.encoders.leftDrive, 1000, RobotMap.ROBOT_WHEEL_DIAMETER);
+		rightFollower.configureEncoder(Robot.encoders.rightDrive, 1000, RobotMap.ROBOT_WHEEL_DIAMETER);
 
 		leftFollower.configurePIDVA(1.0, 0.0, 0.0, 1 / RobotMap.ROBOT_MAX_VELOCITY, 0);
 		rightFollower.configurePIDVA(1.0, 0.0, 0.0, 1 / RobotMap.ROBOT_MAX_VELOCITY, 0);
@@ -40,7 +40,8 @@ public class Follower
 		leftSpeed = leftFollower.calculate(Robot.encoders.leftDrive);
 		rightSpeed = rightFollower.calculate(Robot.encoders.rightDrive);
 
-		Robot.drivetrain.sigmaDrive(leftSpeed, rightSpeed);
+		System.out.println("Left Speed: " + leftSpeed + ", Right Speed: " + rightSpeed);
+		//Robot.drivetrain.sigmaDrive(leftSpeed, rightSpeed);
 	}
 	
 }

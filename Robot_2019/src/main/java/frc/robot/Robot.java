@@ -38,7 +38,7 @@ public class Robot extends TimedRobot {
     @Override
     public void autonomousInit() 
     {
-        follower.setupFollower();
+        //follower.setupFollower();
     }
 
     @Override

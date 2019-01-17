@@ -5,6 +5,7 @@ import frc.autos.Autonomous;
 import frc.autos.Follower;
 import frc.inputs.NavX;
 import frc.inputs.Encoders;
+import frc.vision.SigmaSight;
 import frc.subsystems.Drivetrain;
 
 public class Robot extends TimedRobot {
@@ -13,6 +14,7 @@ public class Robot extends TimedRobot {
     public static Follower follower;
     public static NavX navX;
     public static Encoders encoders;
+    public static SigmaSight sigmaSight;
     public static Drivetrain drivetrain;
 
 
@@ -23,6 +25,7 @@ public class Robot extends TimedRobot {
         follower = new Follower();
         navX = new NavX();
         encoders = new Encoders();
+        sigmaSight = new SigmaSight();
         drivetrain = new Drivetrain();
     }
 
@@ -32,7 +35,9 @@ public class Robot extends TimedRobot {
         navX.updateAHRS();
         encoders.updateEncoders();
         //encoders.testEncoders();
-        drivetrain.testSpeed();
+        sigmaSight.updateValues();
+        sigmaSight.testValues();
+        //drivetrain.testSpeed();
     }
     
     @Override
@@ -53,6 +58,8 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopPeriodic()
     {
+        IO.UpdateControllers();
+        
         drivetrain.sigmaDrive(IO.leftAnalogY, IO.rightAnalogY);
         IO.ProcessControllers();
     }

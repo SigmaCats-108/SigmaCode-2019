@@ -10,7 +10,7 @@ public class IO
     public static boolean buttonA, buttonB, buttonX, buttonY, leftBumper, rightBumper, leftStick, rightStick;
     public static double leftTrigger, rightTrigger, leftAnalogX, leftAnalogY, rightAnalogX, rightAnalogY;
 
-    public static void ProcessControllers()
+    public static void UpdateControllers()
     {
         buttonA = mainController.getRawButton(1);
         buttonB = mainController.getRawButton(2);
@@ -26,10 +26,18 @@ public class IO
         rightAnalogX = zeroValue(mainController.getRawAxis(4));
         leftAnalogY = zeroValue(mainController.getRawAxis(1)) * -1;
         rightAnalogY = zeroValue(mainController.getRawAxis(5)) * -1;
+    }
 
+    public static void ProcessControllers()
+    {
         if(buttonA)
         {
             System.out.println("buttonA is being pressed.");
+        }
+
+        if(buttonB)
+        {
+            Robot.sigmaSight.turnToTarget();
         }
     }
 

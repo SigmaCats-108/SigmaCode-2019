@@ -5,8 +5,8 @@ package frc.autos;
 // import jaci.pathfinder.Trajectory;
 // import jaci.pathfinder.modifiers.TankModifier;
 // import jaci.pathfinder.followers.EncoderFollower;
-import frc.robot.Robot;
-import frc.robot.RobotMap;
+//import frc.robot.Robot;
+//import frc.robot.RobotMap;
 
 public class Follower
 {

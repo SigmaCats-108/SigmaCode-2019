@@ -7,6 +7,7 @@ import frc.inputs.NavX;
 import frc.inputs.Encoders;
 import frc.vision.SigmaSight;
 import frc.subsystems.Drivetrain;
+import frc.subsystems.HatchMech;
 
 public class Robot extends TimedRobot {
 
@@ -14,8 +15,9 @@ public class Robot extends TimedRobot {
     public static Follower follower;
     public static NavX navX;
     public static Encoders encoders;
-    public static SigmaSight sigmaSight;
+    public static SigmaSight sigmaSight; 
     public static Drivetrain drivetrain;
+    public static HatchMech hatchMech;
 
 
     @Override
@@ -27,6 +29,7 @@ public class Robot extends TimedRobot {
         encoders = new Encoders();
         sigmaSight = new SigmaSight();
         drivetrain = new Drivetrain();
+        hatchMech = new HatchMech();
     }
 
     @Override
@@ -60,6 +63,7 @@ public class Robot extends TimedRobot {
     {
         IO.UpdateControllers();
         
+        System.out.println(IO.leftAnalogY + ", " + IO.rightAnalogY);
         drivetrain.sigmaDrive(IO.leftAnalogY, IO.rightAnalogY);
         IO.ProcessControllers();
     }

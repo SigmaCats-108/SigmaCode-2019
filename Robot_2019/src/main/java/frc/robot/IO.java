@@ -32,12 +32,17 @@ public class IO
     {
         if(buttonA)
         {
-            System.out.println("buttonA is being pressed.");
+            Robot.hatchMech.hatchClamps();
         }
 
         if(buttonB)
         {
             Robot.sigmaSight.turnToTarget();
+        }
+
+        if(leftStick)
+        {
+            Robot.drivetrain.sigmaShift();
         }
     }
 

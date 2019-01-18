@@ -12,7 +12,7 @@ public class IO
 
     public static void UpdateControllers()
     {
-        buttonA = mainController.getRawButton(1);
+        buttonA = mainController.getRawButtonPressed(1);
         buttonB = mainController.getRawButton(2);
         buttonX = mainController.getRawButton(3);
         buttonY = mainController.getRawButton(4);
@@ -32,7 +32,7 @@ public class IO
     {
         if(buttonA)
         {
-            Robot.hatchMech.hatchClamps();
+            Robot.hatchMech.hatchIntake();
         }
 
         if(buttonB)

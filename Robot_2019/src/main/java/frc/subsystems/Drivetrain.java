@@ -4,6 +4,8 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import frc.robot.RobotMap;
 import frc.inputs.NavX;
 
@@ -18,7 +20,7 @@ public class Drivetrain
 	private static WPI_VictorSPX rightSPX1 = new WPI_VictorSPX(RobotMap.DRIVETRAIN_RIGHT_SPX1);
 	private static WPI_VictorSPX rightSPX2 = new WPI_VictorSPX(RobotMap.DRIVETRAIN_RIGHT_SPX2);
 	
-	//private static Solenoid gearShifter = new Solenoid(5, 7);
+	private static DoubleSolenoid gearShifter = new DoubleSolenoid(5, 7);
 
 	private DifferentialDrive drive;
 
@@ -39,12 +41,15 @@ public class Drivetrain
 
 	public void sigmaDrive(double leftSpeed, double rightSpeed)
 	{
-		drive.tankDrive(-leftSpeed * RobotMap.DRIVETRAIN_RIGHT_PGAIN, -rightSpeed, false);
+		drive.tankDrive(-leftSpeed /** RobotMap.DRIVETRAIN_LEFT_PGAIN*/, -rightSpeed, false);
 	}
 
-	public void sigmaShift()
+	public void highGear(boolean gearState)
 	{
-		// gearShifter.set(!gearShifter.get());
+		if(gearState)
+			gearShifter.set(Value.kForward);
+		else
+			gearShifter.set(Value.kReverse);
 	}
 
 	// Uses angle heading to drive in a straight line

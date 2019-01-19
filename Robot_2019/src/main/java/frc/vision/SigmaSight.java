@@ -12,8 +12,10 @@ public class SigmaSight
 
     boolean validTarget;
     double xVal, yVal, area, skew;
-    double heading_error, steering_adjust, left_command, right_command;
-    double turnKp = -0.03;  // Proportional control constant
+    double steering_adjust, distance_adjust, left_command, right_command;
+    double turnKp = -0.03, distanceKp = 0.049;  // Proportional control constants
+    double targetArea = 1.7;
+    double min_aim_command = 0.0;
 
     NetworkTable limelightTable = NetworkTableInstance.getDefault().getTable("limelight");
     NetworkTableEntry tv = limelightTable.getEntry("tv");
@@ -21,20 +23,6 @@ public class SigmaSight
     NetworkTableEntry ty = limelightTable.getEntry("ty");
     NetworkTableEntry ta = limelightTable.getEntry("ta");
     NetworkTableEntry ts = limelightTable.getEntry("ta");
-
-    /**
-     * Will turn towards a detected target, slowing down as the error decreases
-     */
-    public void turnToTarget()
-    {
-        heading_error = xVal;
-        steering_adjust = turnKp * xVal;
-
-        left_command= -steering_adjust;
-        right_command= steering_adjust;
-
-        Robot.drivetrain.sigmaDrive(left_command, right_command);
-    }
 
     //read values periodically
     public void updateValues()
@@ -45,7 +33,46 @@ public class SigmaSight
         area = ta.getDouble(0.0);
         skew = ts.getDouble(0.0);
     }
+
+    /**
+     * Will turn towards a detected target, slowing down as the error decreases
+     */
+    public void turnToTarget()
+    {
+        steering_adjust = turnKp * xVal;
+
+        left_command = -steering_adjust;
+        right_command = steering_adjust;
+
+        Robot.drivetrain.sigmaDrive(left_command, right_command);
+    }
     
+    public boolean aimandrange()
+    {
+
+        if (xVal > 1.0)
+        {
+            steering_adjust = turnKp * -xVal - min_aim_command;
+        }
+        else if (xVal < 1.0)
+        {
+            steering_adjust = turnKp * -xVal + min_aim_command;
+        }
+
+        //distance_adjust = distanceKp * yVal;
+        distance_adjust = ((area / targetArea) - 1) * -1;
+
+        left_command = steering_adjust + distance_adjust;
+        right_command = -steering_adjust + distance_adjust;
+
+        Robot.drivetrain.sigmaDrive(left_command, right_command);
+
+        if( area > targetArea - 0.1 && area < targetArea + 0.1 && xVal > -1.0 && xVal < 1.0)
+            return true;
+        else
+            return false;
+    }
+
     /**
      * Prints the detected object's position values to the shuffleboard
      */

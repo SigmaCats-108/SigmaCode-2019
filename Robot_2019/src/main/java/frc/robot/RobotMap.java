@@ -19,5 +19,5 @@ public class RobotMap
 	public static final int DRIVETRAIN_RIGHT_SPX1 = 5;
 	public static final int DRIVETRAIN_RIGHT_SPX2 = 6;
 
-	public static final double DRIVETRAIN_RIGHT_PGAIN = .986;
+	public static final double DRIVETRAIN_LEFT_PGAIN = .986;
 }

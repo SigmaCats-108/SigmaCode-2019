@@ -40,10 +40,10 @@ public class IO
             Robot.sigmaSight.turnToTarget();
         }
 
-        if(leftStick)
-        {
-            Robot.drivetrain.sigmaShift();
-        }
+        if(leftTrigger > 0.5)
+            Robot.drivetrain.highGear(true);
+        else
+            Robot.drivetrain.highGear(false);
     }
 
     private static double zeroValue(double realValue)

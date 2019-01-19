@@ -11,20 +11,42 @@ public class HatchMech
 {
     private static DoubleSolenoid hatchIntake = new DoubleSolenoid(3, 0);
 
-    private int visionState = 0;
+    private int hatchMechState = 0;
     
     public void scoreHatch()
     {
-        switch (visionState)
+        //System.out.println("Hatch State: " + hatchMechState);
+        switch (hatchMechState)
         {
             case 0:
 
-            if(Robot.sigmaSight.aimandrange())
-                visionState ++;
+            if (!Robot.sigmaSight.isValidTarget())
+            {
+                Robot.sigmaSight.seekTarget();
+                System.out.println("No target detected");
+            }
+            else
+            {
+                hatchMechState++;
+            }
+            
+            break;
 
             case 1:
+            
+            if(Robot.sigmaSight.aimAndRange())
+            {
+                hatchMechState++;
+            }
 
-            Robot.drivetrain.sigmaDrive(0.6, 0.6);
+            break;
+
+            case 2:
+            
+            Robot.drivetrain.sigmaDrive(0.4, 0.4);
+
+            break;
+
         }
     }
 
@@ -40,5 +62,10 @@ public class HatchMech
         }
         //hatchClamps.set(DoubleSolenoid.Value.kReverse);
 		//hatchClamps.set(!hatchClamps.get());
-	}
+    }
+    
+    public void resetHatchState()
+    {
+        hatchMechState = 0;
+    }
 }

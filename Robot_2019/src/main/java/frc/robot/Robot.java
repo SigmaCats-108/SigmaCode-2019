@@ -41,6 +41,8 @@ public class Robot extends TimedRobot {
         sigmaSight.updateValues();
         sigmaSight.testValues();
         //drivetrain.testSpeed();
+
+        
     }
     
     @Override
@@ -63,9 +65,11 @@ public class Robot extends TimedRobot {
     {
         IO.UpdateControllers();
         
-        System.out.println(IO.leftAnalogY + ", " + IO.rightAnalogY);
+        //System.out.println(IO.leftAnalogY + ", " + IO.rightAnalogY);
         drivetrain.sigmaDrive(IO.leftAnalogY, IO.rightAnalogY);
         IO.ProcessControllers();
+
+        
     }
 
     @Override

@@ -37,7 +37,11 @@ public class IO
 
         if(buttonB)
         {
-            Robot.sigmaSight.turnToTarget();
+            Robot.hatchMech.scoreHatch();
+        }
+        else
+        {
+            Robot.hatchMech.resetHatchState();
         }
 
         if(leftTrigger > 0.5)

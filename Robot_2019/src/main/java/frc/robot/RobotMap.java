@@ -20,4 +20,11 @@ public class RobotMap
 	public static final int DRIVETRAIN_RIGHT_SPX2 = 6;
 
 	public static final double DRIVETRAIN_LEFT_PGAIN = .986;
+
+
+	// Vision System Constants
+	public static final double HATCH_VISION_TURN_PGAIN = -0.03;
+	public static final double HATCH_VISION_DISTANCE_PGAIN = 0.049;
+	public static final double HATCH_VISION_MIN_AIM_COMMAND = 0.0;
+	public static final double HATCH_VISION_AREA_TO_DISTANCE_CONSTANT = 1.7;
 }

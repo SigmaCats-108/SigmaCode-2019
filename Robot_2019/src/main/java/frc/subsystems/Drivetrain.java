@@ -44,6 +44,11 @@ public class Drivetrain
 		drive.tankDrive(-leftSpeed /** RobotMap.DRIVETRAIN_LEFT_PGAIN*/, -rightSpeed, false);
 	}
 
+	/**
+	 * Enables / disables the drivetrain's highGear mode
+	 * 
+	 * @param gearState True to enable highGear, and False to disable it
+	 */
 	public void highGear(boolean gearState)
 	{
 		if(gearState)
@@ -52,11 +57,17 @@ public class Drivetrain
 			gearShifter.set(Value.kReverse);
 	}
 
-	// Uses angle heading to drive in a straight line
-	public void driveStraight(double yValue, double angle, double supposedAngle)
+	/**
+	 * Uses angle heading to drive in a straight line
+	 * 
+	 * @param yValue Joystick value to be used
+	 * @param robotHeading The robot's current heading
+	 * @param desiredAngle Angle at which the robot will drive
+	 */
+	public void driveStraight(double yValue, double robotHeading, double desiredAngle)
 	{
 		double constant;
-		double difference = supposedAngle - angle;
+		double difference = desiredAngle - robotHeading;
 		if(difference != 0)
 		{
 			if(difference > 0)
@@ -80,17 +91,18 @@ public class Drivetrain
 	}
 
 	/**
+	 * Turns the robot to a desired angle
 	 * 
-	 * @param navX NavX-MXP for yaw angle heading
-	 * @param targetAngle Target angle for the toAngle function
+	 * @param robotHeading The robot's current heading
+	 * @param desiredAngle Angle that the robot will rotate towards
 	 * @param rotationRate Rate at which the robot will turn
 	 * @param tolerance Angle deadzone to prevent overshooting
 	 * @return Lets the code know when the robot is within the target range
 	 */
-	public boolean toAngle(double targetAngle, double rotationRate, double tolerance, NavX navX)
+	public boolean toAngle(double targetAngle, double rotationRate, double tolerance, double robotHeading)
 	{
 		double output;
-		double currentAngle = -navX.angle;
+		double currentAngle = -robotHeading;
 		double angleDifference = targetAngle - currentAngle;
 		boolean turnFinished;
 
@@ -125,15 +137,15 @@ public class Drivetrain
 	}
 
 	double turn_kp = 0.98; // change this to calibrate to avoid overshooting
-	double leftDriveValue, rightDriveValue, motor_command;
+	double leftCommand, rightCommand, motor_command;
 
 	public void turn (double desired_angle, NavX navX, double leftDriveValue, double rightDriveValue)
 	{
 		double angle_error = desired_angle - navX.yaw;
 		motor_command = angle_error * (1/180) * turn_kp;
-		leftDriveValue += motor_command;
-		rightDriveValue -= motor_command;
-		sigmaDrive(leftDriveValue, rightDriveValue);
+		leftCommand = motor_command;
+		rightCommand = -motor_command;
+		sigmaDrive(leftCommand, rightCommand);
 	}
 
 	public int getLeftEncoder()

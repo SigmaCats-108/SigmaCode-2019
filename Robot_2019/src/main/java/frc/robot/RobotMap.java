@@ -12,12 +12,12 @@ public class RobotMap
 
 
 	// Drivetrain Motor Controller Ports
-	public static final int DRIVETRAIN_LEFT_SRX = 1;
-	public static final int DRIVETRAIN_LEFT_SPX1 = 2;
-	public static final int DRIVETRAIN_LEFT_SPX2 = 3;
-	public static final int DRIVETRAIN_RIGHT_SRX = 4;
-	public static final int DRIVETRAIN_RIGHT_SPX1 = 5;
-	public static final int DRIVETRAIN_RIGHT_SPX2 = 6;
+	public static final int DRIVETRAIN_LEFT1 = 1;
+	public static final int DRIVETRAIN_LEFT2 = 2;
+	public static final int DRIVETRAIN_LEFT3 = 3;
+	public static final int DRIVETRAIN_RIGHT1 = 4;
+	public static final int DRIVETRAIN_RIGHT2 = 5;
+	public static final int DRIVETRAIN_RIGHT3 = 6;
 
 	public static final double DRIVETRAIN_LEFT_PGAIN = .986;
 

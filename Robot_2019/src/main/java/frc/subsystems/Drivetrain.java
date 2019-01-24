@@ -1,6 +1,9 @@
 package frc.subsystems;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANEncoder;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
@@ -13,12 +16,24 @@ import frc.inputs.NavX;
 public class Drivetrain
 {
 	// Motor Controller Declarations
-	private static WPI_TalonSRX leftSRX = new WPI_TalonSRX(RobotMap.DRIVETRAIN_LEFT_SRX);
-	private static WPI_VictorSPX leftSPX1 = new WPI_VictorSPX(RobotMap.DRIVETRAIN_LEFT_SPX1);
-	private static WPI_VictorSPX leftSPX2 = new WPI_VictorSPX(RobotMap.DRIVETRAIN_LEFT_SPX2);
-	private static WPI_VictorSPX rightSPX = new WPI_VictorSPX(RobotMap.DRIVETRAIN_RIGHT_SRX);
-	private static WPI_VictorSPX rightSPX1 = new WPI_VictorSPX(RobotMap.DRIVETRAIN_RIGHT_SPX1);
-	private static WPI_VictorSPX rightSPX2 = new WPI_VictorSPX(RobotMap.DRIVETRAIN_RIGHT_SPX2);
+	private static CANSparkMax leftSparkMax1 = new CANSparkMax(RobotMap.DRIVETRAIN_LEFT1, MotorType.kBrushless);
+	private static CANSparkMax leftSparkMax2 = new CANSparkMax(RobotMap.DRIVETRAIN_LEFT2, MotorType.kBrushless);
+	private static CANSparkMax leftSparkMax3 = new CANSparkMax(RobotMap.DRIVETRAIN_LEFT3, MotorType.kBrushless);
+	private static CANSparkMax rightSparkMax1 = new CANSparkMax(RobotMap.DRIVETRAIN_RIGHT1, MotorType.kBrushless);
+	private static CANSparkMax rightSparkMax2 = new CANSparkMax(RobotMap.DRIVETRAIN_RIGHT2, MotorType.kBrushless);
+	private static CANSparkMax rightSparkMax3 = new CANSparkMax(RobotMap.DRIVETRAIN_RIGHT3, MotorType.kBrushless);
+
+	private static CANEncoder leftEncoder = leftSparkMax1.getEncoder();
+	private static CANEncoder rightEncoder = rightSparkMax1.getEncoder();
+
+	
+	private static WPI_TalonSRX leftSRX = new WPI_TalonSRX(RobotMap.DRIVETRAIN_LEFT1);
+	private static WPI_VictorSPX leftSPX1 = new WPI_VictorSPX(RobotMap.DRIVETRAIN_LEFT2);
+	private static WPI_VictorSPX leftSPX2 = new WPI_VictorSPX(RobotMap.DRIVETRAIN_LEFT3);
+	private static WPI_VictorSPX rightSPX = new WPI_VictorSPX(RobotMap.DRIVETRAIN_RIGHT1);
+	private static WPI_VictorSPX rightSPX1 = new WPI_VictorSPX(RobotMap.DRIVETRAIN_RIGHT2);
+	private static WPI_VictorSPX rightSPX2 = new WPI_VictorSPX(RobotMap.DRIVETRAIN_RIGHT3);
+	
 	
 	private static DoubleSolenoid gearShifter = new DoubleSolenoid(5, 7);
 
@@ -27,13 +42,13 @@ public class Drivetrain
 	public Drivetrain()
 	{
 		// Assign DifferentialDrive Motors
-		drive = new DifferentialDrive(leftSRX, rightSPX);
+		drive = new DifferentialDrive(leftSparkMax1, rightSparkMax1);
 
 		// Set up followers
-		leftSPX1.follow(leftSRX);
-		leftSPX2.follow(leftSRX);
-		rightSPX1.follow(rightSPX);
-		rightSPX2.follow(rightSPX);
+		leftSparkMax2.follow(leftSparkMax1);
+		leftSparkMax3.follow(leftSparkMax1);
+		rightSparkMax2.follow(rightSparkMax1);
+		rightSparkMax3.follow(rightSparkMax1);
 
 		// Sets drivetrain deadband, default is 0.02
 		drive.setDeadband(0.03);
@@ -148,13 +163,13 @@ public class Drivetrain
 		sigmaDrive(leftCommand, rightCommand);
 	}
 
-	public int getLeftEncoder()
+	public double getLeftEncoder()
 	{
-		return leftSRX.getSelectedSensorPosition(0);
+		return leftEncoder.getPosition();
 	}
-	public int getRightEncoder()
+	public double getRightEncoder()
 	{
-		return rightSPX.getSelectedSensorPosition(0);
+		return rightEncoder.getPosition();
 	}
 
 	public void stop()

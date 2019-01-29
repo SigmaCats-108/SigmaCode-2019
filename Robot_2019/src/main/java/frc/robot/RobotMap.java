@@ -11,7 +11,7 @@ public class RobotMap
 	public static final int ROBOT_WHEEL_DIAMETER = 2;
 
 
-	// Drivetrain Motor Controller Ports
+	// Drivetrain Motor Controller CAN IDs
 	public static final int DRIVETRAIN_LEFT1 = 1;
 	public static final int DRIVETRAIN_LEFT2 = 2;
 	public static final int DRIVETRAIN_LEFT3 = 3;
@@ -21,9 +21,11 @@ public class RobotMap
 
 	public static final double DRIVETRAIN_LEFT_PGAIN = .986;
 
+	// BallMech CAN IDs
+	public static final int BALLMECH_TEST1 = 0;
 
 	// Vision System Constants
-	public static final double HATCH_VISION_TURN_PGAIN = -0.03;
+	public static final double HATCH_VISION_TURN_PGAIN = -0.007;
 	public static final double HATCH_VISION_DISTANCE_PGAIN = 0.049;
 	public static final double HATCH_VISION_MIN_AIM_COMMAND = 0.0;
 	public static final double HATCH_VISION_AREA_TO_DISTANCE_CONSTANT = 1.7;

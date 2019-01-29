@@ -4,9 +4,6 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
-import com.ctre.phoenix.motorcontrol.NeutralMode;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import frc.robot.RobotMap;
@@ -25,15 +22,7 @@ public class Drivetrain
 
 	private static CANEncoder leftEncoder = leftSparkMax1.getEncoder();
 	private static CANEncoder rightEncoder = rightSparkMax1.getEncoder();
-
-	
-	private static WPI_TalonSRX leftSRX = new WPI_TalonSRX(RobotMap.DRIVETRAIN_LEFT1);
-	private static WPI_VictorSPX leftSPX1 = new WPI_VictorSPX(RobotMap.DRIVETRAIN_LEFT2);
-	private static WPI_VictorSPX leftSPX2 = new WPI_VictorSPX(RobotMap.DRIVETRAIN_LEFT3);
-	private static WPI_VictorSPX rightSPX = new WPI_VictorSPX(RobotMap.DRIVETRAIN_RIGHT1);
-	private static WPI_VictorSPX rightSPX1 = new WPI_VictorSPX(RobotMap.DRIVETRAIN_RIGHT2);
-	private static WPI_VictorSPX rightSPX2 = new WPI_VictorSPX(RobotMap.DRIVETRAIN_RIGHT3);
-	
+	public  double leftEnc, rightEnc;
 	
 	private static DoubleSolenoid gearShifter = new DoubleSolenoid(5, 7);
 
@@ -41,17 +30,23 @@ public class Drivetrain
 
 	public Drivetrain()
 	{
-		// Assign DifferentialDrive Motors
-		drive = new DifferentialDrive(leftSparkMax1, rightSparkMax1);
-
 		// Set up followers
 		leftSparkMax2.follow(leftSparkMax1);
 		leftSparkMax3.follow(leftSparkMax1);
 		rightSparkMax2.follow(rightSparkMax1);
 		rightSparkMax3.follow(rightSparkMax1);
 
+		// Assign DifferentialDrive Motors
+		drive = new DifferentialDrive(leftSparkMax1, rightSparkMax1);
+
 		// Sets drivetrain deadband, default is 0.02
 		drive.setDeadband(0.03);
+	}
+
+	public void updateDrivetrain()
+	{
+		leftEnc = leftEncoder.getPosition();
+		rightEnc = rightEncoder.getPosition();
 	}
 
 	public void sigmaDrive(double leftSpeed, double rightSpeed)
@@ -171,7 +166,8 @@ public class Drivetrain
 	{
 		return rightEncoder.getPosition();
 	}
-
+	
+/*
 	public void stop()
 	{
 		rightSPX.stopMotor();
@@ -184,7 +180,7 @@ public class Drivetrain
 		{
 			return true;
 		}
-		else 
+		else  
 		{
 			return false;
 		}
@@ -215,5 +211,6 @@ public class Drivetrain
 		rightSPX1.setNeutralMode(NeutralMode.Coast);
 		rightSPX2.setNeutralMode(NeutralMode.Coast);
 	}
+*/
 
 }

@@ -4,11 +4,11 @@ import edu.wpi.first.wpilibj.XboxController;
 
 public class IO
 {
-    public static XboxController mainController = new XboxController(0);
+    public static XboxController mainController = new XboxController(1);
 
     // Main Controller Variables
-    public static boolean buttonA, buttonB, buttonX, buttonY, leftBumper, rightBumper, leftStick, rightStick;
-    public static double leftTrigger, rightTrigger, leftAnalogX, leftAnalogY, rightAnalogX, rightAnalogY;
+    public static boolean buttonA, buttonB, buttonX, buttonXReleased, buttonY, leftBumper, rightBumper, leftStick, rightStick;
+    public static double leftTrigger, rightTrigger, leftAnalogX, leftAnalogY, rightAnalogX, rightAnalogY, a = 1;
 
     public static void UpdateControllers()
     {
@@ -30,6 +30,11 @@ public class IO
 
     public static void ProcessControllers()
     {
+        if(buttonX)
+        {
+            Robot.ballMech.doTurn = true;
+        }
+
         if(buttonA)
         {
             Robot.hatchMech.hatchIntake();

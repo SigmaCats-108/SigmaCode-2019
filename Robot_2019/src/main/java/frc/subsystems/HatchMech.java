@@ -43,7 +43,7 @@ public class HatchMech
 
             case 2:
             
-            Robot.drivetrain.sigmaDrive(0.4, 0.4);
+            Robot.drivetrain.sigmaDrive(0.1, 0.1);
 
             break;
 

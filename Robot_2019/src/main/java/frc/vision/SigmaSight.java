@@ -40,7 +40,7 @@ public class SigmaSight
         area = ta.getDouble(0.0);
         skew = ts.getDouble(0.0);
         updateLastKnownDirection();
-        System.out.println("ValidTarget: " + validTarget);
+        //System.out.println("ValidTarget: " + validTarget);
     }
 
     /**
@@ -67,7 +67,7 @@ public class SigmaSight
             targetDirection = Direction.LEFT;
         }
         
-        System.out.println(targetDirection);
+        //System.out.println(targetDirection);
     }
 
     /**

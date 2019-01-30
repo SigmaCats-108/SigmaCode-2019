@@ -26,7 +26,7 @@ public class SigmaSight
     NetworkTableEntry tx = limelightTable.getEntry("tx");
     NetworkTableEntry ty = limelightTable.getEntry("ty");
     NetworkTableEntry ta = limelightTable.getEntry("ta");
-    NetworkTableEntry ts = limelightTable.getEntry("ta");
+    NetworkTableEntry ts = limelightTable.getEntry("ts");
 
     /**
      * Updates the vision target's position periodically

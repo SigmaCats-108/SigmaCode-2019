@@ -21,7 +21,12 @@ public class RobotMap
 
 	public static final double DRIVETRAIN_LEFT_PGAIN = .986;
 
-	// BallMech CAN IDs
+	// BallMech Constants
+	public static final int BALLMECH_LEFTARM_ID = 15;
+	public static final int BALLMECH_RIGHTARM_ID = 16;
+	public static final int BALLMECH_INTAKE_ID = 17;
+
+	// TestMech Constants
 	public static final int BALLMECH_TEST1 = 0;
 
 	// Vision System Constants

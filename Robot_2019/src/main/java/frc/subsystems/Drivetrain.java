@@ -27,7 +27,7 @@ public class Drivetrain
 	private static DoubleSolenoid gearShifter = new DoubleSolenoid(5, 7);
 
 	private double angleError, turnSpeed;
-	private double turn_Kp = 0.008;
+	private double turn_Kp = 0.008, desiredAngle;
 	private int turnState = 0;
 
 	public Drivetrain()
@@ -148,24 +148,29 @@ public class Drivetrain
 		return turnFinished;
 	}
 
-	public void turnAngle(double desired_angle)
+	public void turnAngle(double angle)
 	{
 		switch(turnState)
 		{
 			case 0:
-			Robot.navX.resetAngle();
+			desiredAngle =  Robot.navX.angle + angle;
 			turnState = 1;
 			break;
 
 			case 1:
-			angleError = desired_angle - Robot.navX.angle;
+			angleError = Robot.navX.angle - desiredAngle;
 			turnSpeed = angleError * turn_Kp;
 			sigmaDrive(turnSpeed, -turnSpeed);
-			if(Robot.navX.angle < desired_angle + 5)
+			if(Robot.navX.angle > angle - 5)
 			{
-
+				turnState = 2;
 			}
 			break;
+
+			default :
+			
+			sigmaDrive(0.0, 0.0);
+
 		}
 	}
 

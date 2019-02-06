@@ -7,9 +7,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import frc.robot.RobotMap;
-import frc.inputs.NavX;
-
-
+import frc.robot.Robot;
 public class Drivetrain
 {
 	// Motor Controller Declarations
@@ -24,9 +22,13 @@ public class Drivetrain
 	private static CANEncoder rightEncoder = rightSparkMax1.getEncoder();
 	public  double leftEnc, rightEnc;
 	
+	private DifferentialDrive drive;
+
 	private static DoubleSolenoid gearShifter = new DoubleSolenoid(5, 7);
 
-	private DifferentialDrive drive;
+	private double angleError, turnSpeed;
+	private double turn_Kp = 0.008;
+	private int turnState = 0;
 
 	public Drivetrain()
 	{
@@ -109,11 +111,11 @@ public class Drivetrain
 	 * @param tolerance Angle deadzone to prevent overshooting
 	 * @return Lets the code know when the robot is within the target range
 	 */
-	public boolean toAngle(double targetAngle, double rotationRate, double tolerance, double robotHeading)
+	public boolean toAngle(double desiredAngle, double rotationRate, double tolerance)
 	{
 		double output;
-		double currentAngle = -robotHeading;
-		double angleDifference = targetAngle - currentAngle;
+		double currentAngle = -Robot.navX.yaw;
+		double angleDifference = desiredAngle - currentAngle;
 		boolean turnFinished;
 
 		if(angleDifference > tolerance)
@@ -146,16 +148,25 @@ public class Drivetrain
 		return turnFinished;
 	}
 
-	double turn_kp = 0.98; // change this to calibrate to avoid overshooting
-	double leftCommand, rightCommand, motor_command;
-
-	public void turn (double desired_angle, NavX navX, double leftDriveValue, double rightDriveValue)
+	public void turnAngle(double desired_angle)
 	{
-		double angle_error = desired_angle - navX.yaw;
-		motor_command = angle_error * (1/180) * turn_kp;
-		leftCommand = motor_command;
-		rightCommand = -motor_command;
-		sigmaDrive(leftCommand, rightCommand);
+		switch(turnState)
+		{
+			case 0:
+			Robot.navX.resetAngle();
+			turnState = 1;
+			break;
+
+			case 1:
+			angleError = desired_angle - Robot.navX.angle;
+			turnSpeed = angleError * turn_Kp;
+			sigmaDrive(turnSpeed, -turnSpeed);
+			if(Robot.navX.angle < desired_angle + 5)
+			{
+
+			}
+			break;
+		}
 	}
 
 	public double getLeftEncoder()
@@ -166,51 +177,11 @@ public class Drivetrain
 	{
 		return rightEncoder.getPosition();
 	}
-	
-/*
-	public void stop()
-	{
-		rightSPX.stopMotor();
-		leftSRX.stopMotor();
-	}
-
-	public boolean stopped()
-	{
-		if(rightSPX.getSelectedSensorVelocity(0) == 0 && leftSRX.getSelectedSensorVelocity(0) == 0)
-		{
-			return true;
-		}
-		else  
-		{
-			return false;
-		}
-	}
 
 	public void testSpeed()
 	{
-		System.out.println("Left Motor Speed: " + leftSRX.get());
-		System.out.println("Right Motor Speed: " + rightSPX.get());
+		System.out.print("Left Motor Speed: " + leftSparkMax1.get());
+		System.out.println("     Right Motor Speed: " + rightSparkMax1.get());
 	}
 	
-	public void setToBrake()
-	{
-		leftSRX.setNeutralMode(NeutralMode.Brake);
-		rightSPX.setNeutralMode(NeutralMode.Brake);
-		leftSPX1.setNeutralMode(NeutralMode.Brake);
-		leftSPX2.setNeutralMode(NeutralMode.Brake);
-		rightSPX1.setNeutralMode(NeutralMode.Brake);
-		rightSPX2.setNeutralMode(NeutralMode.Brake);
-	}
-	
-	public void setToCoast()
-	{
-		leftSRX.setNeutralMode(NeutralMode.Coast);
-		rightSPX.setNeutralMode(NeutralMode.Coast);
-		leftSPX1.setNeutralMode(NeutralMode.Coast);
-		leftSPX2.setNeutralMode(NeutralMode.Coast);
-		rightSPX1.setNeutralMode(NeutralMode.Coast);
-		rightSPX2.setNeutralMode(NeutralMode.Coast);
-	}
-*/
-
 }

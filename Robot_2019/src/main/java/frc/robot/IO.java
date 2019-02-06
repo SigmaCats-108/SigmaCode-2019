@@ -30,6 +30,16 @@ public class IO
 
     public static void ProcessControllers()
     {
+        if(buttonY)
+        {
+            Robot.drivetrain.turnAngle(90);
+        }
+
+        if(leftBumper)
+        {
+            Robot.navX.resetAngle();
+        }
+
         if(buttonX)
         {
             Robot.ballMech.doTurn = true;

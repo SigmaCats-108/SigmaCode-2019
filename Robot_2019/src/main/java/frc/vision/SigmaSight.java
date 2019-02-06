@@ -115,7 +115,7 @@ public class SigmaSight
         left_command = steering_adjust + distance_adjust;
         right_command = -steering_adjust + distance_adjust;
 
-        Robot.drivetrain.sigmaDrive(left_command, right_command);
+        Robot.drivetrain.sigmaDrive(left_command * 0.6, right_command * 0.6);
 
         if( area > desiredArea - 0.1 && area < desiredArea + 0.1 && xVal > -1.0 && xVal < 1.0)
             return true;

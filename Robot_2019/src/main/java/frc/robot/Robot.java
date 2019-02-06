@@ -37,9 +37,10 @@ public class Robot extends TimedRobot {
     public void robotPeriodic()
     {
         navX.updateAHRS();
+        //navX.testAngle();
         sigmaSight.updateValues();
         sigmaSight.testValues();
-        //drivetrain.testSpeed();
+        drivetrain.testSpeed();
         drivetrain.updateDrivetrain();
         ballMech.updateBallMech();
     }

@@ -29,7 +29,6 @@ public class HatchMech
             {
                 hatchMechState++;
             }
-            
             break;
 
             case 1:
@@ -38,16 +37,16 @@ public class HatchMech
             {
                 hatchMechState++;
             }
-
             break;
 
             case 2:
             
-            Robot.drivetrain.sigmaDrive(0.1, 0.1);
+            Robot.drivetrain.sigmaDrive(0.2, 0.2);
 
             break;
 
         }
+        System.out.println("Trackstate: " + hatchMechState);
     }
 
     public void hatchIntake()

@@ -158,7 +158,7 @@ public class Drivetrain
 			break;
 
 			case 1:
-			angleError = Robot.navX.angle - desiredAngle;
+			angleError = desiredAngle - Robot.navX.angle;
 			turnSpeed = angleError * turn_Kp;
 			sigmaDrive(turnSpeed, -turnSpeed);
 			if(Robot.navX.angle > angle - 5)
@@ -170,7 +170,7 @@ public class Drivetrain
 			default :
 			
 			sigmaDrive(0.0, 0.0);
-
+			
 		}
 	}
 

@@ -109,13 +109,13 @@ public class SigmaSight
             steering_adjust = turnKp * -xVal + minAimCommand;
         }
 
-        //distance_adjust = distanceKp * yVal;
-        distance_adjust = ((area / desiredArea) - 1) * -1;
+        distance_adjust = distanceKp * (RobotMap.HATCH_VISION_AREA_TO_DISTANCE_CONSTANT - area);
+        //distance_adjust = ((area / desiredArea) - 1) * -1;
 
         left_command = steering_adjust + distance_adjust;
         right_command = -steering_adjust + distance_adjust;
 
-        Robot.drivetrain.sigmaDrive(left_command * 0.6, right_command * 0.6);
+        Robot.drivetrain.sigmaDrive(left_command, right_command);
 
         if( area > desiredArea - 0.1 && area < desiredArea + 0.1 && xVal > -1.0 && xVal < 1.0)
             return true;

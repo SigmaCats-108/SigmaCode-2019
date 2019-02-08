@@ -11,6 +11,10 @@ import frc.robot.RobotMap;
 public class BallMech
 {
 
+	public enum ArmPosition {
+		STARTING, LOADING_FLOOR, LOADING_WALL, SCORING, CLIMBING;
+	}
+	
 	private static CANSparkMax armMotor1 = new CANSparkMax(RobotMap.BALLMECH_LEFTARM_ID, MotorType.kBrushless);
 	private static CANSparkMax armMotor2 = new CANSparkMax(RobotMap.BALLMECH_RIGHTARM_ID, MotorType.kBrushless);
 	private static CANSparkMax intakeMotor = new CANSparkMax(RobotMap.BALLMECH_INTAKE_ID, MotorType.kBrushed);
@@ -30,23 +34,23 @@ public class BallMech
 		intakeMotor.set(speed);
 	}
 
-	public void setArm(int position)
+	public void setArm(ArmPosition position)
 	{
 		switch(position)
 		{
-			case 1: turnArm(80);
+			case STARTING: turnArm(80);
 			break;
 			
-			case 2: turnArm(70);
+			case LOADING_FLOOR: turnArm(70);
 			break;
 
-			case 3: turnArm(60);
+			case LOADING_WALL: turnArm(60);
 			break;
 
-			case 4: turnArm(50);
+			case SCORING: turnArm(50);
 			break;
 
-			case 5: turnArm(40);
+			case CLIMBING: turnArm(40);
 			break;
 		}
 	}

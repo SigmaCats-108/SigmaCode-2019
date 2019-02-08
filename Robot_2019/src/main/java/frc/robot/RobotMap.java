@@ -33,5 +33,5 @@ public class RobotMap
 	public static final double HATCH_VISION_TURN_PGAIN = -0.007;
 	public static final double HATCH_VISION_DISTANCE_PGAIN = 0.2;
 	public static final double HATCH_VISION_MIN_AIM_COMMAND = 0.0;
-	public static final double HATCH_VISION_AREA_TO_DISTANCE_CONSTANT = 1.7;
+	public static final double HATCH_VISION_DESIRED_TARGET_AREA = 4.0;
 }

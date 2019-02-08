@@ -44,8 +44,7 @@ public class Robot extends TimedRobot {
         //navX.testAngle();
         sigmaSight.updateValues();
         sigmaSight.testValues();
-        drivetrain.testSpeed();
-        drivetrain.updateDrivetrain();
+        //drivetrain.testSpeed();
     }
     
     @Override

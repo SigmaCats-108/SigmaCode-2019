@@ -15,7 +15,7 @@ public class SigmaSight
     double steering_adjust, distance_adjust, left_command, right_command;
     double turnKp = RobotMap.HATCH_VISION_TURN_PGAIN;
     double distanceKp = RobotMap.HATCH_VISION_DISTANCE_PGAIN;
-    double desiredArea = RobotMap.HATCH_VISION_AREA_TO_DISTANCE_CONSTANT;
+    double desiredArea = RobotMap.HATCH_VISION_DESIRED_TARGET_AREA;
     double minAimCommand = RobotMap.HATCH_VISION_MIN_AIM_COMMAND;
     
     private enum Direction {LEFT, RIGHT, OTHER};
@@ -109,7 +109,7 @@ public class SigmaSight
             steering_adjust = turnKp * -xVal + minAimCommand;
         }
 
-        distance_adjust = distanceKp * (RobotMap.HATCH_VISION_AREA_TO_DISTANCE_CONSTANT - area);
+        distance_adjust = distanceKp * (desiredArea - area);
         //distance_adjust = ((area / desiredArea) - 1) * -1;
 
         left_command = steering_adjust + distance_adjust;

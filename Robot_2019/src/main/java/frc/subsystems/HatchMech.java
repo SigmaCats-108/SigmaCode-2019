@@ -9,7 +9,7 @@ import frc.robot.Robot;
  */
 public class HatchMech
 {
-    private static DoubleSolenoid hatchIntake = new DoubleSolenoid(3, 0);
+    private static DoubleSolenoid hatchClamp = new DoubleSolenoid(3, 0);
 
     private int hatchMechState = 0;
     
@@ -49,15 +49,15 @@ public class HatchMech
         System.out.println("Trackstate: " + hatchMechState);
     }
 
-    public void hatchIntake()
+    public void hatchClamp()
 	{
-        if (hatchIntake.get() == Value.kForward)
+        if (hatchClamp.get() == Value.kForward)
         {
-            hatchIntake.set(Value.kReverse);
+            hatchClamp.set(Value.kReverse);
         }
         else
         {
-            hatchIntake.set(Value.kForward);
+            hatchClamp.set(Value.kForward);
         }
         //hatchClamps.set(DoubleSolenoid.Value.kReverse);
 		//hatchClamps.set(!hatchClamps.get());

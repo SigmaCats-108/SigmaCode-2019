@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import frc.robot.RobotMap;
 import frc.robot.Robot;
+
 public class Drivetrain
 {
 	// Motor Controller Declarations
@@ -20,15 +21,17 @@ public class Drivetrain
 
 	private static CANEncoder leftEncoder = leftSparkMax1.getEncoder();
 	private static CANEncoder rightEncoder = rightSparkMax1.getEncoder();
-	public  double leftEnc, rightEnc;
 	
 	private DifferentialDrive drive;
 
 	private static DoubleSolenoid gearShifter = new DoubleSolenoid(5, 7);
 
-	private double angleError, turnSpeed;
-	private double turn_Kp = 0.008, desiredAngle;
-	private int turnState = 0;
+	private double angleError, turnSpeed, targetEncVal = 0;
+	private double turn_Kp = 1/360, desiredAngle;
+	private int moveState = 0;
+	public int turnState = 0;
+	private final double ENC_TICKS_PER_INCH = 30;
+
 
 	public Drivetrain()
 	{
@@ -43,12 +46,6 @@ public class Drivetrain
 
 		// Sets drivetrain deadband, default is 0.02
 		drive.setDeadband(0.03);
-	}
-
-	public void updateDrivetrain()
-	{
-		leftEnc = leftEncoder.getPosition();
-		rightEnc = rightEncoder.getPosition();
 	}
 
 	public void sigmaDrive(double leftSpeed, double rightSpeed)
@@ -102,6 +99,31 @@ public class Drivetrain
 		}
 	}
 
+	public void driveStraight(int inches)
+	{
+		double kp = 0.01;
+		switch(moveState)
+		{
+			case 0:
+			targetEncVal = leftEncoder.getPosition() + (inches * ENC_TICKS_PER_INCH);
+			moveState = 1;
+			break;
+
+			case 1:
+			double displacement = targetEncVal - leftEncoder.getPosition();
+			double speed = displacement * kp;
+			sigmaDrive(speed, speed);
+			if(leftEncoder.getPosition() > targetEncVal - 5)
+			{
+				moveState = 2;
+			}
+
+			case 2:
+			sigmaDrive(0.0, 0.0);
+			break;
+		}
+	}
+
 	/**
 	 * Turns the robot to a desired angle
 	 * 
@@ -148,30 +170,32 @@ public class Drivetrain
 		return turnFinished;
 	}
 
-	public void turnAngle(double angle)
+	public boolean turnAngle(double angle)
 	{
 		switch(turnState)
 		{
 			case 0:
-			desiredAngle =  Robot.navX.angle + angle;
-			turnState = 1;
-			break;
+			
+			System.out.println("Running this state: " + turnState);
 
+			desiredAngle =  Robot.navX.angle + angle;
+			System.out.println("Current angle: " + angle + "     Desired Angle: " + desiredAngle);
+			turnState++;
+			
 			case 1:
 			angleError = desiredAngle - Robot.navX.angle;
 			turnSpeed = angleError * turn_Kp;
 			sigmaDrive(turnSpeed, -turnSpeed);
-			if(Robot.navX.angle > angle - 5)
+			if(Math.abs(angleError) < 5)
 			{
-				turnState = 2;
+				turnState++;		
+				sigmaDrive(0.0, 0.0);
+				return true;
 			}
 			break;
-
-			default :
-			
-			sigmaDrive(0.0, 0.0);
-			
 		}
+
+		return false;
 	}
 
 	public double getLeftEncoder()

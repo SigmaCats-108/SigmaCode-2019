@@ -30,7 +30,7 @@ public class Drivetrain
 	private double turn_Kp = 1/360, desiredAngle;
 	private int moveState = 0;
 	public int turnState = 0;
-	private final double ENC_TICKS_PER_INCH = 30;
+	private final double ENC_TICKS_PER_INCH = 0.416;
 
 
 	public Drivetrain()
@@ -101,27 +101,30 @@ public class Drivetrain
 
 	public void driveStraight(int inches)
 	{
-		double kp = 0.01;
+		double kp = 0.008;
 		switch(moveState)
 		{
 			case 0:
 			targetEncVal = leftEncoder.getPosition() + (inches * ENC_TICKS_PER_INCH);
 			moveState = 1;
 			break;
-
+			
 			case 1:
 			double displacement = targetEncVal - leftEncoder.getPosition();
-			double speed = displacement * kp;
+			double speed = displacement / kp;
 			sigmaDrive(speed, speed);
+			System.out.println("displacement: " + displacement);
 			if(leftEncoder.getPosition() > targetEncVal - 5)
 			{
 				moveState = 2;
 			}
+			break;
 
 			case 2:
 			sigmaDrive(0.0, 0.0);
 			break;
 		}
+		System.out.println("moveState: " + moveState);
 	}
 
 	/**

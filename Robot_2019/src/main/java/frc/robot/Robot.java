@@ -44,7 +44,6 @@ public class Robot extends TimedRobot {
         //navX.testAngle();
         sigmaSight.updateValues();
         sigmaSight.testValues();
-        //drivetrain.testSpeed();
     }
     
     @Override
@@ -56,7 +55,9 @@ public class Robot extends TimedRobot {
     @Override
     public void autonomousPeriodic()
     {
-        autonomous.runAutonomous();
+        //autonomous.runAutonomous();
+        Robot.drivetrain.driveStraight(40);
+
     }
 
     @Override

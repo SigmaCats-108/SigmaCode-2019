@@ -28,6 +28,6 @@ public class NavX
 
     public void testAngle()
     {
-        System.out.println("Yaw: " + yaw + " Yaw (Unclamped): " + angle + " Pitch: " + pitch + " Roll: " + roll);
+       // System.out.println("Yaw: " + yaw + " Yaw (Unclamped): " + angle + " Pitch: " + pitch + " Roll: " + roll);
     }
 }

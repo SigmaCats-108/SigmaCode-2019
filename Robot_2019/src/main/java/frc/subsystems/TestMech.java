@@ -29,7 +29,7 @@ public class TestMech
 	public void encoderTurn(int revolutions)
 	{
 
-		System.out.println("Turnstate: " + turnState);
+		//System.out.println("Turnstate: " + turnState);
 
 		switch(turnState)
 		{

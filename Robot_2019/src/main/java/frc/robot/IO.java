@@ -18,7 +18,7 @@ public class IO
     {
         m_buttonA = mainController.getRawButtonPressed(1);
         m_buttonB = mainController.getRawButton(2);
-        m_buttonX = mainController.getRawButtonPressed(3);
+        m_buttonX = mainController.getRawButton(3);
         m_buttonXRaw = mainController.getRawButton(3);
         m_buttonY = mainController.getRawButton(4);
         m_leftBumper = mainController.getRawButton(5);
@@ -65,7 +65,7 @@ public class IO
         {
             Robot.hatchMech.resetHatchState();
         }
-
+        
         /* if(!Robot.drivetrain.turnAngle(180) && m_buttonX)
         {
             Robot.drivetrain.turnState = 0;
@@ -94,6 +94,8 @@ public class IO
         {
             Robot.ballMech.setArm(ArmPosition.CLIMBING);
         }
+
+
 
         if(o_leftBumper)
         {

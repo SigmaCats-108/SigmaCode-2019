@@ -144,6 +144,8 @@ public class SigmaSight
         System.out.println("tX = " + xVal);
         */
 
+      
+
         SmartDashboard.putBoolean("tv", validTarget);
         SmartDashboard.putNumber("tx", xVal);
         SmartDashboard.putNumber("ty", yVal);

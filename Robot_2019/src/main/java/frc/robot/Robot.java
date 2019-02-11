@@ -44,6 +44,8 @@ public class Robot extends TimedRobot {
         //navX.testAngle();
         sigmaSight.updateValues();
         sigmaSight.testValues();
+        ballMech.updateBallMech();
+        ballMech.intakeOutake();
     }
     
     @Override

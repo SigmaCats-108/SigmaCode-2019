@@ -3,7 +3,10 @@ package frc.subsystems;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.DigitalInput;
 import frc.robot.RobotMap;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The robot mechanism for the picking up and scoring of balls.
@@ -22,6 +25,33 @@ public class BallMech
 	private double armEncVal, armDifference;
 	private final double maxArmVal = 87;
 	private final double minArmVal = 6;
+
+
+	
+	AnalogInput ultrasonicAnalog = new AnalogInput(0);
+	DigitalInput bumper1 = new DigitalInput(0);
+	DigitalInput bumper2 = new DigitalInput(1);
+	double cm;
+
+
+
+	public void updateBallMech()
+	{
+		//testEncVal1 = testEncoder1.getPosition();
+		cm = ultrasonicAnalog.getValue();
+		//System.out.println(cm);
+		if(cm > 60){
+
+            SmartDashboard.putBoolean("inTheAir", true);
+
+		}
+		else
+		{
+			SmartDashboard.putBoolean("inTheAir", false);
+		}
+	}
+
+
 
 	public BallMech()
 	{
@@ -54,6 +84,16 @@ public class BallMech
 			break;
 		}
 	}
+
+	public void intakeOutake()
+	{
+		if(!bumper1.get() && !bumper2.get())
+		{
+			System.out.println("Ball detected!  Turn motor off!\r\n");
+		}
+	}
+
+	
 	
 	private boolean turnArm(double targetVal)
 	{
@@ -91,5 +131,6 @@ public class BallMech
 			armMotor1.set(0.0);
 			return true;
 		}
+
 	}
 }

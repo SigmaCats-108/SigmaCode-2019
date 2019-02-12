@@ -94,6 +94,10 @@ public class IO
         {
             Robot.ballMech.setArm(ArmPosition.CLIMBING);
         }
+        else
+        {
+            Robot.ballMech.stopArm();
+        }
 
 
 

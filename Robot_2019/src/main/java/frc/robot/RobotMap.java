@@ -15,15 +15,15 @@ public class RobotMap
 	public static final int DRIVETRAIN_LEFT1 = 1;
 	public static final int DRIVETRAIN_LEFT2 = 2;
 	public static final int DRIVETRAIN_LEFT3 = 3;
-	public static final int DRIVETRAIN_RIGHT1 = 4;
-	public static final int DRIVETRAIN_RIGHT2 = 5;
-	public static final int DRIVETRAIN_RIGHT3 = 6;
+	public static final int DRIVETRAIN_RIGHT1 = 44;
+	public static final int DRIVETRAIN_RIGHT2 = 45;
+	public static final int DRIVETRAIN_RIGHT3 = 46;
 
 	public static final double DRIVETRAIN_LEFT_PGAIN = .986;
 
 	// BallMech Constants
-	public static final int BALLMECH_LEFTARM_ID = 15;
-	public static final int BALLMECH_RIGHTARM_ID = 16;
+	public static final int BALLMECH_LEFTARM_ID = 4;
+	public static final int BALLMECH_RIGHTARM_ID = 5;
 	public static final int BALLMECH_INTAKE_ID = 17;
 
 	// TestMech Constants

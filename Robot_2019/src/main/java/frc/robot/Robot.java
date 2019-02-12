@@ -25,7 +25,6 @@ public class Robot extends TimedRobot {
     @Override
     public void robotInit() 
     {
-        CameraServer.getInstance().startAutomaticCapture();
         autonomous = new Autonomous();
         follower = new Follower();
         navX = new NavX();
@@ -46,6 +45,7 @@ public class Robot extends TimedRobot {
         sigmaSight.testValues();
         ballMech.updateBallMech();
         ballMech.intakeOutake();
+        ballMech.testArmEnc();
     }
     
     @Override

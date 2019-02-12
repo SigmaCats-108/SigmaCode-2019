@@ -24,7 +24,7 @@ public class Drivetrain
 	
 	private DifferentialDrive drive;
 
-	private static DoubleSolenoid gearShifter = new DoubleSolenoid(5, 7);
+	private static DoubleSolenoid gearShifter = new DoubleSolenoid(RobotMap.DRIVETRAIN_SHIFTER_FWD, RobotMap.DRIVETRAIN_SHIFTER_REV);
 
 	private double angleError, turnSpeed, targetEncVal = 0;
 	private double turn_Kp = 1/360, desiredAngle;
@@ -48,6 +48,12 @@ public class Drivetrain
 		drive.setDeadband(0.03);
 	}
 
+	/**
+	 * A tank drive function that accounts for the joystick inversion and drivetrain drift
+	 * 
+	 * @param leftSpeed
+	 * @param rightSpeed
+	 */
 	public void sigmaDrive(double leftSpeed, double rightSpeed)
 	{
 		drive.tankDrive(-leftSpeed /** RobotMap.DRIVETRAIN_LEFT_PGAIN*/, -rightSpeed, false);
@@ -99,6 +105,12 @@ public class Drivetrain
 		}
 	}
 
+	/**
+	 * Drives the robot a set distance in a straight line
+	 * Does not use the gyro to account for angle
+	 * 
+	 * @param inches
+	 */
 	public void driveStraight(int inches)
 	{
 		double kp = 0.008;
@@ -173,6 +185,12 @@ public class Drivetrain
 		return turnFinished;
 	}
 
+	/**
+	 * *Broken for the time being*
+	 * 
+	 * @param angle
+	 * @return
+	 */
 	public boolean turnAngle(double angle)
 	{
 		switch(turnState)

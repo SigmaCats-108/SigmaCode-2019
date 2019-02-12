@@ -11,13 +11,19 @@ public class RobotMap
 	public static final int ROBOT_WHEEL_DIAMETER = 2;
 
 
-	// Drivetrain Motor Controller CAN IDs
-	public static final int DRIVETRAIN_LEFT1 = 1;
-	public static final int DRIVETRAIN_LEFT2 = 2;
-	public static final int DRIVETRAIN_LEFT3 = 3;
-	public static final int DRIVETRAIN_RIGHT1 = 44;
-	public static final int DRIVETRAIN_RIGHT2 = 45;
-	public static final int DRIVETRAIN_RIGHT3 = 46;
+	// Drivetrain ID Values
+	public static final int DRIVETRAIN_LEFT1 = 4;
+	public static final int DRIVETRAIN_LEFT2 = 5;
+	public static final int DRIVETRAIN_LEFT3 = 6;
+	public static final int DRIVETRAIN_RIGHT1 = 7;
+	public static final int DRIVETRAIN_RIGHT2 = 8;
+	public static final int DRIVETRAIN_RIGHT3 = 9;
+
+	// Pneumatics ID Values
+	public static final int DRIVETRAIN_SHIFTER_FWD = 5;
+	public static final int DRIVETRAIN_SHIFTER_REV = 7;
+
+
 
 	public static final double DRIVETRAIN_LEFT_PGAIN = .986;
 

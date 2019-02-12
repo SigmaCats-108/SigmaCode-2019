@@ -1,7 +1,6 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.cameraserver.CameraServer;
 import frc.autos.Autonomous;
 import frc.autos.Follower;
 import frc.inputs.NavX;

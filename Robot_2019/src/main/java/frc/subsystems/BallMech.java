@@ -28,8 +28,6 @@ public class BallMech
 	private final double maxArmVal = 100;
 	private final double minArmVal = 0;
 
-
-	
 	AnalogInput ultrasonicAnalog = new AnalogInput(0);
 	DigitalInput bumper1 = new DigitalInput(0);
 	DigitalInput bumper2 = new DigitalInput(1);

@@ -1,7 +1,6 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
-import frc.subsystems.BallMech.ArmPosition;
 
 public class IO
 {
@@ -80,19 +79,23 @@ public class IO
         //operator controller
         if(o_buttonA)
         {
-            Robot.ballMech.setArm(ArmPosition.LOADING_WALL);
+            Robot.ballMech.setArm(RobotMap.ArmPosition.LOADING_WALL);
         }
         else if(o_buttonB)
         {
-            Robot.ballMech.setArm(ArmPosition.LOADING_FLOOR);
+            Robot.ballMech.setArm(RobotMap.ArmPosition.LOADING_FLOOR);
         }
         else if(o_buttonX)
         {
-            Robot.ballMech.setArm(ArmPosition.SCORING);
+            Robot.ballMech.setArm(RobotMap.ArmPosition.SCORING);
         }
         else if(o_buttonY)
         {
-            Robot.ballMech.setArm(ArmPosition.CLIMBING);
+            Robot.ballMech.setArm(RobotMap.ArmPosition.CLIMBING);
+        }
+        else
+        {
+            Robot.ballMech.stopArm();
         }
 
 

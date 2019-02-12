@@ -1,7 +1,6 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.cameraserver.CameraServer;
 import frc.autos.Autonomous;
 import frc.autos.Follower;
 import frc.inputs.NavX;
@@ -25,7 +24,6 @@ public class Robot extends TimedRobot {
     @Override
     public void robotInit() 
     {
-        CameraServer.getInstance().startAutomaticCapture();
         autonomous = new Autonomous();
         follower = new Follower();
         navX = new NavX();
@@ -46,6 +44,7 @@ public class Robot extends TimedRobot {
         sigmaSight.testValues();
         ballMech.updateBallMech();
         ballMech.intakeOutake();
+        ballMech.testArmEnc();
     }
     
     @Override
@@ -58,8 +57,6 @@ public class Robot extends TimedRobot {
     public void autonomousPeriodic()
     {
         //autonomous.runAutonomous();
-        Robot.drivetrain.driveStraight(40);
-
     }
 
     @Override

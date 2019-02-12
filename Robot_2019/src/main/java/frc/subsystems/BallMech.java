@@ -1,6 +1,7 @@
 package frc.subsystems;
 
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj.AnalogInput;
@@ -14,25 +15,19 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class BallMech
 {
 
-	public enum ArmPosition {
-		STARTING, LOADING_FLOOR, LOADING_WALL, SCORING, CLIMBING;
-	}
-	
-	private static CANSparkMax armMotor1 = new CANSparkMax(RobotMap.BALLMECH_LEFTARM_ID, MotorType.kBrushless);
-	private static CANSparkMax armMotor2 = new CANSparkMax(RobotMap.BALLMECH_RIGHTARM_ID, MotorType.kBrushless);
-	private static CANSparkMax intakeMotor = new CANSparkMax(RobotMap.BALLMECH_INTAKE_ID, MotorType.kBrushed);
+	private static CANSparkMax armMotor1 = new CANSparkMax(RobotMap.BALLMECH_LEFTARM, MotorType.kBrushless);
+	private static CANSparkMax armMotor2 = new CANSparkMax(RobotMap.BALLMECH_RIGHTARM, MotorType.kBrushless);
+	private static CANSparkMax intakeMotor = new CANSparkMax(RobotMap.BALLMECH_INTAKE, MotorType.kBrushed);
 	private static CANEncoder armEncoder1 = armMotor1.getEncoder();
 	private double armEncVal, armDifference;
-	private final double maxArmVal = 87;
-	private final double minArmVal = 6;
+	private double armKp = 0.91;
+	private final double maxArmVal = 100;
+	private final double minArmVal = 0;
 
-
-	
 	AnalogInput ultrasonicAnalog = new AnalogInput(0);
 	DigitalInput bumper1 = new DigitalInput(0);
 	DigitalInput bumper2 = new DigitalInput(1);
 	double cm;
-
 
 
 	public void updateBallMech()
@@ -55,6 +50,8 @@ public class BallMech
 
 	public BallMech()
 	{
+		armMotor1.setIdleMode(IdleMode.kBrake);
+		armMotor2.setIdleMode(IdleMode.kBrake);
 		armMotor2.setInverted(true);
 		armMotor2.follow(armMotor1);
 	}
@@ -64,7 +61,7 @@ public class BallMech
 		intakeMotor.set(speed);
 	}
 
-	public void setArm(ArmPosition position)
+	public void setArm(RobotMap.ArmPosition position)
 	{
 		switch(position)
 		{
@@ -98,6 +95,7 @@ public class BallMech
 	private boolean turnArm(double targetVal)
 	{
 		armEncVal = armEncoder1.getPosition();
+
 		armDifference = targetVal - armEncVal;
 
 		if(!(armEncVal > maxArmVal || armEncVal < minArmVal))
@@ -106,15 +104,15 @@ public class BallMech
 			{
 				if(Math.abs(armDifference) < 20)
 				{
-					armMotor1.set( armDifference / 20);
+					armMotor1.set( (armDifference / 20) * armKp);
 				}
 				else if(armEncVal > targetVal)
 				{
-					armMotor1.set(0.3);
+					armMotor1.set(1.0 * (armKp));
 				}
 				else if(armEncVal < targetVal)
 				{
-					armMotor1.set(-0.3);
+					armMotor1.set(1.0 * (armKp));
 				}
 				return false;
 			}
@@ -132,5 +130,15 @@ public class BallMech
 			return true;
 		}
 
+	}
+
+	public void stopArm()
+	{
+		armMotor1.set(0.0);
+	}
+
+	public void testArmEnc()
+	{
+		System.out.println(armEncoder1.getPosition());
 	}
 }

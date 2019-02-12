@@ -3,13 +3,14 @@ package frc.subsystems;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 /**
  * Robot mechanism for the picking up and scoring of hatches.
  */
 public class HatchMech
 {
-    private static DoubleSolenoid hatchClamp = new DoubleSolenoid(3, 0);
+    private static DoubleSolenoid hatchClamp = new DoubleSolenoid(RobotMap.PCM1, RobotMap.HATCH_CLAMP_FWD, RobotMap.HATCH_CLAMP_REV);
 
     private int hatchMechState = 0;
     

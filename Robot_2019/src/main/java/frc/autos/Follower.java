@@ -28,8 +28,8 @@ public class Follower
 
 	// public void setupFollower()
 	// {
-	// 	leftFollower.configureEncoder(Robot.encoders.leftDrive, 1000, RobotMap.ROBOT_WHEEL_DIAMETER);
-	// 	rightFollower.configureEncoder(Robot.encoders.rightDrive, 1000, RobotMap.ROBOT_WHEEL_DIAMETER);
+	// 	leftFollower.configureEncoder(Robot.drivetrain.getLeftEncoder(), 1000, RobotMap.ROBOT_WHEEL_DIAMETER);
+	// 	rightFollower.configureEncoder(Robot.drivetrain.getRightEncoder(), 1000, RobotMap.ROBOT_WHEEL_DIAMETER);
 
 	// 	leftFollower.configurePIDVA(1.0, 0.0, 0.0, 1 / RobotMap.ROBOT_MAX_VELOCITY, 0);
 	// 	rightFollower.configurePIDVA(1.0, 0.0, 0.0, 1 / RobotMap.ROBOT_MAX_VELOCITY, 0);

@@ -2,6 +2,7 @@ package frc.subsystems;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -35,6 +36,14 @@ public class Drivetrain
 
 	public Drivetrain()
 	{
+		// Set drivetrain motors to coast
+		leftSparkMax1.setIdleMode(IdleMode.kCoast);
+		leftSparkMax2.setIdleMode(IdleMode.kCoast);
+		leftSparkMax3.setIdleMode(IdleMode.kCoast);
+		rightSparkMax1.setIdleMode(IdleMode.kCoast);
+		rightSparkMax2.setIdleMode(IdleMode.kCoast);
+		rightSparkMax3.setIdleMode(IdleMode.kCoast);
+
 		// Set up followers
 		leftSparkMax2.follow(leftSparkMax1);
 		leftSparkMax3.follow(leftSparkMax1);

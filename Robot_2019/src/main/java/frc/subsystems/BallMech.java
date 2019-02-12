@@ -15,13 +15,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class BallMech
 {
 
-	public enum ArmPosition {
-		STARTING, LOADING_FLOOR, LOADING_WALL, SCORING, CLIMBING;
-	}
-	
-	private static CANSparkMax armMotor1 = new CANSparkMax(RobotMap.BALLMECH_LEFTARM_ID, MotorType.kBrushless);
-	private static CANSparkMax armMotor2 = new CANSparkMax(RobotMap.BALLMECH_RIGHTARM_ID, MotorType.kBrushless);
-	private static CANSparkMax intakeMotor = new CANSparkMax(RobotMap.BALLMECH_INTAKE_ID, MotorType.kBrushed);
+	private static CANSparkMax armMotor1 = new CANSparkMax(RobotMap.BALLMECH_LEFTARM, MotorType.kBrushless);
+	private static CANSparkMax armMotor2 = new CANSparkMax(RobotMap.BALLMECH_RIGHTARM, MotorType.kBrushless);
+	private static CANSparkMax intakeMotor = new CANSparkMax(RobotMap.BALLMECH_INTAKE, MotorType.kBrushed);
 	private static CANEncoder armEncoder1 = armMotor1.getEncoder();
 	private double armEncVal, armDifference;
 	private double armKp = 0.91;
@@ -65,7 +61,7 @@ public class BallMech
 		intakeMotor.set(speed);
 	}
 
-	public void setArm(ArmPosition position)
+	public void setArm(RobotMap.ArmPosition position)
 	{
 		switch(position)
 		{

@@ -230,8 +230,9 @@ public class Drivetrain
 
 	public void testSpeed()
 	{
-		System.out.print("Left Motor Speed: " + leftSparkMax1.get());
-		System.out.println("     Right Motor Speed: " + rightSparkMax1.get());
+		System.out.println("Left Motor Speed: " + leftSparkMax1.get());
+		System.out.println("Right Motor Speed: " + rightSparkMax1.get());
+		System.out.println();
 	}
 	
 }

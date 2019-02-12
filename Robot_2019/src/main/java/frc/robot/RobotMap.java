@@ -18,26 +18,37 @@ public class RobotMap
 	public static final int DRIVETRAIN_RIGHT1 = 7;
 	public static final int DRIVETRAIN_RIGHT2 = 8;
 	public static final int DRIVETRAIN_RIGHT3 = 9;
-
-	// Pneumatics ID Values
-	public static final int DRIVETRAIN_SHIFTER_FWD = 5;
-	public static final int DRIVETRAIN_SHIFTER_REV = 7;
-
-
-
 	public static final double DRIVETRAIN_LEFT_PGAIN = .986;
 
-	// BallMech Constants
-	public static final int BALLMECH_LEFTARM_ID = 4;
-	public static final int BALLMECH_RIGHTARM_ID = 5;
-	public static final int BALLMECH_INTAKE_ID = 17;
+	// Pneumatics ID Values
+	public static final int PCM1 = 0;
+	public static final int PCM2 = 1;
+	public static final int DRIVETRAIN_SHIFTER_FWD = 5;
+	public static final int DRIVETRAIN_SHIFTER_REV = 6;
+	public static final int HATCH_EXTENDER_FWD = 7;
+	public static final int HATCH_EXTENDER_REV = 8;
+	public static final int HATCH_CLAMP_FWD = 9;
+	public static final int HATCH_CLAMP_REV = 10;
+	public static final int HATCH_PUSHER_FWD = 11;
+	public static final int HATCH_PUSHER_REV = 12;
+
+	// BallMech ID Values
+	public static final int BALLMECH_LEFTARM = 4;
+	public static final int BALLMECH_RIGHTARM = 5;
+	public static final int BALLMECH_INTAKE = 17;
 
 	// TestMech Constants
-	public static final int BALLMECH_TEST1 = 0;
+	public static final int TESTMECH_TEST_MOTOR = 55;
 
 	// Vision System Constants
 	public static final double HATCH_VISION_TURN_PGAIN = -0.007;
 	public static final double HATCH_VISION_DISTANCE_PGAIN = 0.2;
 	public static final double HATCH_VISION_MIN_AIM_COMMAND = 0.0;
 	public static final double HATCH_VISION_DESIRED_TARGET_AREA = 4.0;
+
+	// ENUMS
+	public enum ArmPosition {
+		STARTING, LOADING_FLOOR, LOADING_WALL, SCORING, CLIMBING;
+	}
+
 }

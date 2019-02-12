@@ -57,8 +57,6 @@ public class Robot extends TimedRobot {
     public void autonomousPeriodic()
     {
         //autonomous.runAutonomous();
-        Robot.drivetrain.driveStraight(40);
-
     }
 
     @Override

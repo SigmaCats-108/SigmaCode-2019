@@ -1,0 +1,1478 @@
+[
+    {
+        "line": "********** Robot program starting **********",
+        "messageType": 2,
+        "seqNumber": 13,
+        "timestamp": 44.285972595214844
+    },
+    {
+        "line": "CS: USB Camera 0: Connecting to USB camera on /dev/video0",
+        "messageType": 2,
+        "seqNumber": 14,
+        "timestamp": 44.642494201660156
+    },
+    {
+        "line": "CS: USB Camera 0: Connecting to USB camera on /dev/video0",
+        "messageType": 2,
+        "seqNumber": 15,
+        "timestamp": 44.64739227294922
+    },
+    {
+        "line": "CS: USB Camera 0: Connecting to USB camera on /dev/video0",
+        "messageType": 2,
+        "seqNumber": 16,
+        "timestamp": 44.68059539794922
+    },
+    {
+        "callStack": "",
+        "details": "Unable to retrieve SPARK MAX firmware version please verify the deviceID field matches the configured CAN ID of the controller, and that the controller is connected to the CAN Bus.",
+        "errorCode": 1,
+        "flags": 1,
+        "location": "com.revrobotics.CANSparkMaxLowLevel.<init>(CANSparkMaxLowLevel.java:253)",
+        "messageType": 0,
+        "numOccur": 1,
+        "seqNumber": 17,
+        "timestamp": 44.88141632080078
+    },
+    {
+        "line": "Error at com.revrobotics.CANSparkMaxLowLevel.<init>(CANSparkMaxLowLevel.java:253): Unable to retrieve SPARK MAX firmware version please verify the deviceID field matches the configured CAN ID of the controller, and that the controller is connected to the CAN Bus.",
+        "messageType": 2,
+        "seqNumber": 18,
+        "timestamp": 44.883094787597656
+    },
+    {
+        "callStack": "\tat edu.wpi.first.hal.CANAPIJNI.writeCANPacket(Native Method)\n\tat edu.wpi.first.wpilibj.CAN.writePacket(CAN.java:77)\n\tat com.revrobotics.CANSparkMax.clearFaults(CANSparkMax.java:629)\n\tat com.revrobotics.CANSparkMax.<init>(CANSparkMax.java:147)\n\tat frc.subsystems.Drivetrain.<clinit>(Drivetrain.java:16)\n\tat frc.robot.Robot.robotInit(Robot.java:34)\n\tat edu.wpi.first.wpilibj.TimedRobot.startCompetition(TimedRobot.java:63)\n\tat edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:263)\n\tat frc.robot.Main.main(Main.java:27)\n",
+        "details": "Unhandled exception: edu.wpi.first.hal.util.UncleanStatusException:  Code: -35025. Unknown error status",
+        "errorCode": 1,
+        "flags": 1,
+        "location": "com.revrobotics.CANSparkMax.clearFaults(CANSparkMax.java:629)",
+        "messageType": 0,
+        "numOccur": 1,
+        "seqNumber": 19,
+        "timestamp": 45.02977752685547
+    },
+    {
+        "line": "Error at com.revrobotics.CANSparkMax.clearFaults(CANSparkMax.java:629): Unhandled exception: edu.wpi.first.hal.util.UncleanStatusException:  Code: -35025. Unknown error status",
+        "messageType": 2,
+        "seqNumber": 20,
+        "timestamp": 45.03258514404297
+    },
+    {
+        "line": "\tat edu.wpi.first.hal.CANAPIJNI.writeCANPacket(Native Method)",
+        "messageType": 2,
+        "seqNumber": 21,
+        "timestamp": 45.03307342529297
+    },
+    {
+        "line": "\tat edu.wpi.first.wpilibj.CAN.writePacket(CAN.java:77)",
+        "messageType": 2,
+        "seqNumber": 22,
+        "timestamp": 45.03624725341797
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMax.clearFaults(CANSparkMax.java:629)",
+        "messageType": 2,
+        "seqNumber": 23,
+        "timestamp": 45.036521911621094
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMax.<init>(CANSparkMax.java:147)",
+        "messageType": 2,
+        "seqNumber": 24,
+        "timestamp": 45.036781311035156
+    },
+    {
+        "line": "\tat frc.subsystems.Drivetrain.<clinit>(Drivetrain.java:16)",
+        "messageType": 2,
+        "seqNumber": 25,
+        "timestamp": 45.03704071044922
+    },
+    {
+        "line": "\tat frc.robot.Robot.robotInit(Robot.java:34)",
+        "messageType": 2,
+        "seqNumber": 26,
+        "timestamp": 45.03728485107422
+    },
+    {
+        "line": "\tat edu.wpi.first.wpilibj.TimedRobot.startCompetition(TimedRobot.java:63)",
+        "messageType": 2,
+        "seqNumber": 27,
+        "timestamp": 45.03752899169922
+    },
+    {
+        "line": "\tat edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:263)",
+        "messageType": 2,
+        "seqNumber": 28,
+        "timestamp": 45.03778839111328
+    },
+    {
+        "line": "\tat frc.robot.Main.main(Main.java:27)",
+        "messageType": 2,
+        "seqNumber": 29,
+        "timestamp": 45.038047790527344
+    },
+    {
+        "line": "",
+        "messageType": 2,
+        "seqNumber": 30,
+        "timestamp": 45.03827667236328
+    },
+    {
+        "callStack": "",
+        "details": "Robots should not quit, but yours did!",
+        "errorCode": 1,
+        "flags": 0,
+        "location": "edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:274)",
+        "messageType": 1,
+        "numOccur": 1,
+        "seqNumber": 31,
+        "timestamp": 45.04589080810547
+    },
+    {
+        "line": "Warning at edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:274): Robots should not quit, but yours did!",
+        "messageType": 2,
+        "seqNumber": 32,
+        "timestamp": 45.048439025878906
+    },
+    {
+        "callStack": "",
+        "details": "The startCompetition() method (or methods called by it) should have handled the exception above.",
+        "errorCode": 1,
+        "flags": 1,
+        "location": "edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:276)",
+        "messageType": 0,
+        "numOccur": 1,
+        "seqNumber": 33,
+        "timestamp": 45.05065155029297
+    },
+    {
+        "line": "Error at edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:276): The startCompetition() method (or methods called by it) should have handled the exception above.",
+        "messageType": 2,
+        "seqNumber": 34,
+        "timestamp": 45.053672790527344
+    },
+    {
+        "line": "********** Robot program starting **********",
+        "messageType": 2,
+        "seqNumber": 35,
+        "timestamp": 48.51299285888672
+    },
+    {
+        "line": "CS: USB Camera 0: Connecting to USB camera on /dev/video0",
+        "messageType": 2,
+        "seqNumber": 36,
+        "timestamp": 48.85698699951172
+    },
+    {
+        "line": "CS: USB Camera 0: Connecting to USB camera on /dev/video0",
+        "messageType": 2,
+        "seqNumber": 37,
+        "timestamp": 48.860069274902344
+    },
+    {
+        "line": "CS: USB Camera 0: Connecting to USB camera on /dev/video0",
+        "messageType": 2,
+        "seqNumber": 38,
+        "timestamp": 48.89928436279297
+    },
+    {
+        "callStack": "",
+        "details": "Unable to retrieve SPARK MAX firmware version please verify the deviceID field matches the configured CAN ID of the controller, and that the controller is connected to the CAN Bus.",
+        "errorCode": 1,
+        "flags": 1,
+        "location": "com.revrobotics.CANSparkMaxLowLevel.<init>(CANSparkMaxLowLevel.java:253)",
+        "messageType": 0,
+        "numOccur": 1,
+        "seqNumber": 39,
+        "timestamp": 49.06171417236328
+    },
+    {
+        "line": "Error at com.revrobotics.CANSparkMaxLowLevel.<init>(CANSparkMaxLowLevel.java:253): Unable to retrieve SPARK MAX firmware version please verify the deviceID field matches the configured CAN ID of the controller, and that the controller is connected to the CAN Bus.",
+        "messageType": 2,
+        "seqNumber": 40,
+        "timestamp": 49.062950134277344
+    },
+    {
+        "callStack": "\tat edu.wpi.first.hal.CANAPIJNI.writeCANPacket(Native Method)\n\tat edu.wpi.first.wpilibj.CAN.writePacket(CAN.java:77)\n\tat com.revrobotics.CANSparkMaxLowLevel.setParameterCore(CANSparkMaxLowLevel.java:586)\n\tat com.revrobotics.CANSparkMaxLowLevel.setParameter(CANSparkMaxLowLevel.java:462)\n\tat com.revrobotics.CANSparkMaxLowLevel.setMotorType(CANSparkMaxLowLevel.java:370)\n\tat com.revrobotics.CANSparkMaxLowLevel.<init>(CANSparkMaxLowLevel.java:266)\n\tat com.revrobotics.CANSparkMax.<init>(CANSparkMax.java:146)\n\tat frc.subsystems.Drivetrain.<clinit>(Drivetrain.java:17)\n\tat frc.robot.Robot.robotInit(Robot.java:34)\n\tat edu.wpi.first.wpilibj.TimedRobot.startCompetition(TimedRobot.java:63)\n\tat edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:263)\n\tat frc.robot.Main.main(Main.java:27)\n",
+        "details": "Unhandled exception: edu.wpi.first.hal.util.UncleanStatusException:  Code: -35025. Unknown error status",
+        "errorCode": 1,
+        "flags": 1,
+        "location": "com.revrobotics.CANSparkMaxLowLevel.setParameterCore(CANSparkMaxLowLevel.java:586)",
+        "messageType": 0,
+        "numOccur": 1,
+        "seqNumber": 41,
+        "timestamp": 49.18022918701172
+    },
+    {
+        "line": "Error at com.revrobotics.CANSparkMaxLowLevel.setParameterCore(CANSparkMaxLowLevel.java:586): Unhandled exception: edu.wpi.first.hal.util.UncleanStatusException:  Code: -35025. Unknown error status",
+        "messageType": 2,
+        "seqNumber": 42,
+        "timestamp": 49.18144989013672
+    },
+    {
+        "line": "\tat edu.wpi.first.hal.CANAPIJNI.writeCANPacket(Native Method)",
+        "messageType": 2,
+        "seqNumber": 43,
+        "timestamp": 49.181800842285156
+    },
+    {
+        "line": "\tat edu.wpi.first.wpilibj.CAN.writePacket(CAN.java:77)",
+        "messageType": 2,
+        "seqNumber": 44,
+        "timestamp": 49.18596649169922
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMaxLowLevel.setParameterCore(CANSparkMaxLowLevel.java:586)",
+        "messageType": 2,
+        "seqNumber": 45,
+        "timestamp": 49.18669891357422
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMaxLowLevel.setParameter(CANSparkMaxLowLevel.java:462)",
+        "messageType": 2,
+        "seqNumber": 46,
+        "timestamp": 49.187278747558594
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMaxLowLevel.setMotorType(CANSparkMaxLowLevel.java:370)",
+        "messageType": 2,
+        "seqNumber": 47,
+        "timestamp": 49.18755340576172
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMaxLowLevel.<init>(CANSparkMaxLowLevel.java:266)",
+        "messageType": 2,
+        "seqNumber": 48,
+        "timestamp": 49.187828063964844
+    },
+    {
+        "callStack": "",
+        "details": "Robots should not quit, but yours did!",
+        "errorCode": 1,
+        "flags": 0,
+        "location": "edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:274)",
+        "messageType": 1,
+        "numOccur": 1,
+        "seqNumber": 49,
+        "timestamp": 49.187843322753906
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMax.<init>(CANSparkMax.java:146)",
+        "messageType": 2,
+        "seqNumber": 50,
+        "timestamp": 49.18811798095703
+    },
+    {
+        "line": "\tat frc.subsystems.Drivetrain.<clinit>(Drivetrain.java:17)",
+        "messageType": 2,
+        "seqNumber": 51,
+        "timestamp": 49.188499450683594
+    },
+    {
+        "line": "\tat frc.robot.Robot.robotInit(Robot.java:34)",
+        "messageType": 2,
+        "seqNumber": 52,
+        "timestamp": 49.18871307373047
+    },
+    {
+        "line": "\tat edu.wpi.first.wpilibj.TimedRobot.startCompetition(TimedRobot.java:63)",
+        "messageType": 2,
+        "seqNumber": 53,
+        "timestamp": 49.188941955566406
+    },
+    {
+        "line": "\tat edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:263)",
+        "messageType": 2,
+        "seqNumber": 54,
+        "timestamp": 49.189170837402344
+    },
+    {
+        "line": "\tat frc.robot.Main.main(Main.java:27)",
+        "messageType": 2,
+        "seqNumber": 55,
+        "timestamp": 49.18938446044922
+    },
+    {
+        "line": "",
+        "messageType": 2,
+        "seqNumber": 56,
+        "timestamp": 49.189552307128906
+    },
+    {
+        "line": "Warning at edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:274): Robots should not quit, but yours did!",
+        "messageType": 2,
+        "seqNumber": 57,
+        "timestamp": 49.192893981933594
+    },
+    {
+        "line": "********** Robot program starting **********",
+        "messageType": 2,
+        "seqNumber": 60,
+        "timestamp": 54.256202697753906
+    },
+    {
+        "line": "CS: USB Camera 0: Connecting to USB camera on /dev/video0",
+        "messageType": 2,
+        "seqNumber": 61,
+        "timestamp": 54.62232208251953
+    },
+    {
+        "line": "CS: USB Camera 0: Connecting to USB camera on /dev/video0",
+        "messageType": 2,
+        "seqNumber": 62,
+        "timestamp": 54.62413787841797
+    },
+    {
+        "line": "CS: USB Camera 0: Connecting to USB camera on /dev/video0",
+        "messageType": 2,
+        "seqNumber": 63,
+        "timestamp": 54.63605499267578
+    },
+    {
+        "callStack": "",
+        "details": "Unable to retrieve SPARK MAX firmware version please verify the deviceID field matches the configured CAN ID of the controller, and that the controller is connected to the CAN Bus.",
+        "errorCode": 1,
+        "flags": 1,
+        "location": "com.revrobotics.CANSparkMaxLowLevel.<init>(CANSparkMaxLowLevel.java:253)",
+        "messageType": 0,
+        "numOccur": 1,
+        "seqNumber": 64,
+        "timestamp": 54.82843780517578
+    },
+    {
+        "line": "Error at com.revrobotics.CANSparkMaxLowLevel.<init>(CANSparkMaxLowLevel.java:253): Unable to retrieve SPARK MAX firmware version please verify the deviceID field matches the configured CAN ID of the controller, and that the controller is connected to the CAN Bus.",
+        "messageType": 2,
+        "seqNumber": 65,
+        "timestamp": 54.829811096191406
+    },
+    {
+        "callStack": "\tat edu.wpi.first.hal.CANAPIJNI.writeCANPacket(Native Method)\n\tat edu.wpi.first.wpilibj.CAN.writePacket(CAN.java:77)\n\tat com.revrobotics.CANSparkMaxLowLevel.setParameterCore(CANSparkMaxLowLevel.java:586)\n\tat com.revrobotics.CANSparkMaxLowLevel.setParameter(CANSparkMaxLowLevel.java:462)\n\tat com.revrobotics.CANSparkMaxLowLevel.setMotorType(CANSparkMaxLowLevel.java:370)\n\tat com.revrobotics.CANSparkMaxLowLevel.<init>(CANSparkMaxLowLevel.java:266)\n\tat com.revrobotics.CANSparkMax.<init>(CANSparkMax.java:146)\n\tat frc.subsystems.BallMech.<clinit>(BallMech.java:21)\n\tat frc.robot.Robot.robotInit(Robot.java:33)\n\tat edu.wpi.first.wpilibj.TimedRobot.startCompetition(TimedRobot.java:63)\n\tat edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:263)\n\tat frc.robot.Main.main(Main.java:27)\n",
+        "details": "Unhandled exception: edu.wpi.first.hal.util.UncleanStatusException:  Code: -35025. Unknown error status",
+        "errorCode": 1,
+        "flags": 1,
+        "location": "com.revrobotics.CANSparkMaxLowLevel.setParameterCore(CANSparkMaxLowLevel.java:586)",
+        "messageType": 0,
+        "numOccur": 1,
+        "seqNumber": 66,
+        "timestamp": 54.86333465576172
+    },
+    {
+        "line": "Error at com.revrobotics.CANSparkMaxLowLevel.setParameterCore(CANSparkMaxLowLevel.java:586): Unhandled exception: edu.wpi.first.hal.util.UncleanStatusException:  Code: -35025. Unknown e",
+        "messageType": 2,
+        "seqNumber": 67,
+        "timestamp": 54.86450958251953
+    },
+    {
+        "line": "\tat frc.robot.Robot.robotInit(Robot.java:33)",
+        "messageType": 2,
+        "seqNumber": 76,
+        "timestamp": 54.86687469482422
+    },
+    {
+        "line": "\tat edu.wpi.first.wpilibj.TimedRobot.startCompetition(TimedRobot.java:63)",
+        "messageType": 2,
+        "seqNumber": 77,
+        "timestamp": 54.867286682128906
+    },
+    {
+        "line": "\tat edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:263)",
+        "messageType": 2,
+        "seqNumber": 78,
+        "timestamp": 54.867515563964844
+    },
+    {
+        "line": "\tat frc.robot.Main.main(Main.java:27)",
+        "messageType": 2,
+        "seqNumber": 79,
+        "timestamp": 54.86772918701172
+    },
+    {
+        "line": "",
+        "messageType": 2,
+        "seqNumber": 80,
+        "timestamp": 54.868064880371094
+    },
+    {
+        "callStack": "",
+        "details": "Robots should not quit, but yours did!",
+        "errorCode": 1,
+        "flags": 0,
+        "location": "edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:274)",
+        "messageType": 1,
+        "numOccur": 1,
+        "seqNumber": 81,
+        "timestamp": 54.869606018066406
+    },
+    {
+        "line": "Warning at edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:274): Robots should not quit, but yours did!",
+        "messageType": 2,
+        "seqNumber": 82,
+        "timestamp": 54.870445251464844
+    },
+    {
+        "callStack": "",
+        "details": "The startCompetition() method (or methods called by it) should have handled the exception above.",
+        "errorCode": 1,
+        "flags": 1,
+        "location": "edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:276)",
+        "messageType": 0,
+        "numOccur": 1,
+        "seqNumber": 83,
+        "timestamp": 54.871559143066406
+    },
+    {
+        "line": "Error at edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:276): The startCompetition() method (or methods called by it) should have handled the exception above.",
+        "messageType": 2,
+        "seqNumber": 84,
+        "timestamp": 54.872520446777344
+    },
+    {
+        "line": "********** Robot program starting **********",
+        "messageType": 2,
+        "seqNumber": 85,
+        "timestamp": 59.98442840576172
+    },
+    {
+        "line": "CS: USB Camera 0: Connecting to USB camera on /dev/video0",
+        "messageType": 2,
+        "seqNumber": 86,
+        "timestamp": 60.34070587158203
+    },
+    {
+        "line": "CS: USB Camera 0: Connecting to USB camera on /dev/video0",
+        "messageType": 2,
+        "seqNumber": 87,
+        "timestamp": 60.348899841308594
+    },
+    {
+        "line": "CS: USB Camera 0: Connecting to USB camera on /dev/video0",
+        "messageType": 2,
+        "seqNumber": 88,
+        "timestamp": 60.37683868408203
+    },
+    {
+        "callStack": "",
+        "details": "Unable to retrieve SPARK MAX firmware version please verify the deviceID field matches the configured CAN ID of the controller, and that the controller is connected to the CAN Bus.",
+        "errorCode": 1,
+        "flags": 1,
+        "location": "com.revrobotics.CANSparkMaxLowLevel.<init>(CANSparkMaxLowLevel.java:253)",
+        "messageType": 0,
+        "numOccur": 1,
+        "seqNumber": 89,
+        "timestamp": 60.565879821777344
+    },
+    {
+        "line": "Error at com.revrobotics.CANSparkMaxLowLevel.<init>(CANSparkMaxLowLevel.java:253): Unable to retrieve SPARK MAX firmware version please verify the deviceID field matches the configured CAN ID of the controller, and that the controller is connected to the CAN Bus.",
+        "messageType": 2,
+        "seqNumber": 90,
+        "timestamp": 60.56720733642578
+    },
+    {
+        "callStack": "\tat edu.wpi.first.hal.CANAPIJNI.writeCANPacket(Native Method)\n\tat edu.wpi.first.wpilibj.CAN.writePacket(CAN.java:77)\n\tat com.revrobotics.CANSparkMaxLowLevel.setParameterCore(CANSparkMaxLowLevel.java:586)\n\tat com.revrobotics.CANSparkMaxLowLevel.setParameter(CANSparkMaxLowLevel.java:462)\n\tat com.revrobotics.CANSparkMaxLowLevel.setMotorType(CANSparkMaxLowLevel.java:370)\n\tat com.revrobotics.CANSparkMaxLowLevel.<init>(CANSparkMaxLowLevel.java:266)\n\tat com.revrobotics.CANSparkMax.<init>(CANSparkMax.java:146)\n\tat frc.subsystems.Drivetrain.<clinit>(Drivetrain.java:17)\n\tat frc.robot.Robot.robotInit(Robot.java:34)\n\tat edu.wpi.first.wpilibj.TimedRobot.startCompetition(TimedRobot.java:63)\n\tat edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:263)\n\tat frc.robot.Main.main(Main.java:27)\n",
+        "details": "Unhandled exception: edu.wpi.first.hal.util.UncleanStatusException:  Code: -35025. Unknown error status",
+        "errorCode": 1,
+        "flags": 1,
+        "location": "com.revrobotics.CANSparkMaxLowLevel.setParameterCore(CANSparkMaxLowLevel.java:586)",
+        "messageType": 0,
+        "numOccur": 1,
+        "seqNumber": 91,
+        "timestamp": 60.685874938964844
+    },
+    {
+        "line": "Error at com.revrobotics.CANSparkMaxLowLevel.setParameterCore(CANSparkMaxLowLevel.java:586): Unhandled exception: edu.wpi.first.hal.util.UncleanStatusException:  Code: -35025. Unknown error status",
+        "messageType": 2,
+        "seqNumber": 92,
+        "timestamp": 60.68701934814453
+    },
+    {
+        "line": "\tat edu.wpi.first.hal.CANAPIJNI.writeCANPacket(Native Method)",
+        "messageType": 2,
+        "seqNumber": 93,
+        "timestamp": 60.687355041503906
+    },
+    {
+        "line": "\tat edu.wpi.first.wpilibj.CAN.writePacket(CAN.java:77)",
+        "messageType": 2,
+        "seqNumber": 94,
+        "timestamp": 60.68987274169922
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMaxLowLevel.setParameterCore(CANSparkMaxLowLevel.java:586)",
+        "messageType": 2,
+        "seqNumber": 95,
+        "timestamp": 60.69037628173828
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMaxLowLevel.setParameter(CANSparkMaxLowLevel.java:462)",
+        "messageType": 2,
+        "seqNumber": 96,
+        "timestamp": 60.690650939941406
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMaxLowLevel.setMotorType(CANSparkMaxLowLevel.java:370)",
+        "messageType": 2,
+        "seqNumber": 97,
+        "timestamp": 60.690940856933594
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMaxLowLevel.<init>(CANSparkMaxLowLevel.java:266)",
+        "messageType": 2,
+        "seqNumber": 98,
+        "timestamp": 60.69121551513672
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMax.<init>(CANSparkMax.java:146)",
+        "messageType": 2,
+        "seqNumber": 99,
+        "timestamp": 60.69164276123047
+    },
+    {
+        "line": "\tat frc.subsystems.Drivetrain.<clinit>(Drivetrain.java:17)",
+        "messageType": 2,
+        "seqNumber": 100,
+        "timestamp": 60.69207000732422
+    },
+    {
+        "line": "\tat frc.robot.Robot.robotInit(Robot.java:34)",
+        "messageType": 2,
+        "seqNumber": 101,
+        "timestamp": 60.692420959472656
+    },
+    {
+        "line": "\tat edu.wpi.first.wpilibj.TimedRobot.startCompetition(TimedRobot.java:63)",
+        "messageType": 2,
+        "seqNumber": 102,
+        "timestamp": 60.692710876464844
+    },
+    {
+        "line": "\tat edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:263)",
+        "messageType": 2,
+        "seqNumber": 103,
+        "timestamp": 60.69298553466797
+    },
+    {
+        "line": "\tat frc.robot.Main.main(Main.java:27)",
+        "messageType": 2,
+        "seqNumber": 104,
+        "timestamp": 60.693214416503906
+    },
+    {
+        "line": "",
+        "messageType": 2,
+        "seqNumber": 105,
+        "timestamp": 60.69355010986328
+    },
+    {
+        "callStack": "",
+        "details": "Robots should not quit, but yours did!",
+        "errorCode": 1,
+        "flags": 0,
+        "location": "edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:274)",
+        "messageType": 1,
+        "numOccur": 1,
+        "seqNumber": 106,
+        "timestamp": 60.695045471191406
+    },
+    {
+        "line": "Warning at edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:274): Robots should not quit, but yours did!",
+        "messageType": 2,
+        "seqNumber": 107,
+        "timestamp": 60.698265075683594
+    },
+    {
+        "line": "********** Robot program starting **********",
+        "messageType": 2,
+        "seqNumber": 110,
+        "timestamp": 65.6932144165039
+    },
+    {
+        "line": "CS: USB Camera 0: Connecting to USB camera on /dev/video0",
+        "messageType": 2,
+        "seqNumber": 111,
+        "timestamp": 66.0644302368164
+    },
+    {
+        "line": "CS: USB Camera 0: Connecting to USB camera on /dev/video0",
+        "messageType": 2,
+        "seqNumber": 112,
+        "timestamp": 66.06616973876953
+    },
+    {
+        "callStack": "\tat edu.wpi.first.hal.CANAPIJNI.writeCANPacket(Native Method)\n\tat edu.wpi.first.wpilibj.CAN.writePacket(CAN.java:77)\n\tat com.revrobotics.CANSparkMaxLowLevel.getFirmwareVersion(CANSparkMaxLowLevel.java:283)\n\tat com.revrobotics.CANSparkMaxLowLevel.<init>(CANSparkMaxLowLevel.java:239)\n\tat com.revrobotics.CANSparkMax.<init>(CANSparkMax.java:146)\n\tat frc.subsystems.BallMech.<clinit>(BallMech.java:21)\n\tat frc.robot.Robot.robotInit(Robot.java:33)\n\tat edu.wpi.first.wpilibj.TimedRobot.startCompetition(TimedRobot.java:63)\n\tat edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:263)\n\tat frc.robot.Main.main(Main.java:27)\n",
+        "details": "Unhandled exception: edu.wpi.first.hal.util.UncleanStatusException:  Code: -35025. Unknown error status",
+        "errorCode": 1,
+        "flags": 1,
+        "location": "com.revrobotics.CANSparkMaxLowLevel.getFirmwareVersion(CANSparkMaxLowLevel.java:283)",
+        "messageType": 0,
+        "numOccur": 1,
+        "seqNumber": 113,
+        "timestamp": 66.2809829711914
+    },
+    {
+        "line": "Error at com.revrobotics.CANSparkMaxLowLevel.getFirmwareVersion(CANSparkMaxLowLevel.java:283): Unhandled exception: edu.wpi.first.hal.util.UncleanStatusException:  Code: -35025. Unknown error status",
+        "messageType": 2,
+        "seqNumber": 114,
+        "timestamp": 66.28214263916016
+    },
+    {
+        "line": "\tat edu.wpi.first.hal.CANAPIJNI.writeCANPacket(Native Method)",
+        "messageType": 2,
+        "seqNumber": 115,
+        "timestamp": 66.28266143798828
+    },
+    {
+        "line": "\tat edu.wpi.first.wpilibj.CAN.writePacket(CAN.java:77)",
+        "messageType": 2,
+        "seqNumber": 116,
+        "timestamp": 66.28292083740234
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMaxLowLevel.getFirmwareVersion(CANSparkMaxLowLevel.java:283)",
+        "messageType": 2,
+        "seqNumber": 117,
+        "timestamp": 66.28314971923828
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMaxLowLevel.<init>(CANSparkMaxLowLevel.java:239)",
+        "messageType": 2,
+        "seqNumber": 118,
+        "timestamp": 66.28337860107422
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMax.<init>(CANSparkMax.java:146)",
+        "messageType": 2,
+        "seqNumber": 119,
+        "timestamp": 66.2835922241211
+    },
+    {
+        "line": "\tat frc.subsystems.BallMech.<clinit>(BallMech.java:21)",
+        "messageType": 2,
+        "seqNumber": 120,
+        "timestamp": 66.28380584716797
+    },
+    {
+        "line": "\tat frc.robot.Robot.robotInit(Robot.java:33)",
+        "messageType": 2,
+        "seqNumber": 121,
+        "timestamp": 66.28400421142578
+    },
+    {
+        "line": "\tat edu.wpi.first.wpilibj.TimedRobot.startCompetition(TimedRobot.java:63)",
+        "messageType": 2,
+        "seqNumber": 122,
+        "timestamp": 66.28421783447266
+    },
+    {
+        "line": "\tat edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:263)",
+        "messageType": 2,
+        "seqNumber": 123,
+        "timestamp": 66.28443145751953
+    },
+    {
+        "line": "\tat frc.robot.Main.main(Main.java:27)",
+        "messageType": 2,
+        "seqNumber": 124,
+        "timestamp": 66.28462982177734
+    },
+    {
+        "line": "",
+        "messageType": 2,
+        "seqNumber": 125,
+        "timestamp": 66.28487396240234
+    },
+    {
+        "callStack": "",
+        "details": "Robots should not quit, but yours did!",
+        "errorCode": 1,
+        "flags": 0,
+        "location": "edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:274)",
+        "messageType": 1,
+        "numOccur": 1,
+        "seqNumber": 126,
+        "timestamp": 66.29290008544922
+    },
+    {
+        "line": "Warning at edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:274): Robots should not quit, but yours did!",
+        "messageType": 2,
+        "seqNumber": 127,
+        "timestamp": 66.29358673095703
+    },
+    {
+        "callStack": "",
+        "details": "The startCompetition() method (or methods called by it) should have handled the exception above.",
+        "errorCode": 1,
+        "flags": 1,
+        "location": "edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:276)",
+        "messageType": 0,
+        "numOccur": 1,
+        "seqNumber": 128,
+        "timestamp": 66.2944107055664
+    },
+    {
+        "line": "Error at edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:276): The startCompetition() method (or m",
+        "messageType": 2,
+        "seqNumber": 129,
+        "timestamp": 66.29509735107422
+    },
+    {
+        "line": "********** Robot program starting **********",
+        "messageType": 2,
+        "seqNumber": 130,
+        "timestamp": 71.44171905517578
+    },
+    {
+        "line": "CS: USB Camera 0: Connecting to USB camera on /dev/video0",
+        "messageType": 2,
+        "seqNumber": 131,
+        "timestamp": 71.77330780029297
+    },
+    {
+        "line": "CS: USB Camera 0: Connecting to USB camera on /dev/video0",
+        "messageType": 2,
+        "seqNumber": 132,
+        "timestamp": 71.77713775634766
+    },
+    {
+        "line": "CS: USB Camera 0: Connecting to USB camera on /dev/video0",
+        "messageType": 2,
+        "seqNumber": 133,
+        "timestamp": 71.79674530029297
+    },
+    {
+        "callStack": "",
+        "details": "Unable to retrieve SPARK MAX firmware version please verify the deviceID field matches the configured CAN ID of the controller, and that the controller is connected to the CAN Bus.",
+        "errorCode": 1,
+        "flags": 1,
+        "location": "com.revrobotics.CANSparkMaxLowLevel.<init>(CANSparkMaxLowLevel.java:253)",
+        "messageType": 0,
+        "numOccur": 1,
+        "seqNumber": 134,
+        "timestamp": 71.99222564697266
+    },
+    {
+        "line": "Error at com.revrobotics.CANSparkMaxLowLevel.<init>(CANSparkMaxLowLevel.java:253): Unable to retrieve SPARK MAX firmware version please verify the deviceID field matches the configured CAN ID of the controller, and that the controller is connected to the CAN Bus.",
+        "messageType": 2,
+        "seqNumber": 135,
+        "timestamp": 71.99674224853516
+    },
+    {
+        "callStack": "\tat edu.wpi.first.hal.CANAPIJNI.writeCANPacket(Native Method)\n\tat edu.wpi.first.wpilibj.CAN.writePacket(CAN.java:77)\n\tat com.revrobotics.CANSparkMaxLowLevel.getFirmwareVersion(CANSparkMaxLowLevel.java:283)\n\tat com.revrobotics.CANSparkMaxLowLevel.<init>(CANSparkMaxLowLevel.java:239)\n\tat com.revrobotics.CANSparkMax.<init>(CANSparkMax.java:146)\n\tat frc.subsystems.BallMech.<clinit>(BallMech.java:23)\n\tat frc.robot.Robot.robotInit(Robot.java:33)\n\tat edu.wpi.first.wpilibj.TimedRobot.startCompetition(TimedRobot.java:63)\n\tat edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:263)\n\tat frc.robot.Main.main(Main.java:27)\n",
+        "details": "Unhandled exception: edu.wpi.first.hal.util.UncleanStatusException:  Code: -35025. Unknown error status",
+        "errorCode": 1,
+        "flags": 1,
+        "location": "com.revrobotics.CANSparkMaxLowLevel.getFirmwareVersion(CANSparkMaxLowLevel.java:283)",
+        "messageType": 0,
+        "numOccur": 1,
+        "seqNumber": 136,
+        "timestamp": 72.03685760498047
+    },
+    {
+        "line": "Error at com.revrobotics.CANSparkMaxLowLevel.getFirmwareVersion(CANSparkMaxLowLevel.java:283): Unhandled exception: edu.wpi.first.hal.util.UncleanStatusException:  Code: -35025. Unknown error status",
+        "messageType": 2,
+        "seqNumber": 137,
+        "timestamp": 72.03742218017578
+    },
+    {
+        "line": "\tat edu.wpi.first.hal.CANAPIJNI.writeCANPacket(Native Method)",
+        "messageType": 2,
+        "seqNumber": 138,
+        "timestamp": 72.03772735595703
+    },
+    {
+        "line": "\tat edu.wpi.first.wpilibj.CAN.writePacket(CAN.java:77)",
+        "messageType": 2,
+        "seqNumber": 139,
+        "timestamp": 72.04114532470703
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMaxLowLevel.getFirmwareVersion(CANSparkMaxLowLevel.java:283)",
+        "messageType": 2,
+        "seqNumber": 141,
+        "timestamp": 72.04143524169922
+    },
+    {
+        "callStack": "",
+        "details": "Robots should not quit, but yours did!",
+        "errorCode": 1,
+        "flags": 0,
+        "location": "edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:274)",
+        "messageType": 1,
+        "numOccur": 1,
+        "seqNumber": 140,
+        "timestamp": 72.0412368774414
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMaxLowLevel.<init>(CANSparkMaxLo",
+        "messageType": 2,
+        "seqNumber": 142,
+        "timestamp": 72.0417251586914
+    },
+    {
+        "line": "Warning at edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:274): Robots should not quit, but yours did!",
+        "messageType": 2,
+        "seqNumber": 150,
+        "timestamp": 72.04557037353516
+    },
+    {
+        "callStack": "",
+        "details": "The startCompetition() method (or methods called by it) should have handled the exception above.",
+        "errorCode": 1,
+        "flags": 1,
+        "location": "edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:276)",
+        "messageType": 0,
+        "numOccur": 1,
+        "seqNumber": 151,
+        "timestamp": 72.04769134521484
+    },
+    {
+        "line": "Error at edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:276): The startCompetition() method (or methods called by it) should have handled the exception above.",
+        "messageType": 2,
+        "seqNumber": 152,
+        "timestamp": 72.04854583740234
+    },
+    {
+        "line": "********** Robot program starting **********",
+        "messageType": 2,
+        "seqNumber": 153,
+        "timestamp": 77.1514663696289
+    },
+    {
+        "line": "CS: USB Camera 0: Connecting to USB camera on /dev/video0",
+        "messageType": 2,
+        "seqNumber": 154,
+        "timestamp": 77.51264190673828
+    },
+    {
+        "line": "CS: USB Camera 0: Connecting to USB camera on /dev/video0",
+        "messageType": 2,
+        "seqNumber": 155,
+        "timestamp": 77.51348114013672
+    },
+    {
+        "callStack": "",
+        "details": "Unable to retrieve SPARK MAX firmware version please verify the deviceID field matches the configured CAN ID of the controller, and that the controller is connected to the CAN Bus.",
+        "errorCode": 1,
+        "flags": 1,
+        "location": "com.revrobotics.CANSparkMaxLowLevel.<init>(CANSparkMaxLowLevel.java:253)",
+        "messageType": 0,
+        "numOccur": 1,
+        "seqNumber": 156,
+        "timestamp": 77.72066497802734
+    },
+    {
+        "line": "Error at com.revrobotics.CANSparkMaxLowLevel.<init>(CANSparkMaxLowLevel.java:253): Unable to retrieve SPARK MAX firmware version please verify the deviceID field matches the configured CAN ID of the controller, and that the controller is connected to the CAN Bus.",
+        "messageType": 2,
+        "seqNumber": 157,
+        "timestamp": 77.72486114501953
+    },
+    {
+        "callStack": "\tat edu.wpi.first.hal.CANAPIJNI.writeCANPacket(Native Method)\n\tat edu.wpi.first.wpilibj.CAN.writePacket(CAN.java:77)\n\tat com.revrobotics.CANSparkMaxLowLevel.setParameterCore(CANSparkMaxLowLevel.java:586)\n\tat com.revrobotics.CANSparkMaxLowLevel.setParameter(CANSparkMaxLowLevel.java:462)\n\tat com.revrobotics.CANSparkMaxLowLevel.setMotorType(CANSparkMaxLowLevel.java:370)\n\tat com.revrobotics.CANSparkMaxLowLevel.<init>(CANSparkMaxLowLevel.java:266)\n\tat com.revrobotics.CANSparkMax.<init>(CANSparkMax.java:146)\n\tat frc.subsystems.Drivetrain.<clinit>(Drivetrain.java:18)\n\tat frc.robot.Robot.robotInit(Robot.java:34)\n\tat edu.wpi.first.wpilibj.TimedRobot.startCompetition(TimedRobot.java:63)\n\tat edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:263)\n\tat frc.robot.Main.main(Main.java:27)\n",
+        "details": "Unhandled exception: edu.wpi.first.hal.util.UncleanStatusException:  Code: -35025. Unknown error status",
+        "errorCode": 1,
+        "flags": 1,
+        "location": "com.revrobotics.CANSparkMaxLowLevel.setParameterCore(CANSparkMaxLowLevel.java:586)",
+        "messageType": 0,
+        "numOccur": 1,
+        "seqNumber": 158,
+        "timestamp": 77.8510513305664
+    },
+    {
+        "line": "Error at com.revrobotics.CANSparkMaxLowLevel.setParameterCore(CANSparkMaxLowLevel.java:586): Unhandled exception: edu.wpi.first.hal.util.UncleanStatusException:  Code: -35025. Unknown error status",
+        "messageType": 2,
+        "seqNumber": 159,
+        "timestamp": 77.85204315185547
+    },
+    {
+        "line": "\tat edu.wpi.first.hal.CANAPIJNI.writeCANPacket(Native Method)",
+        "messageType": 2,
+        "seqNumber": 160,
+        "timestamp": 77.8558120727539
+    },
+    {
+        "line": "\tat edu.wpi.first.wpilibj.CAN.writePacket(CAN.java:77)",
+        "messageType": 2,
+        "seqNumber": 161,
+        "timestamp": 77.85613250732422
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMaxLowLevel.setParameterCore(CANSparkMaxLowLevel.java:586)",
+        "messageType": 2,
+        "seqNumber": 162,
+        "timestamp": 77.85639190673828
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMaxLowLevel.setParameter(CANSparkMaxLowLevel.java:462)",
+        "messageType": 2,
+        "seqNumber": 163,
+        "timestamp": 77.85668182373047
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMaxLowLevel.setMotorType(CANSparkMaxLowLevel.java:370)",
+        "messageType": 2,
+        "seqNumber": 164,
+        "timestamp": 77.85697174072266
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMaxLowLevel.<init>(CANSparkMaxLowLevel.java:266)",
+        "messageType": 2,
+        "seqNumber": 165,
+        "timestamp": 77.8572769165039
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMax.<init>(CANSparkMax.java:146)",
+        "messageType": 2,
+        "seqNumber": 166,
+        "timestamp": 77.8575210571289
+    },
+    {
+        "line": "\tat frc.subsystems.Drivetrain.<clinit>(Drivetrain.java:18)",
+        "messageType": 2,
+        "seqNumber": 167,
+        "timestamp": 77.8577651977539
+    },
+    {
+        "line": "\tat frc.robot.Robot.robotInit(Robot.java:34)",
+        "messageType": 2,
+        "seqNumber": 168,
+        "timestamp": 77.8580093383789
+    },
+    {
+        "line": "\tat edu.wpi.first.wpilibj.TimedRobot.startCompetition(TimedRobot.java:63)",
+        "messageType": 2,
+        "seqNumber": 169,
+        "timestamp": 77.85826873779297
+    },
+    {
+        "line": "\tat edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:263)",
+        "messageType": 2,
+        "seqNumber": 170,
+        "timestamp": 77.8584976196289
+    },
+    {
+        "line": "\tat frc.robot.Main.main(Main.java:27)",
+        "messageType": 2,
+        "seqNumber": 171,
+        "timestamp": 77.8587417602539
+    },
+    {
+        "line": "",
+        "messageType": 2,
+        "seqNumber": 172,
+        "timestamp": 77.85895538330078
+    },
+    {
+        "callStack": "",
+        "details": "Robots should not quit, but yours did!",
+        "errorCode": 1,
+        "flags": 0,
+        "location": "edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:274)",
+        "messageType": 1,
+        "numOccur": 1,
+        "seqNumber": 173,
+        "timestamp": 77.86205291748047
+    },
+    {
+        "line": "Warning at edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:274): Robots should not quit, but yours did!",
+        "messageType": 2,
+        "seqNumber": 174,
+        "timestamp": 77.8631820678711
+    },
+    {
+        "line": "********** Robot program starting **********",
+        "messageType": 2,
+        "seqNumber": 177,
+        "timestamp": 82.88045501708984
+    },
+    {
+        "line": "CS: USB Camera 0: Connecting to USB camera on /dev/video0",
+        "messageType": 2,
+        "seqNumber": 178,
+        "timestamp": 83.19568634033203
+    },
+    {
+        "line": "CS: USB Camera 0: Connecting to USB camera on /dev/video0",
+        "messageType": 2,
+        "seqNumber": 179,
+        "timestamp": 83.19786834716797
+    },
+    {
+        "line": "CS: USB Camera 0: Connecting to USB camera on /dev/video0",
+        "messageType": 2,
+        "seqNumber": 180,
+        "timestamp": 83.22240447998047
+    },
+    {
+        "callStack": "",
+        "details": "Unable to retrieve SPARK MAX firmware version please verify the deviceID field matches the configured CAN ID of the controller, and that the controller is connected to the CAN Bus.",
+        "errorCode": 1,
+        "flags": 1,
+        "location": "com.revrobotics.CANSparkMaxLowLevel.<init>(CANSparkMaxLowLevel.java:253)",
+        "messageType": 0,
+        "numOccur": 1,
+        "seqNumber": 181,
+        "timestamp": 83.41651153564453
+    },
+    {
+        "line": "Error at com.revrobotics.CANSparkMaxLowLevel.<init>(CANSparkMaxLowLevel.java:253): Unable to retrieve SPARK MAX firmware version please verify the deviceID field matches the configured CAN ID of the controller, and that the controller is connected to the CAN Bus.",
+        "messageType": 2,
+        "seqNumber": 182,
+        "timestamp": 83.41761016845703
+    },
+    {
+        "callStack": "\tat edu.wpi.first.hal.CANAPIJNI.writeCANPacket(Native Method)\n\tat edu.wpi.first.wpilibj.CAN.writePacket(CAN.java:77)\n\tat com.revrobotics.CANSparkMaxLowLevel.setFollow(CANSparkMaxLowLevel.java:499)\n\tat com.revrobotics.CANSparkMax.follow(CANSparkMax.java:547)\n\tat com.revrobotics.CANSparkMax.follow(CANSparkMax.java:513)\n\tat com.revrobotics.CANSparkMax.follow(CANSparkMax.java:499)\n\tat frc.subsystems.BallMech.<init>(BallMech.java:59)\n\tat frc.robot.Robot.robotInit(Robot.java:33)\n\tat edu.wpi.first.wpilibj.TimedRobot.startCompetition(TimedRobot.java:63)\n\tat edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:263)\n\tat frc.robot.Main.main(Main.java:27)\n",
+        "details": "Unhandled exception: edu.wpi.first.hal.util.UncleanStatusException:  Code: -35025. Unknown error status",
+        "errorCode": 1,
+        "flags": 1,
+        "location": "com.revrobotics.CANSparkMaxLowLevel.setFollow(CANSparkMaxLowLevel.java:499)",
+        "messageType": 0,
+        "numOccur": 1,
+        "seqNumber": 183,
+        "timestamp": 83.52046966552734
+    },
+    {
+        "line": "Error at com.revrobotics.CANSparkMaxLowLevel.setFollow(CANSparkMaxLowLevel.java:499): Unhandled exception: edu.wpi.first.hal.util.UncleanStatusException:  Code: -35025. Unknown error status",
+        "messageType": 2,
+        "seqNumber": 184,
+        "timestamp": 83.5211410522461
+    },
+    {
+        "line": "\tat edu.wpi.first.hal.CANAPIJNI.writeCANPacket(Native Method)",
+        "messageType": 2,
+        "seqNumber": 185,
+        "timestamp": 83.52144622802734
+    },
+    {
+        "line": "\tat edu.wpi.first.wpilibj.CAN.writePacket(CAN.java:77)",
+        "messageType": 2,
+        "seqNumber": 186,
+        "timestamp": 83.52227020263672
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMaxLowLevel.setFollow(CANSparkMaxLowLevel.java:499)",
+        "messageType": 2,
+        "seqNumber": 187,
+        "timestamp": 83.52555084228516
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMax.follow(CANSparkMax.java:547)",
+        "messageType": 2,
+        "seqNumber": 188,
+        "timestamp": 83.52581024169922
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMax.follow(CANSparkMax.java:513)",
+        "messageType": 2,
+        "seqNumber": 189,
+        "timestamp": 83.5260238647461
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMax.follow(CANSparkMax.java:499)",
+        "messageType": 2,
+        "seqNumber": 190,
+        "timestamp": 83.52623748779297
+    },
+    {
+        "line": "\tat frc.subsystems.BallMech.<init>(BallMech.java:59)",
+        "messageType": 2,
+        "seqNumber": 191,
+        "timestamp": 83.52648162841797
+    },
+    {
+        "line": "\tat frc.robot.Robot.robotInit(Robot.java:33)",
+        "messageType": 2,
+        "seqNumber": 192,
+        "timestamp": 83.52667999267578
+    },
+    {
+        "line": "\tat edu.wpi.first.wpilibj.TimedRobot.startCompetition(TimedRobot.java:63)",
+        "messageType": 2,
+        "seqNumber": 193,
+        "timestamp": 83.52690887451172
+    },
+    {
+        "line": "\tat edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:263)",
+        "messageType": 2,
+        "seqNumber": 194,
+        "timestamp": 83.52713775634766
+    },
+    {
+        "line": "\tat frc.robot.Main.main(Main.java:27)",
+        "messageType": 2,
+        "seqNumber": 195,
+        "timestamp": 83.52771759033203
+    },
+    {
+        "line": "",
+        "messageType": 2,
+        "seqNumber": 196,
+        "timestamp": 83.52790069580078
+    },
+    {
+        "callStack": "",
+        "details": "Robots should not quit, but yours did!",
+        "errorCode": 1,
+        "flags": 0,
+        "location": "edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:274)",
+        "messageType": 1,
+        "numOccur": 1,
+        "seqNumber": 197,
+        "timestamp": 83.53203582763672
+    },
+    {
+        "line": "Warning at edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:274): Robots should not quit, but yours did!",
+        "messageType": 2,
+        "seqNumber": 198,
+        "timestamp": 83.53331756591797
+    },
+    {
+        "callStack": "",
+        "details": "The startCompetition() method (or methods called by it) should have handled the exception above.",
+        "errorCode": 1,
+        "flags": 1,
+        "location": "edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:276)",
+        "messageType": 0,
+        "numOccur": 1,
+        "seqNumber": 199,
+        "timestamp": 83.53511810302734
+    },
+    {
+        "line": "Error at edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:276): Th",
+        "messageType": 2,
+        "seqNumber": 200,
+        "timestamp": 83.53714752197266
+    },
+    {
+        "line": "********** Robot program starting **********",
+        "messageType": 2,
+        "seqNumber": 201,
+        "timestamp": 88.59601593017578
+    },
+    {
+        "line": "CS: USB Camera 0: Connecting to USB camera on /dev/video0",
+        "messageType": 2,
+        "seqNumber": 202,
+        "timestamp": 88.9342269897461
+    },
+    {
+        "line": "CS: USB Camera 0: Connecting to USB camera on /dev/video0",
+        "messageType": 2,
+        "seqNumber": 203,
+        "timestamp": 88.93494415283203
+    },
+    {
+        "line": "CS: USB Camera 0: Connecting to USB camera on /dev/video0",
+        "messageType": 2,
+        "seqNumber": 204,
+        "timestamp": 88.9703140258789
+    },
+    {
+        "callStack": "",
+        "details": "Unable to retrieve SPARK MAX firmware version please verify the deviceID field matches the configured CAN ID of the controller, and that the controller is connected to the CAN Bus.",
+        "errorCode": 1,
+        "flags": 1,
+        "location": "com.revrobotics.CANSparkMaxLowLevel.<init>(CANSparkMaxLowLevel.java:253)",
+        "messageType": 0,
+        "numOccur": 1,
+        "seqNumber": 205,
+        "timestamp": 89.16999053955078
+    },
+    {
+        "line": "Error at com.revrobotics.CANSparkMaxLowLevel.<init>(CANSparkMaxLowLevel.java:253): Unable to retrieve SPARK MAX firmware version please verify the deviceID field matches the configured CAN ID of the controller, and that the controller is connected to the CAN Bus.",
+        "messageType": 2,
+        "seqNumber": 206,
+        "timestamp": 89.1715316772461
+    },
+    {
+        "callStack": "\tat edu.wpi.first.hal.CANAPIJNI.writeCANPacket(Native Method)\n\tat edu.wpi.first.wpilibj.CAN.writePacket(CAN.java:77)\n\tat com.revrobotics.CANSparkMaxLowLevel.setFollow(CANSparkMaxLowLevel.java:499)\n\tat com.revrobotics.CANSparkMax.follow(CANSparkMax.java:547)\n\tat com.revrobotics.CANSparkMax.follow(CANSparkMax.java:513)\n\tat com.revrobotics.CANSparkMax.follow(CANSparkMax.java:499)\n\tat frc.subsystems.BallMech.<init>(BallMech.java:59)\n\tat frc.robot.Robot.robotInit(Robot.java:33)\n\tat edu.wpi.first.wpilibj.TimedRobot.startCompetition(TimedRobot.java:63)\n\tat edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:263)\n\tat frc.robot.Main.main(Main.java:27)\n",
+        "details": "Unhandled exception: edu.wpi.first.hal.util.UncleanStatusException:  Code: -35025. Unknown error status",
+        "errorCode": 1,
+        "flags": 1,
+        "location": "com.revrobotics.CANSparkMaxLowLevel.setFollow(CANSparkMaxLowLevel.java:499)",
+        "messageType": 0,
+        "numOccur": 1,
+        "seqNumber": 207,
+        "timestamp": 89.2746810913086
+    },
+    {
+        "line": "Error at com.revrobotics.CANSparkMaxLowLevel.setFollow(CANSparkMaxLowLevel.java:499): Unhandled exception: edu.wpi.first.hal.util.UncleanStatusException:  Code: -35025. Unknown error status",
+        "messageType": 2,
+        "seqNumber": 208,
+        "timestamp": 89.27538299560547
+    },
+    {
+        "line": "\tat edu.wpi.first.hal.CANAPIJNI.writeCANPacket(Native Method)",
+        "messageType": 2,
+        "seqNumber": 209,
+        "timestamp": 89.2765884399414
+    },
+    {
+        "line": "\tat edu.wpi.first.wpilibj.CAN.writePacket(CAN.java:77)",
+        "messageType": 2,
+        "seqNumber": 210,
+        "timestamp": 89.27684783935547
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMaxLowLevel.setFollow(CANSparkMaxLowLevel.java:499)",
+        "messageType": 2,
+        "seqNumber": 211,
+        "timestamp": 89.27709197998047
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMax.follow(CANSparkMax.java:547)",
+        "messageType": 2,
+        "seqNumber": 212,
+        "timestamp": 89.27730560302734
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMax.follow(CANSparkMax.java:513)",
+        "messageType": 2,
+        "seqNumber": 213,
+        "timestamp": 89.27751922607422
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMax.follow(CANSparkMax.java:499)",
+        "messageType": 2,
+        "seqNumber": 214,
+        "timestamp": 89.2777328491211
+    },
+    {
+        "line": "\tat frc.subsystems.BallMech.<init>(BallMech.java:59)",
+        "messageType": 2,
+        "seqNumber": 215,
+        "timestamp": 89.27794647216797
+    },
+    {
+        "line": "\tat frc.robot.Robot.robotInit(Robot.java:33)",
+        "messageType": 2,
+        "seqNumber": 216,
+        "timestamp": 89.27816009521484
+    },
+    {
+        "line": "\tat edu.wpi.first.wpilibj.TimedRobot.startCompetition(TimedRobot.java:63)",
+        "messageType": 2,
+        "seqNumber": 217,
+        "timestamp": 89.27837371826172
+    },
+    {
+        "line": "\tat edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:263)",
+        "messageType": 2,
+        "seqNumber": 218,
+        "timestamp": 89.2785873413086
+    },
+    {
+        "line": "\tat frc.robot.Main.main(Main.java:27)",
+        "messageType": 2,
+        "seqNumber": 219,
+        "timestamp": 89.27880096435547
+    },
+    {
+        "line": "",
+        "messageType": 2,
+        "seqNumber": 220,
+        "timestamp": 89.27896881103516
+    },
+    {
+        "callStack": "",
+        "details": "Robots should not quit, but yours did!",
+        "errorCode": 1,
+        "flags": 0,
+        "location": "edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:274)",
+        "messageType": 1,
+        "numOccur": 1,
+        "seqNumber": 221,
+        "timestamp": 89.27916717529297
+    },
+    {
+        "line": "Warning at edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:274): Robots should not quit, but yours did!",
+        "messageType": 2,
+        "seqNumber": 222,
+        "timestamp": 89.28234100341797
+    },
+    {
+        "callStack": "",
+        "details": "The startCompetition() method (or methods called by it) should have handled the exception above.",
+        "errorCode": 1,
+        "flags": 1,
+        "location": "edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:276)",
+        "messageType": 0,
+        "numOccur": 1,
+        "seqNumber": 223,
+        "timestamp": 89.28438568115234
+    },
+    {
+        "line": "Error at edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:276): Th",
+        "messageType": 2,
+        "seqNumber": 224,
+        "timestamp": 89.2851333618164
+    },
+    {
+        "line": "********** Robot program starting **********",
+        "messageType": 2,
+        "seqNumber": 225,
+        "timestamp": 94.33123016357422
+    },
+    {
+        "line": "CS: USB Camera 0: Connecting to USB camera on /dev/video0",
+        "messageType": 2,
+        "seqNumber": 226,
+        "timestamp": 94.69380950927734
+    },
+    {
+        "line": "CS: USB Camera 0: Connecting to USB camera on /dev/video0",
+        "messageType": 2,
+        "seqNumber": 227,
+        "timestamp": 94.69878387451172
+    },
+    {
+        "line": "CS: USB Camera 0: Connecting to USB camera on /dev/video0",
+        "messageType": 2,
+        "seqNumber": 228,
+        "timestamp": 94.71504974365234
+    },
+    {
+        "callStack": "",
+        "details": "Unable to retrieve SPARK MAX firmware version please verify the deviceID field matches the configured CAN ID of the controller, and that the controller is connected to the CAN Bus.",
+        "errorCode": 1,
+        "flags": 1,
+        "location": "com.revrobotics.CANSparkMaxLowLevel.<init>(CANSparkMaxLowLevel.java:253)",
+        "messageType": 0,
+        "numOccur": 1,
+        "seqNumber": 229,
+        "timestamp": 94.91883087158203
+    },
+    {
+        "line": "Error at com.revrobotics.CANSparkMaxLowLevel.<init>(CANSparkMaxLowLevel.java:253): Unable to retrieve SPARK MAX firmware version please verify the deviceID field matches the configured CAN ID of the controller, and that the controller is connected to the CAN Bus.",
+        "messageType": 2,
+        "seqNumber": 230,
+        "timestamp": 94.91997528076172
+    },
+    {
+        "callStack": "\tat edu.wpi.first.hal.CANAPIJNI.writeCANPacket(Native Method)\n\tat edu.wpi.first.wpilibj.CAN.writePacket(CAN.java:77)\n\tat com.revrobotics.CANSparkMaxLowLevel.setParameterCore(CANSparkMaxLowLevel.java:586)\n\tat com.revrobotics.CANSparkMaxLowLevel.setParameter(CANSparkMaxLowLevel.java:462)\n\tat com.revrobotics.CANSparkMaxLowLevel.setMotorType(CANSparkMaxLowLevel.java:370)\n\tat com.revrobotics.CANSparkMaxLowLevel.<init>(CANSparkMaxLowLevel.java:266)\n\tat com.revrobotics.CANSparkMax.<init>(CANSparkMax.java:146)\n\tat frc.subsystems.BallMech.<clinit>(BallMech.java:22)\n\tat frc.robot.Robot.robotInit(Robot.java:33)\n\tat edu.wpi.first.wpilibj.TimedRobot.startCompetition(TimedRobot.java:63)\n\tat edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:263)\n\tat frc.robot.Main.main(Main.java:27)\n",
+        "details": "Unhandled exception: edu.wpi.first.hal.util.UncleanStatusException:  Code: -35025. Unknown error status",
+        "errorCode": 1,
+        "flags": 1,
+        "location": "com.revrobotics.CANSparkMaxLowLevel.setParameterCore(CANSparkMaxLowLevel.java:586)",
+        "messageType": 0,
+        "numOccur": 1,
+        "seqNumber": 231,
+        "timestamp": 94.95662689208984
+    },
+    {
+        "line": "Error at com.revrobotics.CANSparkMaxLowLevel.setParameterCore(CANSparkMaxLowLevel.java:586): Unhandled exception: edu.wpi.first.hal.util.UncleanStatusException:  Code: -35025. Unknown e",
+        "messageType": 2,
+        "seqNumber": 232,
+        "timestamp": 94.95722198486328
+    },
+    {
+        "line": "\tat edu.wpi.first.hal.CANAPIJNI.writeCANPacket(Native Method)",
+        "messageType": 2,
+        "seqNumber": 233,
+        "timestamp": 94.96044158935547
+    },
+    {
+        "line": "\tat edu.wpi.first.wpilibj.CAN.writePacket(CAN.java:77)",
+        "messageType": 2,
+        "seqNumber": 234,
+        "timestamp": 94.96074676513672
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMaxLowLevel.setParameterCore(CANSparkMaxLowLevel.java:586)",
+        "messageType": 2,
+        "seqNumber": 235,
+        "timestamp": 94.96102142333984
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMaxLowLevel.setParameter(CANSparkMaxLowLevel.java:462)",
+        "messageType": 2,
+        "seqNumber": 236,
+        "timestamp": 94.96126556396484
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMaxLowLevel.setMotorType(CANSparkMaxLowLevel.java:370)",
+        "messageType": 2,
+        "seqNumber": 237,
+        "timestamp": 94.9615249633789
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMaxLowLevel.<init>(CANSparkMaxLowLevel.java:266)",
+        "messageType": 2,
+        "seqNumber": 238,
+        "timestamp": 94.96178436279297
+    },
+    {
+        "line": "\tat com.revrobotics.CANSparkMax.<init>(CANSparkMax.java:146)",
+        "messageType": 2,
+        "seqNumber": 239,
+        "timestamp": 94.96207427978516
+    },
+    {
+        "line": "\tat frc.subsystems.BallMech.<clinit>(BallMech.java:22)",
+        "messageType": 2,
+        "seqNumber": 240,
+        "timestamp": 94.96228790283203
+    },
+    {
+        "line": "\tat frc.robot.Robot.robotInit(Robot.java:33)",
+        "messageType": 2,
+        "seqNumber": 241,
+        "timestamp": 94.9625015258789
+    },
+    {
+        "line": "\tat edu.wpi.first.wpilibj.TimedRobot.startCompetition(TimedRobot.java:63)",
+        "messageType": 2,
+        "seqNumber": 242,
+        "timestamp": 94.96276092529297
+    },
+    {
+        "line": "\tat edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:263)",
+        "messageType": 2,
+        "seqNumber": 243,
+        "timestamp": 94.96302032470703
+    },
+    {
+        "line": "\tat frc.robot.Main.main(Main.java:27)",
+        "messageType": 2,
+        "seqNumber": 244,
+        "timestamp": 94.96350860595703
+    },
+    {
+        "line": "",
+        "messageType": 2,
+        "seqNumber": 245,
+        "timestamp": 94.9637680053711
+    },
+    {
+        "callStack": "",
+        "details": "Robots should not quit, but yours did!",
+        "errorCode": 1,
+        "flags": 0,
+        "location": "edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:274)",
+        "messageType": 1,
+        "numOccur": 1,
+        "seqNumber": 246,
+        "timestamp": 94.96723175048828
+    },
+    {
+        "line": "Warning at edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:274): Robots should not quit, but yours did!",
+        "messageType": 2,
+        "seqNumber": 247,
+        "timestamp": 94.96802520751953
+    },
+    {
+        "callStack": "",
+        "details": "The startCompetition() method (or methods called by it) should have handled the exception above.",
+        "errorCode": 1,
+        "flags": 1,
+        "location": "edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:276)",
+        "messageType": 0,
+        "numOccur": 1,
+        "seqNumber": 248,
+        "timestamp": 94.96936798095703
+    },
+    {
+        "line": "Error at edu.wpi.first.wpilibj.RobotBase.startRobot(RobotBase.java:276): The startCompetition() method (or methods called by it) should",
+        "messageType": 2,
+        "seqNumber": 249,
+        "timestamp": 94.97069549560547
+    }
+]

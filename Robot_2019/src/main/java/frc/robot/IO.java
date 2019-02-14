@@ -50,12 +50,27 @@ public class IO
 
     public static void ProcessControllers()
     {
-        //main controller
+        //Main Controller
+        
+        /**
+         * Changes the state of the Hatch Clamp
+         */
         if(m_buttonA)
         {
             Robot.hatchMech.hatchClamp();
         }
 
+        /**
+         * Changes the state of the Hatch Extender
+         */
+        if(m_buttonY)
+        {
+            Robot.hatchMech.hatchExtender();
+        }
+
+        /**
+         * Activates the hatch scoring / aquiring mechanism
+         */
         if(m_buttonB)
         {
             Robot.hatchMech.scoreHatch();
@@ -70,20 +85,50 @@ public class IO
             Robot.drivetrain.turnState = 0;
         } */
 
-        if(m_leftBumper)
-            Robot.drivetrain.highGear(false);
-        else if(m_leftBumperReleased)
+        
+        /**
+         * Changes the gearstate of the drivetrain
+         */
+        if(m_leftTrigger > 0.5)
+        {
             Robot.drivetrain.highGear(true);
+        }
+        else
+        {
+            Robot.drivetrain.highGear(false);
+        }
 
+        /**
+         * Runs the intake
+         */
+        if(m_leftBumper)
+        {
+            Robot.ballMech.setIntake(0.5);
+        }
+        else if(m_rightBumper)
+        {
+            Robot.ballMech.setIntake(-0.5);
+        }
+        else
+        {
+            Robot.ballMech.setIntake(0.00); //Holds the ball in place (Set to zero if this becomes problamatic)
+        }
 
-        //operator controller
+       
+
+        // Operator Controller
+
+        
+        /**
+         * Sets the ballMech arm position
+         */
         if(o_buttonA)
         {
-            Robot.ballMech.setArm(RobotMap.ArmPosition.LOADING_WALL);
+            Robot.ballMech.setArm(RobotMap.ArmPosition.LOADING_FLOOR);
         }
         else if(o_buttonB)
         {
-            Robot.ballMech.setArm(RobotMap.ArmPosition.LOADING_FLOOR);
+            Robot.ballMech.setArm(RobotMap.ArmPosition.LOADING_WALL);
         }
         else if(o_buttonX)
         {
@@ -97,27 +142,47 @@ public class IO
         {
             Robot.ballMech.stopArm();
         }
+        
 
-
-
-        if(o_leftBumper)
+        /**
+         * Turns the arm motor based on button input
+         */
+        /*
+        if(o_buttonY)
         {
-            Robot.ballMech.setIntake(1);
+            Robot.ballMech.spinArm(0.8);
         }
-        else if(o_rightBumper)
+        else if(o_buttonX)
         {
-            Robot.ballMech.setIntake(-1);
+            Robot.ballMech.spinArm(-0.8);
+        }
+        else if (!(o_buttonY || o_buttonX))
+        {
+            Robot.ballMech.stopArm();
+        }
+        
+
+        if(o_buttonB)
+        {
+            Robot.climbMech.setClimbMotors(0.95);
+        }
+        else if(o_buttonA)
+        {
+            Robot.climbMech.setClimbMotors(-0.95);
         }
         else
         {
-            Robot.ballMech.setIntake(-0.02); //Holds the ball in place (Set to zero if this becomes problamatic)
+            Robot.climbMech.setClimbMotors(0.0);
         }
-
+        */
     }
 
+    /**
+     * Adds a deadband to our controller axis values
+     */
     private static double zeroValue(double realValue)
     {
-        if(realValue < .05 && realValue > -.05)
+        if(realValue < .09 && realValue > -.09)
         {
             return 0;
         }

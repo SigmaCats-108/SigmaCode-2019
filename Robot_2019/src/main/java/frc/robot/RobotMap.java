@@ -22,7 +22,11 @@ public class RobotMap
 	// BallMech ID Values
 	public static final int BALLMECH_LEFTARM = 3;
 	public static final int BALLMECH_RIGHTARM = 10;
-	public static final int BALLMECH_INTAKE = 1;
+	public static final int BALLMECH_INTAKE = 11;
+
+	//climbMech ID Values
+	public static final int CLIMBMECH_MOTOR_LEFT = 2;
+	public static final int CLIMBMECH_MOTOR_RIGHT = 1;
 
 	// TestMech Constants
 	public static final int TESTMECH_TEST_MOTOR = 55;
@@ -35,7 +39,7 @@ public class RobotMap
 	
 	// Pneumatics ID Values
 	public static final int PCM1 = 0;
-	public static final int PCM2 = 1;
+	public static final int PCM2 = 14;
 	public static final int DRIVETRAIN_SHIFTER_FWD = 0;
 	public static final int DRIVETRAIN_SHIFTER_REV = 7;
 	public static final int HATCH_EXTENDER_FWD = 4;

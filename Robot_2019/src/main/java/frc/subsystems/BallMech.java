@@ -1,9 +1,9 @@
 package frc.subsystems;
 
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANEncoder;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
 import frc.robot.RobotMap;
@@ -21,14 +21,23 @@ public class BallMech
 	private static CANEncoder armEncoder1 = armMotor1.getEncoder();
 	private double armEncVal, armDifference;
 	private double armKp = 0.91;
-	private final double maxArmVal = 100;
-	private final double minArmVal = 0;
+	private final double maxArmVal = 9900;
+	private final double minArmVal = -10;
 
 	AnalogInput ultrasonicAnalog = new AnalogInput(0);
 	DigitalInput bumper1 = new DigitalInput(0);
 	DigitalInput bumper2 = new DigitalInput(1);
 	double cm;
 
+	public BallMech()
+	{
+		armMotor1.setIdleMode(IdleMode.kBrake);
+		armMotor2.setIdleMode(IdleMode.kBrake);
+
+		armMotor2.follow(armMotor1, true);
+		
+		
+	}
 
 	public void updateBallMech()
 	{
@@ -44,16 +53,6 @@ public class BallMech
 		{
 			SmartDashboard.putBoolean("inTheAir", false);
 		}
-	}
-
-
-
-	public BallMech()
-	{
-		armMotor1.setIdleMode(IdleMode.kBrake);
-		armMotor2.setIdleMode(IdleMode.kBrake);
-		armMotor2.setInverted(true);
-		armMotor2.follow(armMotor1);
 	}
 
 	public void setIntake(double speed)
@@ -82,16 +81,6 @@ public class BallMech
 		}
 	}
 
-	public void intakeOutake()
-	{
-		if(!bumper1.get() && !bumper2.get())
-		{
-			System.out.println("Ball detected!  Turn motor off!\r\n");
-		}
-	}
-
-	
-	
 	private boolean turnArm(double targetVal)
 	{
 		armEncVal = armEncoder1.getPosition();
@@ -105,14 +94,17 @@ public class BallMech
 				if(Math.abs(armDifference) < 20)
 				{
 					armMotor1.set( (armDifference / 20) * armKp);
+					armMotor2.set( -(armDifference / 20) * armKp);
 				}
 				else if(armEncVal > targetVal)
 				{
 					armMotor1.set(1.0 * (armKp));
+					armMotor2.set(-1.0 * (armKp));
 				}
 				else if(armEncVal < targetVal)
 				{
 					armMotor1.set(1.0 * (armKp));
+					armMotor2.set(-1.0 * (armKp));
 				}
 				return false;
 			}
@@ -120,6 +112,7 @@ public class BallMech
 			{
 				System.out.println("Finished turning");
 				armMotor1.set(0.0);
+				armMotor2.set(0.0);
 				return true;
 			}
 		}
@@ -127,9 +120,15 @@ public class BallMech
 		{
 			System.out.println("Arm is outside of safety zone.");
 			armMotor1.set(0.0);
+			armMotor2.set(0.0);
 			return true;
 		}
 
+	}
+
+	public void spinArm(double speed)
+	{
+		armMotor1.set(speed);
 	}
 
 	public void stopArm()

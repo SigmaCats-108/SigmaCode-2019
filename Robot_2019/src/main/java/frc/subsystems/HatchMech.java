@@ -11,6 +11,7 @@ import frc.robot.RobotMap;
 public class HatchMech
 {
     private static DoubleSolenoid hatchClamp = new DoubleSolenoid(RobotMap.PCM1, RobotMap.HATCH_CLAMP_FWD, RobotMap.HATCH_CLAMP_REV);
+    private static DoubleSolenoid hatchExtender = new DoubleSolenoid(RobotMap.PCM1, RobotMap.HATCH_PUSHER_FWD, RobotMap.HATCH_PUSHER_REV);
 
     private int hatchMechState = 0;
     
@@ -60,8 +61,18 @@ public class HatchMech
         {
             hatchClamp.set(Value.kForward);
         }
-        //hatchClamps.set(DoubleSolenoid.Value.kReverse);
-		//hatchClamps.set(!hatchClamps.get());
+    }
+
+    public void hatchExtender()
+	{
+        if (hatchExtender.get() == Value.kForward)
+        {
+            hatchExtender.set(Value.kReverse);
+        }
+        else
+        {
+            hatchExtender.set(Value.kForward);
+        }
     }
     
     public void resetHatchState()

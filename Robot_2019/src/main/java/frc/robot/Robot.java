@@ -8,7 +8,8 @@ import frc.vision.SigmaSight;
 import frc.subsystems.BallMech;
 import frc.subsystems.Drivetrain;
 import frc.subsystems.HatchMech;
-import frc.subsystems.TestMech;
+import frc.subsystems.climbMech;
+
 
 public class Robot extends TimedRobot {
 
@@ -17,9 +18,10 @@ public class Robot extends TimedRobot {
     public static NavX navX;
     public static SigmaSight sigmaSight;
     public static BallMech ballMech;
+    public static climbMech climbMech;    
     public static Drivetrain drivetrain;
     public static HatchMech hatchMech;
-    public static TestMech testMech;
+    
 
     @Override
     public void robotInit() 
@@ -29,9 +31,10 @@ public class Robot extends TimedRobot {
         navX = new NavX();
         sigmaSight = new SigmaSight();
         ballMech = new BallMech();
+        climbMech = new climbMech();
         drivetrain = new Drivetrain();
         hatchMech = new HatchMech();
-        testMech = new TestMech();
+        
 
     }
 
@@ -43,7 +46,6 @@ public class Robot extends TimedRobot {
         sigmaSight.updateValues();
         sigmaSight.testValues();
         ballMech.updateBallMech();
-        ballMech.intakeOutake();
         ballMech.testArmEnc();
     }
     
@@ -77,6 +79,5 @@ public class Robot extends TimedRobot {
     @Override
     public void testPeriodic()
     { 
-        testMech.runTests();
     }
 }

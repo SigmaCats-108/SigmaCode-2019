@@ -25,7 +25,7 @@ public class Drivetrain
 	
 	private DifferentialDrive drive;
 
-	private static DoubleSolenoid gearShifter = new DoubleSolenoid(RobotMap.DRIVETRAIN_SHIFTER_FWD, RobotMap.DRIVETRAIN_SHIFTER_REV);
+	private static DoubleSolenoid gearShifter = new DoubleSolenoid(RobotMap.PCM2, RobotMap.DRIVETRAIN_SHIFTER_FWD, RobotMap.DRIVETRAIN_SHIFTER_REV);
 
 	private double angleError, turnSpeed, targetEncVal = 0;
 	private double turn_Kp = 1/360, desiredAngle;

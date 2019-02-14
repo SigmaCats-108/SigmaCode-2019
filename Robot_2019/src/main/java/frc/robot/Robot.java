@@ -8,7 +8,7 @@ import frc.vision.SigmaSight;
 import frc.subsystems.BallMech;
 import frc.subsystems.Drivetrain;
 import frc.subsystems.HatchMech;
-import frc.subsystems.climbMech;
+import frc.subsystems.ClimbMech;
 
 
 public class Robot extends TimedRobot {
@@ -18,7 +18,7 @@ public class Robot extends TimedRobot {
     public static NavX navX;
     public static SigmaSight sigmaSight;
     public static BallMech ballMech;
-    public static climbMech climbMech;    
+    public static ClimbMech climbMech;    
     public static Drivetrain drivetrain;
     public static HatchMech hatchMech;
     
@@ -31,7 +31,7 @@ public class Robot extends TimedRobot {
         navX = new NavX();
         sigmaSight = new SigmaSight();
         ballMech = new BallMech();
-        climbMech = new climbMech();
+        climbMech = new ClimbMech();
         drivetrain = new Drivetrain();
         hatchMech = new HatchMech();
         

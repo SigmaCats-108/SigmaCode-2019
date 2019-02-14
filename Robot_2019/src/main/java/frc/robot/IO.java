@@ -19,7 +19,7 @@ public class IO
         m_buttonB = mainController.getRawButton(2);
         m_buttonX = mainController.getRawButton(3);
         m_buttonXRaw = mainController.getRawButton(3);
-        m_buttonY = mainController.getRawButton(4);
+        m_buttonY = mainController.getRawButtonPressed(4);
         m_leftBumper = mainController.getRawButton(5);
         m_leftBumperReleased = mainController.getRawButtonReleased(5);
         m_rightBumper = mainController.getRawButton(6);
@@ -69,16 +69,28 @@ public class IO
         }
 
         /**
-         * Activates the hatch scoring / aquiring mechanism
+         * Changes the state of the Robot Lifter
          */
-        if(m_buttonB)
+        if(m_buttonX)
         {
-            Robot.hatchMech.scoreHatch();
+            Robot.climbMech.liftRobot(true);
         }
         else
         {
-            Robot.hatchMech.resetHatchState();
+            Robot.climbMech.liftRobot(false);
         }
+
+        // /**
+        //  * Activates the hatch scoring / aquiring mechanism
+        //  */
+        // if(m_buttonB)
+        // {
+        //     Robot.hatchMech.scoreHatch();
+        // }
+        // else
+        // {
+        //     Robot.hatchMech.resetHatchState();
+        // }
         
         /* if(!Robot.drivetrain.turnAngle(180) && m_buttonX)
         {
@@ -119,42 +131,42 @@ public class IO
         // Operator Controller
 
         
-        /**
-         * Sets the ballMech arm position
-         */
-        if(o_buttonA)
-        {
-            Robot.ballMech.setArm(RobotMap.ArmPosition.LOADING_FLOOR);
-        }
-        else if(o_buttonB)
-        {
-            Robot.ballMech.setArm(RobotMap.ArmPosition.LOADING_WALL);
-        }
-        else if(o_buttonX)
-        {
-            Robot.ballMech.setArm(RobotMap.ArmPosition.SCORING);
-        }
-        else if(o_buttonY)
-        {
-            Robot.ballMech.setArm(RobotMap.ArmPosition.CLIMBING);
-        }
-        else
-        {
-            Robot.ballMech.stopArm();
-        }
+        // /**
+        //  * Sets the ballMech arm position
+        //  */
+        // if(o_buttonA)
+        // {
+        //     Robot.ballMech.setArm(RobotMap.ArmPosition.LOADING_FLOOR);
+        // }
+        // else if(o_buttonB)
+        // {
+        //     Robot.ballMech.setArm(RobotMap.ArmPosition.LOADING_WALL);
+        // }
+        // else if(o_buttonX)
+        // {
+        //     Robot.ballMech.setArm(RobotMap.ArmPosition.SCORING);
+        // }
+        // else if(o_buttonY)
+        // {
+        //     Robot.ballMech.setArm(RobotMap.ArmPosition.CLIMBING);
+        // }
+        // else
+        // {
+        //     Robot.ballMech.stopArm();
+        // }
         
 
         /**
          * Turns the arm motor based on button input
          */
-        /*
+        
         if(o_buttonY)
         {
-            Robot.ballMech.spinArm(0.8);
+            Robot.ballMech.spinArm(0.5);
         }
         else if(o_buttonX)
         {
-            Robot.ballMech.spinArm(-0.8);
+            Robot.ballMech.spinArm(-0.5);
         }
         else if (!(o_buttonY || o_buttonX))
         {
@@ -174,7 +186,7 @@ public class IO
         {
             Robot.climbMech.setClimbMotors(0.0);
         }
-        */
+        
     }
 
     /**

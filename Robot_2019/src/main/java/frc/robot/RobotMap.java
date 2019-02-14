@@ -42,8 +42,8 @@ public class RobotMap
 	public static final int PCM2 = 14;
 	public static final int DRIVETRAIN_SHIFTER_FWD = 0;
 	public static final int DRIVETRAIN_SHIFTER_REV = 7;
-	public static final int HATCH_EXTENDER_FWD = 4;
-	public static final int HATCH_EXTENDER_REV = 3;
+	public static final int HATCH_EXTENDER_FWD = 0;
+	public static final int HATCH_EXTENDER_REV = 7;
 	public static final int HATCH_CLAMP_FWD = 5;
 	public static final int HATCH_CLAMP_REV = 2;
 	public static final int HATCH_PUSHER_FWD = 6;

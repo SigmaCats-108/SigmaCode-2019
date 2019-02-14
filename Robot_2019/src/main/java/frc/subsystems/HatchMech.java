@@ -53,7 +53,7 @@ public class HatchMech
 
     public void hatchClamp()
 	{
-        if (hatchClamp.get() == Value.kForward)
+        if(hatchClamp.get() == Value.kForward)
         {
             hatchClamp.set(Value.kReverse);
         }

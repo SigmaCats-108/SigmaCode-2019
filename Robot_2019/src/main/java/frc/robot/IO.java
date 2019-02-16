@@ -68,6 +68,9 @@ public class IO
             Robot.hatchMech.hatchExtender();
         }
 
+        /**
+         * Activates the pistons that shoot the hatch from the mechanism
+         */
         if(m_buttonB)
         {
             Robot.hatchMech.hatchEjector();
@@ -102,7 +105,6 @@ public class IO
             Robot.drivetrain.turnState = 0;
         } */
 
-        
         /**
          * Changes the gearstate of the drivetrain
          */
@@ -166,7 +168,7 @@ public class IO
         {
             Robot.ballMech.spinArm(0.5);
         }
-        else if(o_buttonX)
+        else if(o_buttonA)
         {
             Robot.ballMech.spinArm(-0.5);
         }
@@ -175,11 +177,11 @@ public class IO
             Robot.ballMech.stopArm();
         }
 
-        if(o_buttonB)
+        if(o_leftBumper)
         {
             Robot.climbMech.setClimbMotors(0.95);
         }
-        else if(o_buttonA)
+        else if(o_rightBumper)
         {
             Robot.climbMech.setClimbMotors(-0.95);
         }

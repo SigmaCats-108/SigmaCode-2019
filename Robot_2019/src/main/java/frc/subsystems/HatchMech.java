@@ -16,15 +16,15 @@ public class HatchMech
     private static DoubleSolenoid hatchEjector = new DoubleSolenoid(RobotMap.PCM1, 3, 4);
 
     private int hatchMechState = 0;
-    private int hatchScoreState = 0, counter = 0;
+    private int hatchScoreState = 0, hatchRetrieveState = 0, counter = 0;
+    private boolean isHatchOnRobot;
     
-    public void scoreHatch()
+    public void hatchSequence()
     {
         //System.out.println("Hatch State: " + hatchMechState);
         switch (hatchMechState)
         {
             case 0:
-
             if (!Robot.sigmaSight.isValidTarget())
             {
                 Robot.sigmaSight.seekTarget();
@@ -32,22 +32,19 @@ public class HatchMech
             }
             else
             {
-                hatchMechState++;
+                hatchMechState = 1;
             }
             break;
 
             case 1:
-            
             if(Robot.sigmaSight.aimAndRange())
             {
-                hatchMechState++;
+                hatchMechState = 2;
             }
             break;
 
             case 2:
-            
-            Robot.drivetrain.sigmaDrive(0.2, 0.2);
-
+            //Robot.drivetrain.sigmaDrive(0.2, 0.2);
             break;
 
         }
@@ -90,18 +87,85 @@ public class HatchMech
         }
     }
 
-    public void hatchScore()
+    public boolean hatchScore()
     {
         switch (hatchScoreState)
         {
             case 0:
+            hatchExtender.set(Value.kForward);
+            if(counter(1000))
+            {
+                hatchScoreState = 1;
+            }
+            break;
+
+            case 1:
+            hatchClamp.set(Value.kReverse);
+            if(counter(1000))
+            {
+                hatchScoreState = 2;
+            }
+            break;
+
+            case 2:
+            hatchEjector.set(Value.kForward);
+            if(counter(1000))
+            {
+                hatchScoreState = 3;
+            }
+            break;
             
+            case 3:
+            hatchEjector.set(Value.kReverse);
+            hatchExtender.set(Value.kReverse);
+            hatchScoreState = 0;
+            return true;
         }
+        return false;
+    }
 
+    public boolean hatchRetrieve()
+    {
+        switch (hatchRetrieveState)
+        {
+            case 0:
+            hatchExtender.set(Value.kForward);
+            if(counter(1000))
+            {
+                hatchRetrieveState = 1;
+            }
+            break;
 
+            case 1:
+            hatchClamp.set(Value.kForward);
+            if(counter(1000))
+            {
+                hatchRetrieveState = 2;
+            }
+            break;
 
+            case 2:
+            hatchExtender.set(Value.kReverse);
+            hatchRetrieveState = 0;
+            return true;
+        }
+        return false;
     }
     
+    public boolean counter(int ms)
+    {
+        if(counter < ms / 20)
+        {
+            counter++;
+            return false;
+        }
+        else
+        {
+            counter = 0;
+            return true;
+        }
+    }
+
     public void resetHatchState()
     {
         hatchMechState = 0;

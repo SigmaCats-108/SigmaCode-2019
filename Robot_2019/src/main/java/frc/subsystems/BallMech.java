@@ -7,7 +7,6 @@ import com.revrobotics.CANEncoder;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
 import frc.robot.RobotMap;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The robot mechanism for the picking up and scoring of balls.
@@ -19,65 +18,66 @@ public class BallMech
 	private static CANSparkMax armMotor2 = new CANSparkMax(RobotMap.BALLMECH_RIGHTARM, MotorType.kBrushless);
 	private static CANSparkMax intakeMotor = new CANSparkMax(RobotMap.BALLMECH_INTAKE, MotorType.kBrushed);
 	private static CANEncoder armEncoder1 = armMotor1.getEncoder();
+
+	private AnalogInput ultrasonicAnalog = new AnalogInput(0);
+	private DigitalInput bumper1 = new DigitalInput(0);
+	private DigitalInput bumper2 = new DigitalInput(1);
+
 	private double armEncVal, armDifference;
-	private double armKp = 0.91;
 	private final double maxArmVal = 9900;
 	private final double minArmVal = -10;
-
-	AnalogInput ultrasonicAnalog = new AnalogInput(0);
-	DigitalInput bumper1 = new DigitalInput(0);
-	DigitalInput bumper2 = new DigitalInput(1);
-	double cm;
+	private final double armKp = 0.91;
+	private int armState = 0;
+	private double armDiff = 0;
 
 	public BallMech()
 	{
 		armMotor1.setIdleMode(IdleMode.kBrake);
 		armMotor2.setIdleMode(IdleMode.kBrake);
+		intakeMotor.setIdleMode(IdleMode.kBrake);
 
 		armMotor2.follow(armMotor1, true);
-		
-		
 	}
 
-	public void updateBallMech()
+	public int getUltrasonicSensor()
 	{
-		//testEncVal1 = testEncoder1.getPosition();
-		cm = ultrasonicAnalog.getValue();
+		return ultrasonicAnalog.getValue();
 		//System.out.println(cm);
-		if(cm > 60){
+	}
 
-            SmartDashboard.putBoolean("inTheAir", true);
-
+	public void intake(double speed)
+	{
+		if((bumper1.get() /*&& bumper2.get()*/))
+		{
+			intakeMotor.set(speed);
 		}
 		else
 		{
-			SmartDashboard.putBoolean("inTheAir", false);
+			intakeMotor.set(0.0);
 		}
 	}
 
-	public void setIntake(double speed)
+	public void outake(double speed)
 	{
-		intakeMotor.set(speed);
+		intakeMotor.set(-speed);
 	}
 
-	public void setArm(RobotMap.ArmPosition position)
+	public boolean setArm(RobotMap.ArmPosition position)
 	{
 		switch(position)
 		{
-			case STARTING: turnArm(80);
-			break;
+			case STARTING: return turnArm(80);
+
+			case LOADING_FLOOR: return turnArm(70);
 			
-			case LOADING_FLOOR: turnArm(70);
-			break;
+			case LOADING_WALL: return turnArm(60);
+			
+			case SCORING: return turnArm(50);
+			
+			case CLIMBING: return turnArm(40);
 
-			case LOADING_WALL: turnArm(60);
-			break;
-
-			case SCORING: turnArm(50);
-			break;
-
-			case CLIMBING: turnArm(40);
-			break;
+			default:
+			return false;
 		}
 	}
 
@@ -126,6 +126,30 @@ public class BallMech
 
 	}
 
+	private boolean turnArm2(double targetVal)
+	{
+		armDiff = targetVal - armEncoder1.getPosition();
+
+		switch(armState)
+		{
+			case 1:
+			double speed = armDiff * armKp;
+			armMotor1.set(speed);
+			if(Math.abs(armDiff) < 2)
+			{
+				armState = 2;
+			}
+			break;
+
+			case 2:
+			stopArm();
+			System.out.println("Arm turn finished!");
+			return true;
+		}
+		System.out.println("armState: " + armState);
+		return false;
+	}
+
 	public void spinArm(double speed)
 	{
 		armMotor1.set(speed);
@@ -136,8 +160,9 @@ public class BallMech
 		armMotor1.set(0.0);
 	}
 
-	public void testArmEnc()
+	public double testArmEnc()
 	{
 		System.out.println(armEncoder1.getPosition());
+		return armEncoder1.getPosition();
 	}
 }

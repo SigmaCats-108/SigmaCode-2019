@@ -120,7 +120,7 @@ public class Drivetrain
 	 * 
 	 * @param inches
 	 */
-	public void driveStraight(int inches)
+	public boolean driveStraight(int inches)
 	{
 		double kp = 0.008;
 		switch(moveState)
@@ -143,9 +143,13 @@ public class Drivetrain
 
 			case 2:
 			sigmaDrive(0.0, 0.0);
-			break;
+		
+			return true;
+			
 		}
 		System.out.println("moveState: " + moveState);
+		return false;
+		
 	}
 
 	/**

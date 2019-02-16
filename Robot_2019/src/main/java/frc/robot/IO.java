@@ -16,7 +16,7 @@ public class IO
     public static void UpdateControllers()
     {
         m_buttonA = mainController.getRawButtonPressed(1);
-        m_buttonB = mainController.getRawButton(2);
+        m_buttonB = mainController.getRawButtonPressed(2);
         m_buttonX = mainController.getRawButton(3);
         m_buttonXRaw = mainController.getRawButton(3);
         m_buttonY = mainController.getRawButtonPressed(4);
@@ -68,6 +68,11 @@ public class IO
             Robot.hatchMech.hatchExtender();
         }
 
+        if(m_buttonB)
+        {
+            Robot.hatchMech.hatchEjector();
+        }
+
         /**
          * Changes the state of the Robot Lifter
          */
@@ -115,25 +120,24 @@ public class IO
          */
         if(m_leftBumper)
         {
-            Robot.ballMech.setIntake(0.5);
+            Robot.ballMech.intake(0.5);
         }
         else if(m_rightBumper)
         {
-            Robot.ballMech.setIntake(-0.5);
+            Robot.ballMech.outake(0.5);
         }
         else
         {
-            Robot.ballMech.setIntake(0.00); //Holds the ball in place (Set to zero if this becomes problamatic)
+            Robot.ballMech.intake(0.00); //Holds the ball in place (Set to zero if this becomes problamatic)
         }
 
        
 
         // Operator Controller
 
-        
-        // /**
-        //  * Sets the ballMech arm position
-        //  */
+        /**
+         * Sets the ballMech arm position
+         */
         // if(o_buttonA)
         // {
         //     Robot.ballMech.setArm(RobotMap.ArmPosition.LOADING_FLOOR);
@@ -154,12 +158,10 @@ public class IO
         // {
         //     Robot.ballMech.stopArm();
         // }
-        
 
         /**
          * Turns the arm motor based on button input
          */
-        
         if(o_buttonY)
         {
             Robot.ballMech.spinArm(0.5);
@@ -172,7 +174,6 @@ public class IO
         {
             Robot.ballMech.stopArm();
         }
-        
 
         if(o_buttonB)
         {
@@ -186,7 +187,30 @@ public class IO
         {
             Robot.climbMech.setClimbMotors(0.0);
         }
-        
+    }
+
+    public static void TestControllers()
+    {
+        // if(o_buttonA)
+        // {
+        //     Robot.test.push1();
+        // }
+        // if(o_buttonB)
+        // {
+        //     Robot.test.push2();
+        // }
+        // if(o_buttonX)
+        // {
+        //     Robot.test.push3();
+        // }
+        // if(o_buttonY)
+        // {
+        //     Robot.test.push4();
+        // }
+        // if(o_leftBumper)
+        // {
+        //     Robot.test.push5();
+        // }
     }
 
     /**

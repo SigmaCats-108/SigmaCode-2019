@@ -10,10 +10,13 @@ import frc.robot.RobotMap;
  */
 public class HatchMech
 {
+    //private static DoubleSolenoid hatchPunt = new DoubleSolenoid(RobotMap.PCM1, RobotMap.HATCH_CLAMP_FWD, RobotMap.HATCH_CLAMP_REV);
     private static DoubleSolenoid hatchClamp = new DoubleSolenoid(RobotMap.PCM1, RobotMap.HATCH_CLAMP_FWD, RobotMap.HATCH_CLAMP_REV);
     private static DoubleSolenoid hatchExtender = new DoubleSolenoid(RobotMap.PCM1, RobotMap.HATCH_PUSHER_FWD, RobotMap.HATCH_PUSHER_REV);
+    private static DoubleSolenoid hatchEjector = new DoubleSolenoid(RobotMap.PCM1, 3, 4);
 
     private int hatchMechState = 0;
+    private int hatchScoreState = 0, counter = 0;
     
     public void scoreHatch()
     {
@@ -51,6 +54,18 @@ public class HatchMech
         System.out.println("Trackstate: " + hatchMechState);
     }
 
+    public void hatchEjector()
+    {
+        if(hatchEjector.get() == Value.kForward)
+        {
+            hatchEjector.set(Value.kReverse);
+        }
+        else
+        {
+            hatchEjector.set(Value.kForward);
+        }
+    }
+
     public void hatchClamp()
 	{
         if(hatchClamp.get() == Value.kForward)
@@ -73,6 +88,18 @@ public class HatchMech
         {
             hatchExtender.set(Value.kForward);
         }
+    }
+
+    public void hatchScore()
+    {
+        switch (hatchScoreState)
+        {
+            case 0:
+            
+        }
+
+
+
     }
     
     public void resetHatchState()

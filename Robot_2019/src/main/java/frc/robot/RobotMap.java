@@ -48,6 +48,8 @@ public class RobotMap
 	public static final int HATCH_CLAMP_REV = 2;
 	public static final int HATCH_PUSHER_FWD = 6;
 	public static final int HATCH_PUSHER_REV = 1;
+	public static final int ARM_CLUTCH_REV = 1000;
+	public static final int ARM_CLUTCH_FWD = 1001;
 	public static final int HABLIFT_PISTON_FWD = 7;
 	public static final int HABLIFT_PISTON_REV = 0;
 

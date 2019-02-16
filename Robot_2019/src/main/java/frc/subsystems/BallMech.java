@@ -6,6 +6,8 @@ import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANEncoder;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import frc.robot.RobotMap;
 
 /**
@@ -18,6 +20,8 @@ public class BallMech
 	private static CANSparkMax armMotor2 = new CANSparkMax(RobotMap.BALLMECH_RIGHTARM, MotorType.kBrushed);
 	private static CANSparkMax intakeMotor = new CANSparkMax(RobotMap.BALLMECH_INTAKE, MotorType.kBrushed);
 	private static CANEncoder armEncoder1 = armMotor1.getEncoder();
+	
+	//private static DoubleSolenoid armClutch = new DoubleSolenoid(RobotMap.PCM2, RobotMap.ARM_CLUTCH_FWD, RobotMap.ARM_CLUTCH_REV);
 
 	private AnalogInput ultrasonicAnalog = new AnalogInput(0);
 	private DigitalInput bumper1 = new DigitalInput(0);
@@ -152,12 +156,14 @@ public class BallMech
 
 	public void spinArm(double speed)
 	{
+		//armClutch.set(Value.kReverse);
 		armMotor1.set(speed);
 	}
 
 	public void stopArm()
 	{
 		armMotor1.set(0.0);
+		//armClutch.set(Value.kForward);
 	}
 
 	public double testArmEnc()

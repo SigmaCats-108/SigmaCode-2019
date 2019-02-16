@@ -17,9 +17,10 @@ public class HatchMech
 
     private int hatchMechState = 0;
     private int hatchScoreState = 0, hatchRetrieveState = 0, counter = 0;
-    private boolean isHatchOnRobot;
     
-    public void hatchSequence()
+    
+
+    public boolean hatchSequence()
     {
         //System.out.println("Hatch State: " + hatchMechState);
         switch (hatchMechState)
@@ -39,16 +40,47 @@ public class HatchMech
             case 1:
             if(Robot.sigmaSight.aimAndRange())
             {
-                hatchMechState = 2;
+                //hatchMechState = 2;
+                Robot.drivetrain.sigmaDrive(0.0, 0.0);
             }
             break;
 
             case 2:
-            //Robot.drivetrain.sigmaDrive(0.2, 0.2);
+            //Robot.drivetrain.driveStraight(18, 0.3);
             break;
 
+            case 3:
+            if(hatchClamp.get() == Value.kForward)
+            {
+                hatchMechState = 4;
+            }
+            else 
+            {
+                hatchMechState = 5;
+            }
+            break;
+
+            case 4:
+            if(scoreHatch())
+            {
+                hatchMechState = 6;
+            }
+            break;
+
+            case 5:
+            if(retrieveHatch())
+            {
+                hatchMechState = 6;
+            }
+            break;
+
+            case 6:
+            System.out.println("hatch sequnce finished");
+            hatchMechState = 0;
+            return true;
         }
         System.out.println("Trackstate: " + hatchMechState);
+        return false;
     }
 
     public void hatchEjector()
@@ -87,7 +119,7 @@ public class HatchMech
         }
     }
 
-    public boolean hatchScore()
+    public boolean scoreHatch()
     {
         switch (hatchScoreState)
         {
@@ -124,7 +156,7 @@ public class HatchMech
         return false;
     }
 
-    public boolean hatchRetrieve()
+    public boolean retrieveHatch()
     {
         switch (hatchRetrieveState)
         {

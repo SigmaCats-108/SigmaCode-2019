@@ -82,45 +82,13 @@ public class Drivetrain
 	}
 
 	/**
-	 * Uses angle heading to drive in a straight line
-	 * 
-	 * @param yValue Joystick value to be used
-	 * @param robotHeading The robot's current heading
-	 * @param desiredAngle Angle at which the robot will drive
-	 */
-	public void driveStraight(double yValue, double robotHeading, double desiredAngle)
-	{
-		double constant;
-		double difference = desiredAngle - robotHeading;
-		if(difference != 0)
-		{
-			if(difference > 0)
-			{
-				constant = 1 - (.02 * difference);
-				sigmaDrive(yValue, yValue * constant);
-				// System.out.println("Left speed: " + yValue + "; Right speed: " + yValue * constant);
-			}
-			else 
-			{
-				difference = Math.abs(difference);
-				constant = 1 - (.02 * (difference));
-				sigmaDrive(yValue * constant, yValue);
-				// System.out.println("Left speed: " + yValue  * constant + "; Right speed: " + yValue);
-			}
-		}
-		else 
-		{
-			sigmaDrive(yValue, yValue);
-		}
-	}
-
-	/**
 	 * Drives the robot a set distance in a straight line
 	 * Does not use the gyro to account for angle
 	 * 
 	 * @param inches
+	 * @param speed
 	 */
-	public boolean driveStraight(int inches)
+	public boolean driveStraight(int inches, double speed)
 	{
 		double kp = 0.008;
 		switch(moveState)
@@ -132,8 +100,8 @@ public class Drivetrain
 			
 			case 1:
 			double displacement = targetEncVal - leftEncoder.getPosition();
-			double speed = displacement / kp;
-			sigmaDrive(speed, speed);
+			double move_command = displacement * kp * speed;
+			sigmaDrive(move_command, move_command);
 			System.out.println("displacement: " + displacement);
 			if(leftEncoder.getPosition() > targetEncVal - 5)
 			{

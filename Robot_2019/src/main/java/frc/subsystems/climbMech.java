@@ -44,17 +44,17 @@ public class ClimbMech
      * 3 - Once arm is all the way down, begin driving forward
      * 4 - Stop driving once the HAB platform is detected and retract the pistons
      * 5 - Continue driving for X inches
-     * 6 - HAB Climb Sequence Complete
+     * 6 - Stop all motors
+     * 7 - HAB Climb Sequence Complete
      */
     public boolean climb()
     {
-
         switch(climbState)
         {
             case 0:
             //move arm down(until limit switch)
-            liftPistons.set(Value.kForward);
             setClimbMotors(0.3);
+            liftPistons.set(Value.kForward);
             Robot.ballMech.spinArm(-0.5);
 
             /*
@@ -81,17 +81,14 @@ public class ClimbMech
             case 2:
             
             setClimbMotors(0.3);
-            if(!Robot.drivetrain.driveStraight(20))
+            if(Robot.drivetrain.driveStraight(20))
             {
+                setClimbMotors(0.0);
+                Robot.drivetrain.sigmaDrive(0.0, 0.0);
                 climbState = 3;
+                return true;
             }
             break;
-
-            
-            
-
-            
-
         }
         return false;
     }

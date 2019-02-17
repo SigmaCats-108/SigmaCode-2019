@@ -37,12 +37,12 @@ public class Drivetrain
 	public Drivetrain()
 	{
 		// Set drivetrain motors to coast
-		leftSparkMax1.setIdleMode(IdleMode.kBrake);
-		leftSparkMax2.setIdleMode(IdleMode.kBrake);
-		leftSparkMax3.setIdleMode(IdleMode.kBrake);
-		rightSparkMax1.setIdleMode(IdleMode.kBrake);
-		rightSparkMax2.setIdleMode(IdleMode.kBrake);
-		rightSparkMax3.setIdleMode(IdleMode.kBrake);
+		leftSparkMax1.setIdleMode(IdleMode.kCoast);
+		leftSparkMax2.setIdleMode(IdleMode.kCoast);
+		leftSparkMax3.setIdleMode(IdleMode.kCoast);
+		rightSparkMax1.setIdleMode(IdleMode.kCoast);
+		rightSparkMax2.setIdleMode(IdleMode.kCoast);
+		rightSparkMax3.setIdleMode(IdleMode.kCoast);
 
 		// Set up followers
 		leftSparkMax2.follow(leftSparkMax1);

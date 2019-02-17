@@ -126,11 +126,11 @@ public class IO
          */
         if(m_leftBumper)
         {
-            Robot.ballMech.intake(0.1);
+            Robot.ballMech.intake(0.6);
         }
         else if(m_rightBumper)
         {
-            Robot.ballMech.outake(0.1);
+            Robot.ballMech.outake(0.6);
         }
         else
         {

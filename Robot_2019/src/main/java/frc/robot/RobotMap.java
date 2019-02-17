@@ -32,20 +32,20 @@ public class RobotMap
 	public static final int TESTMECH_TEST_MOTOR = 55;
 
 	// Vision System Constants
-	public static final double HATCH_VISION_TURN_PGAIN = -0.007;
-	public static final double HATCH_VISION_DISTANCE_PGAIN = 0.2;
+	public static final double HATCH_VISION_TURN_PGAIN = -0.008;
+	public static final double HATCH_VISION_DISTANCE_PGAIN = 0.3;
 	public static final double HATCH_VISION_MIN_AIM_COMMAND = 0.0;
 	public static final double HATCH_VISION_DESIRED_TARGET_AREA = 4.0;
 
 	// Pneumatics ID Values
 	public static final int PCM1 = 0;
 	public static final int PCM2 = 14;
-	public static final int DRIVETRAIN_SHIFTER_FWD = 0;
-	public static final int DRIVETRAIN_SHIFTER_REV = 7;
+	public static final int DRIVETRAIN_SHIFTER_FWD = 5;
+	public static final int DRIVETRAIN_SHIFTER_REV = 2;
 	public static final int HATCH_EXTENDER_FWD = 0;
 	public static final int HATCH_EXTENDER_REV = 7;
-	public static final int HATCH_CLAMP_FWD = 5;
-	public static final int HATCH_CLAMP_REV = 2;
+	public static final int HATCH_CLAMP_FWD = 0;
+	public static final int HATCH_CLAMP_REV = 7;
 	public static final int HATCH_PUSHER_FWD = 6;
 	public static final int HATCH_PUSHER_REV = 1;
 	public static final int ARM_CLUTCH_REV = 1000;

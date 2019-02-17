@@ -8,7 +8,7 @@ public class IO
     public static XboxController operatorController = new XboxController(1);
 
     // Main Controller Variables
-    public static boolean m_buttonA, m_buttonB, m_buttonX, m_buttonXRaw, m_buttonY, m_leftBumper, m_leftBumperReleased, m_rightBumper, m_leftStick, m_rightStick;
+    public static boolean m_buttonA, m_buttonB, m_buttonX, m_buttonXRaw, m_buttonY, m_leftBumper, m_leftBumperReleased, m_rightBumper, m_leftStick, m_rightStick, o_buttonBReleased;
     public static double m_leftTrigger, m_rightTrigger, m_leftAnalogX, m_rightAnalogX, m_leftAnalogY, m_rightAnalogY;
     public static boolean o_buttonA, o_buttonB, o_buttonX, o_buttonXReleased, o_buttonY, o_leftBumper, o_rightBumper, o_leftStick, o_rightStick;
     public static double o_leftTrigger, o_rightTrigger, o_leftAnalogX, o_rightAnalogX, o_leftAnalogY, o_rightAnalogY;
@@ -34,6 +34,7 @@ public class IO
 
         o_buttonA = operatorController.getRawButton(1);
         o_buttonB = operatorController.getRawButton(2);
+        o_buttonBReleased = operatorController.getRawButtonReleased(2);
         o_buttonX = operatorController.getRawButton(3);
         o_buttonY = operatorController.getRawButton(4);
         o_leftBumper = operatorController.getRawButton(5);
@@ -55,37 +56,40 @@ public class IO
         /**
          * Changes the state of the Hatch Clamp
          */
-        if(m_buttonA)
+        if(!o_buttonB && !o_buttonX)
         {
-            Robot.hatchMech.hatchClamp();
-        }
+            if(m_buttonA)
+            {
+                Robot.hatchMech.hatchClamp();
+            }
 
         /**
          * Changes the state of the Hatch Extender
          */
-        if(m_buttonY)
-        {
-            Robot.hatchMech.hatchExtender();
-        }
-
+            if(m_buttonY)
+            {
+                Robot.hatchMech.hatchExtender();
+            }
+        
         /**
          * Activates the pistons that shoot the hatch from the mechanism
          */
-        if(m_buttonB)
-        {
-            Robot.hatchMech.hatchEjector();
-        }
+            if(m_buttonB)
+            {
+                Robot.hatchMech.hatchEjector();
+            }
 
         /**
          * Changes the state of the Robot Lifter
          */
-        if(m_buttonX)
-        {
-            Robot.climbMech.liftRobot(true);
-        }
-        else
-        {
-            Robot.climbMech.liftRobot(false);
+            if(m_buttonX)
+            {
+                Robot.climbMech.liftRobot(true);
+            }
+            else
+            {
+                Robot.climbMech.liftRobot(false);
+            }
         }
 
         // /**
@@ -122,11 +126,11 @@ public class IO
          */
         if(m_leftBumper)
         {
-            Robot.ballMech.intake(0.5);
+            Robot.ballMech.intake(0.1);
         }
         else if(m_rightBumper)
         {
-            Robot.ballMech.outake(0.5);
+            Robot.ballMech.outake(0.1);
         }
         else
         {
@@ -166,15 +170,36 @@ public class IO
          */
         if(o_buttonY)
         {
-            Robot.ballMech.spinArm(0.5);
+            Robot.ballMech.spinArm(0.80);
         }
         else if(o_buttonA)
         {
-            Robot.ballMech.spinArm(-0.5);
+            Robot.ballMech.spinArm(-0.80);
         }
         else if (!(o_buttonY || o_buttonX))
         {
             Robot.ballMech.stopArm();
+        }
+
+        if(o_buttonB)
+        {
+            Robot.hatchMech.hatchSequence();
+
+         //   Robot.hatchMech.scoreHatch();
+        }
+        else
+        {
+            Robot.hatchMech.hatchScoreState = 0;
+            Robot.hatchMech.hatchMechState = 0;
+        }
+
+        if (o_buttonX)
+        {
+            Robot.hatchMech.hatchPickupSequence();
+        }
+        else
+        {
+            Robot.hatchMech.hatchMechPickupState = 0;
         }
 
         if(o_leftBumper)

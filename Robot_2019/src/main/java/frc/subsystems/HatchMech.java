@@ -11,16 +11,93 @@ import frc.robot.RobotMap;
 public class HatchMech
 {
     //private static DoubleSolenoid hatchPunt = new DoubleSolenoid(RobotMap.PCM1, RobotMap.HATCH_CLAMP_FWD, RobotMap.HATCH_CLAMP_REV);
-    private static DoubleSolenoid hatchClamp = new DoubleSolenoid(RobotMap.PCM1, RobotMap.HATCH_CLAMP_FWD, RobotMap.HATCH_CLAMP_REV);
+    private static DoubleSolenoid hatchClamp = new DoubleSolenoid(RobotMap.PCM2, RobotMap.HATCH_CLAMP_FWD, RobotMap.HATCH_CLAMP_REV);
     private static DoubleSolenoid hatchExtender = new DoubleSolenoid(RobotMap.PCM1, RobotMap.HATCH_PUSHER_FWD, RobotMap.HATCH_PUSHER_REV);
     private static DoubleSolenoid hatchEjector = new DoubleSolenoid(RobotMap.PCM1, 3, 4);
 
-    private int hatchMechState = 0;
-    private int hatchScoreState = 0, hatchRetrieveState = 0, counter = 0;
-    
+    public int hatchMechState = 0;
+    public int hatchScoreState = 0, hatchMechPickupState = 0, hatchRetrieveState = 0, counter = 0;
     
 
-    public boolean hatchSequence()
+    public boolean hatchPickupSequence()
+    {
+        //System.out.println("Hatch State: " + hatchMechState);
+        switch (hatchMechPickupState)
+        {
+            case 0:
+            if (!Robot.sigmaSight.isValidTarget())
+            {
+                Robot.sigmaSight.seekTarget();
+                //System.out.println("No target detected");
+            }
+            else
+            {
+                hatchMechPickupState = 1;
+            }
+            break;
+
+            case 1:
+            if(Robot.sigmaSight.aimAndRange())
+            {
+                hatchMechPickupState = 2;
+                Robot.drivetrain.sigmaDrive(0.0, 0.0);
+            }
+            break;
+
+            case 2:
+            if(Robot.drivetrain.driveStraight(44))
+            {
+                hatchMechPickupState = 3;
+            }
+            break;
+
+            case 3:
+            //hatchExtender.set(Value.kForward);
+            Robot.climbMech.liftRobot(true); //extends hatch panel
+
+            try {Thread.sleep(300);}
+            catch (InterruptedException e) {}
+
+            hatchMechPickupState = 4;
+            break;
+
+            case 4:
+
+        try {Thread.sleep(300);}
+        catch (InterruptedException e) {}
+
+            {
+                hatchEjector.set(Value.kReverse); //hatch clamp
+               // Robot.hatchMech.hatchEjector();
+               hatchMechPickupState = 5;
+            }
+            break;
+
+            case 5:
+
+          try {Thread.sleep(1000);}
+          catch (InterruptedException e) {}
+            {
+               // hatchExtender.set(Value.kReverse);
+                Robot.climbMech.liftRobot(false); //extends hatch panel
+                hatchMechPickupState = 6;
+            }
+            break;
+
+            case 6:
+            {
+               // Robot.drivetrain.moveState = 0;           
+            }
+            return true;
+        }
+        //System.out.println("Trackstate: " + hatchMechState);
+        return false;
+    }
+
+
+
+
+    public boolean hatchSequence() //scores hatch
     {
         //System.out.println("Hatch State: " + hatchMechState);
         switch (hatchMechState)
@@ -29,7 +106,7 @@ public class HatchMech
             if (!Robot.sigmaSight.isValidTarget())
             {
                 Robot.sigmaSight.seekTarget();
-                System.out.println("No target detected");
+                //System.out.println("No target detected");
             }
             else
             {
@@ -40,46 +117,76 @@ public class HatchMech
             case 1:
             if(Robot.sigmaSight.aimAndRange())
             {
-                //hatchMechState = 2;
+                hatchMechState = 2;
                 Robot.drivetrain.sigmaDrive(0.0, 0.0);
             }
             break;
 
             case 2:
-            //Robot.drivetrain.driveStraight(18, 0.3);
+            if(Robot.drivetrain.driveStraight(36))
+            {
+                hatchMechState = 3;
+            }
             break;
 
             case 3:
-            if(hatchClamp.get() == Value.kForward)
+            //hatchExtender.set(Value.kForward);
+            Robot.climbMech.liftRobot(true); //extend hatch panel
+
+            try {Thread.sleep(100);}
+            catch (InterruptedException e) {}
+
+      //      if(counter(100))
             {
-                hatchMechState = 4;
-            }
-            else 
-            {
-                hatchMechState = 5;
+                //hatchClamp.set(Value.kReverse);
+             //   Robot.hatchMech.hatchExtender();
+             hatchMechState = 4;
             }
             break;
 
             case 4:
-            if(scoreHatch())
+        //    if(counter(100))
+        try {Thread.sleep(100);} //delay
+        catch (InterruptedException e) {}
+
             {
-                hatchMechState = 6;
+                hatchEjector.set(Value.kForward); //hatch clamp
+               // Robot.hatchMech.hatchEjector();
+               hatchMechState = 5;
             }
             break;
 
             case 5:
-            if(retrieveHatch())
+          //  if(counter(1000))
+
+          try {Thread.sleep(100);}
+          catch (InterruptedException e) {}
             {
+                //hatchEjector.set(Value.kReverse);
+                hatchExtender.set(Value.kForward); //hatch ejecter
                 hatchMechState = 6;
             }
             break;
-
+         
             case 6:
-            System.out.println("hatch sequnce finished");
-            hatchMechState = 0;
-            return true;
+          //  if(counter(1000))
+
+          try {Thread.sleep(1000);}
+          catch (InterruptedException e) {}
+            {
+                hatchExtender.set(Value.kReverse); //hatch ejecter again
+                Robot.climbMech.liftRobot(false); //retract hatch panel
+                hatchMechState = 7;
+            }
+            break;
+
+            case 7:
+            {
+
+            }
+            break;
         }
-        System.out.println("Trackstate: " + hatchMechState);
+        //System.out.println("Trackstate: " + hatchMechState);
         return false;
     }
 
@@ -123,35 +230,43 @@ public class HatchMech
     {
         switch (hatchScoreState)
         {
-            case 0:
-            hatchExtender.set(Value.kForward);
-            if(counter(1000))
-            {
-                hatchScoreState = 1;
-            }
-            break;
+            // case 0:
+            // //hatchExtender.set(Value.kForward);
+            // Robot.climbMech.liftRobot(true);
+            // if(counter(1000))
+            // {
+            //     //hatchClamp.set(Value.kReverse);
+            //  //   Robot.hatchMech.hatchExtender();
+            //     hatchScoreState = 1;
+            // }
+            // break;
 
-            case 1:
-            hatchClamp.set(Value.kReverse);
-            if(counter(1000))
-            {
-                hatchScoreState = 2;
-            }
-            break;
+            // case 1:
+            // if(counter(1000))
+            // {
+            //     hatchEjector.set(Value.kForward);
+            //    // Robot.hatchMech.hatchEjector();
+            //     hatchScoreState = 2;
+            // }
+            // break;
 
-            case 2:
-            hatchEjector.set(Value.kForward);
-            if(counter(1000))
-            {
-                hatchScoreState = 3;
-            }
-            break;
-            
-            case 3:
-            hatchEjector.set(Value.kReverse);
-            hatchExtender.set(Value.kReverse);
-            hatchScoreState = 0;
-            return true;
+            // case 2:
+            // if(counter(1000))
+            // {
+            //     //hatchEjector.set(Value.kReverse);
+            //     hatchExtender.set(Value.kForward);
+            //     hatchScoreState = 3;
+            // }
+            // break;
+         
+            // case 3:
+            // if(counter(1000))
+            // {
+            //     hatchExtender.set(Value.kReverse);
+            //     Robot.climbMech.liftRobot(false);
+            // }
+            // hatchScoreState = 0;
+            // return true;
         }
         return false;
     }
@@ -161,7 +276,8 @@ public class HatchMech
         switch (hatchRetrieveState)
         {
             case 0:
-            hatchExtender.set(Value.kForward);
+            //hatchExtender.set(Value.kForward);
+            Robot.climbMech.liftRobot(true);
             if(counter(1000))
             {
                 hatchRetrieveState = 1;
@@ -169,7 +285,8 @@ public class HatchMech
             break;
 
             case 1:
-            hatchClamp.set(Value.kForward);
+            //hatchClamp.set(Value.kForward);
+            Robot.hatchMech.hatchEjector();
             if(counter(1000))
             {
                 hatchRetrieveState = 2;
@@ -177,7 +294,8 @@ public class HatchMech
             break;
 
             case 2:
-            hatchExtender.set(Value.kReverse);
+            //hatchExtender.set(Value.kReverse);
+            Robot.climbMech.liftRobot(false);
             hatchRetrieveState = 0;
             return true;
         }
@@ -186,6 +304,7 @@ public class HatchMech
     
     public boolean counter(int ms)
     {
+     System.out.println(counter + "\r\n");
         if(counter < ms / 20)
         {
             counter++;

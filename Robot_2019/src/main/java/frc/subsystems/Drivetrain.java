@@ -25,13 +25,13 @@ public class Drivetrain
 	
 	private DifferentialDrive drive;
 
-	private static DoubleSolenoid gearShifter = new DoubleSolenoid(RobotMap.PCM2, RobotMap.DRIVETRAIN_SHIFTER_FWD, RobotMap.DRIVETRAIN_SHIFTER_REV);
+	private static DoubleSolenoid gearShifter = new DoubleSolenoid(RobotMap.PCM1, RobotMap.DRIVETRAIN_SHIFTER_FWD, RobotMap.DRIVETRAIN_SHIFTER_REV);
 
 	private double angleError, turnSpeed, targetEncVal = 0;
 	private double turn_Kp = 1/360, desiredAngle;
-	private int moveState = 0;
+	public int moveState = 0;
 	public int turnState = 0;
-	private final double ENC_TICKS_PER_INCH = 0.416;
+	private final double ENC_TICKS_PER_INCH = 58.4 / 60;
 
 
 	public Drivetrain()
@@ -76,9 +76,9 @@ public class Drivetrain
 	public void highGear(boolean gearState)
 	{
 		if(gearState)
-			gearShifter.set(Value.kForward);
-		else
 			gearShifter.set(Value.kReverse);
+		else
+			gearShifter.set(Value.kForward);
 	}
 
 	/**
@@ -88,9 +88,34 @@ public class Drivetrain
 	 * @param inches
 	 * @param speed
 	 */
-	public boolean driveStraight(int inches, double speed)
+	public boolean driveStraight(int inches)
 	{
-		double kp = 0.008;
+
+		switch(moveState)
+		{
+			case 0:
+			targetEncVal = leftEncoder.getPosition() + (inches * ENC_TICKS_PER_INCH);
+			moveState = 1;
+			break;
+			
+			case 1:
+			sigmaDrive(-0.35, -0.35);
+			if(leftEncoder.getPosition() > targetEncVal - 5)
+			{
+				moveState = 2;
+			}
+			break;
+
+			case 2:
+			sigmaDrive(0.0, 0.0);
+			moveState = 0;
+			return true;
+		}
+
+		return false;
+
+		/*
+		double kp = 0.03; 
 		switch(moveState)
 		{
 			case 0:
@@ -100,9 +125,8 @@ public class Drivetrain
 			
 			case 1:
 			double displacement = targetEncVal - leftEncoder.getPosition();
-			double move_command = displacement * kp * speed;
-			sigmaDrive(move_command, move_command);
-			System.out.println("displacement: " + displacement);
+			double move_command = displacement * kp;
+			sigmaDrive(move_command * -1, move_command * -1);
 			if(leftEncoder.getPosition() > targetEncVal - 5)
 			{
 				moveState = 2;
@@ -115,9 +139,14 @@ public class Drivetrain
 			return true;
 			
 		}
-		System.out.println("moveState: " + moveState);
+		//System.out.println("moveState: " + moveState);
 		return false;
-		
+		*/
+	}
+
+	public void update()
+	{
+		//System.out.println("encoder: " + leftEncoder.getPosition());
 	}
 
 	/**

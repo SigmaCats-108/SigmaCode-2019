@@ -81,7 +81,7 @@ public class ClimbMech
             case 2:
             
             setClimbMotors(0.3);
-            if(Robot.drivetrain.driveStraight(20, 1.0))
+            if(Robot.drivetrain.driveStraight(20))
             {
                 setClimbMotors(0.0);
                 Robot.drivetrain.sigmaDrive(0.0, 0.0);

@@ -112,12 +112,13 @@ public class SigmaSight
         distance_adjust = distanceKp * (desiredArea - area);
         //distance_adjust = ((area / desiredArea) - 1) * -1;
 
-        left_command = steering_adjust + distance_adjust;
-        right_command = -steering_adjust + distance_adjust;
+        left_command = steering_adjust + distance_adjust * -1;
+        right_command = -steering_adjust + distance_adjust * -1;
 
+        System.out.println("leftSpeed: " + left_command);
         Robot.drivetrain.sigmaDrive(left_command, right_command);
 
-        if( area > desiredArea - 0.1 && area < desiredArea + 0.1 && xVal > -1.0 && xVal < 1.0)
+        if( area > desiredArea - 0.5 && area < desiredArea + 0.5 && xVal > -1.0 && xVal < 1.0)
             return true;
         else
             return false;

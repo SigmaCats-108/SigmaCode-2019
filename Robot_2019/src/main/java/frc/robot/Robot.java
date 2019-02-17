@@ -43,6 +43,7 @@ public class Robot extends TimedRobot {
         sigmaSight.updateValues();
         sigmaSight.testValues();
         ballMech.testArmEnc();
+        drivetrain.update();
     }
     
     @Override
@@ -65,7 +66,11 @@ public class Robot extends TimedRobot {
     {
         IO.UpdateControllers();
 
-        drivetrain.sigmaDrive(IO.m_leftAnalogY, IO.m_rightAnalogY);
+        if(!IO.o_buttonB && !IO.o_buttonX)
+        {
+            drivetrain.sigmaDrive(IO.m_leftAnalogY, IO.m_rightAnalogY);
+        }
+        
         IO.ProcessControllers();
         //IO.TestControllers();
     }

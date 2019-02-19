@@ -118,7 +118,7 @@ public class SigmaSight
         System.out.println("leftSpeed: " + left_command);
         Robot.drivetrain.sigmaDrive(left_command, right_command);
 
-        if( area > desiredArea - 0.5 && area < desiredArea + 0.5 && xVal > -1.0 && xVal < 1.0)
+        if( area > desiredArea - 0.5 && area < desiredArea + 0.5 && xVal > -1.2 && xVal < 1.2)
             return true;
         else
             return false;

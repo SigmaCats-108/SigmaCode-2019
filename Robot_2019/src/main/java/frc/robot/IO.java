@@ -1,11 +1,13 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.Timer;
 
 public class IO
 {
     public static XboxController mainController = new XboxController(0);
     public static XboxController operatorController = new XboxController(1);
+    
 
     // Main Controller Variables
     public static boolean m_buttonA, m_buttonB, m_buttonX, m_buttonXRaw, m_buttonY, m_leftBumper, m_leftBumperReleased, m_rightBumper, m_leftStick, m_rightStick, o_buttonBReleased;
@@ -75,20 +77,20 @@ public class IO
          * Activates the pistons that shoot the hatch from the mechanism
          */
             if(m_buttonB)
-            {
-                Robot.hatchMech.hatchEjector();
-            }
+            Robot.hatchMech.hatchEjector();
+          
+
 
         /**
          * Changes the state of the Robot Lifter
          */
-            if(m_buttonX)
+            if(m_rightTrigger > 0.5)
             {
-                Robot.climbMech.liftRobot(true);
+                Robot.climbMech.liftRobot(false);
             }
             else
             {
-                Robot.climbMech.liftRobot(false);
+                Robot.climbMech.liftRobot(true);
             }
         }
 
@@ -168,18 +170,30 @@ public class IO
         /**
          * Turns the arm motor based on button input
          */
-        if(o_buttonY)
+        if(o_buttonY && Robot.ballMech.upperArmSwitchRight.get())
         {
-            Robot.ballMech.spinArm(0.80);
+            Robot.ballMech.spinArm(0.90);
         }
-        else if(o_buttonA)
+        else if(o_buttonA && Robot.ballMech.armSwitchRight.get())
         {
-            Robot.ballMech.spinArm(-0.80);
+            Robot.ballMech.spinArm(-0.90);
         }
-        else if (!(o_buttonY || o_buttonX))
+        else if (!(o_buttonY && o_buttonA))
         {
             Robot.ballMech.stopArm();
         }
+
+        // if((Robot.ballMech.upperArmSwitchLeft.get() && Robot.ballMech.upperArmSwitchRight.get()) && o_leftAnalogY > .3)
+        // {
+            // if(Math.abs(o_leftAnalogY) > 0.3)
+            // Robot.ballMech.spinArm(o_leftAnalogY * 0.9);
+        // }
+
+        // if((Robot.ballMech.armSwitchLeft.get() && Robot.ballMech.armSwitchRight.get()) && o_leftAnalogY < .3)
+        // {
+        //     Robot.ballMech.spinArm(o_leftAnalogY * 0.9);
+        // }
+        
 
         if(o_buttonB)
         {

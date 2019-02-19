@@ -44,6 +44,7 @@ public class Robot extends TimedRobot {
         sigmaSight.testValues();
         ballMech.testArmEnc();
         drivetrain.update();
+        hatchMech.updateHatchMech();
     }
     
     @Override
@@ -83,4 +84,5 @@ public class Robot extends TimedRobot {
     {
 
     }
+    
 }

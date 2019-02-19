@@ -12,7 +12,8 @@ public class ClimbMech
 {
 	private static CANSparkMax leftClimbMotor = new CANSparkMax(RobotMap.CLIMBMECH_MOTOR_LEFT, MotorType.kBrushed);
 	private static CANSparkMax rightClimbMotor = new CANSparkMax(RobotMap.CLIMBMECH_MOTOR_RIGHT, MotorType.kBrushed);
-	private static DoubleSolenoid liftPistons = new DoubleSolenoid(RobotMap.PCM1, RobotMap.HABLIFT_PISTON_FWD, RobotMap.HABLIFT_PISTON_REV);
+	private static DoubleSolenoid liftPistons = new DoubleSolenoid(RobotMap.PCM2, RobotMap.HABLIFT_PISTON_FWD, RobotMap.HABLIFT_PISTON_REV);
+    
 
     private int climbState = 0;
 
@@ -56,32 +57,32 @@ public class ClimbMech
             setClimbMotors(0.3);
             liftPistons.set(Value.kForward);
             Robot.ballMech.spinArm(-0.5);
-
-            /*
-            if(limitSwitch)
+            if(Robot.ballMech.armSwitchRight.get())
             climbState = 1;
-            */
             break;
 
             case 1:
             Robot.ballMech.stopArm();
             Robot.drivetrain.sigmaDrive(0.3, 0.3);
 
-            /*
-            if(ultrasonicSensor detects floor)
-            {
-                Robot.drivetrain.sigmaDrive(0.0, 0.0);
-                setClimbMotors(0.0);
-                liftPistons.set(Value.kReverse);
-                climbstate = 2;
-            }
-            */
+            // if(ultrasonicSensor.get detects floor)
+            // {
+            //     Robot.drivetrain.sigmaDrive(0.0, 0.0);
+            //     setClimbMotors(0.0);
+            //     liftPistons.set(Value.kReverse);
+            //     climbstate = 2;
+            // } 
             break;
 
             case 2:
+            try 
+            {
+                Thread.sleep(500);
+            }
+            catch (InterruptedException e) {}
             
             setClimbMotors(0.3);
-            if(Robot.drivetrain.driveStraight(20))
+            if(Robot.drivetrain.driveStraight(12))
             {
                 setClimbMotors(0.0);
                 Robot.drivetrain.sigmaDrive(0.0, 0.0);

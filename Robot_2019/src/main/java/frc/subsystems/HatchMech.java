@@ -17,8 +17,6 @@ public class HatchMech
     private static DoubleSolenoid hatchClamp = new DoubleSolenoid(RobotMap.PCM1, RobotMap.HATCH_CLAMP_FWD, RobotMap.HATCH_CLAMP_REV);
     private static DoubleSolenoid hatchExtender = new DoubleSolenoid(RobotMap.PCM1, RobotMap.HATCH_PUSHER_FWD, RobotMap.HATCH_PUSHER_REV);
     private static DoubleSolenoid hatchEjector = new DoubleSolenoid(RobotMap.PCM1, 6, 1);
-    private static Timer pickupTimer = new Timer();
-    private static Timer Timer = new Timer();
     public int hatchMechState = 0;
     public int hatchScoreState = 0, hatchMechPickupState = 0, hatchRetrieveState = 0, counter = 0;
     private boolean clamp;
@@ -29,71 +27,44 @@ public class HatchMech
         switch (hatchMechPickupState)
         {
             case 0:
-            if (!Robot.sigmaSight.isValidTarget())
-            {
-                Robot.sigmaSight.seekTarget();
-                //System.out.println("No target detected");
-            }
-            else
-            {
-                hatchMechPickupState = 1;
-            }
+                if (!Robot.sigmaSight.isValidTarget())
+                {
+                    Robot.sigmaSight.seekTarget();
+                    //System.out.println("No target detected");
+                }
+                else
+                {
+                    hatchMechPickupState = 1;
+                }
             break;
 
             case 1:
-            if(Robot.sigmaSight.aimAndRange())
-            {
-                hatchMechPickupState = 2;
-                Robot.drivetrain.sigmaDrive(0.0, 0.0);
-            }
+                if(Robot.sigmaSight.aimAndRange())
+                {
+                    hatchMechPickupState = 2;
+                    Robot.drivetrain.sigmaDrive(0.0, 0.0);
+                }
             break;
 
             case 2:
-            if(Robot.drivetrain.driveStraight(44))
-            {
-                hatchMechPickupState = 3;
-            }
+                if(Robot.drivetrain.driveStraight(44))
+                {
+                    hatchMechPickupState = 3;
+                }
             break;
 
             case 3:
-            //hatchExtender.set(Value.kForward);
-            
-            // try {Thread.sleep(300);}
-            // catch (InterruptedException e) {}
-
-            hatchMechPickupState = 4;
+                hatchClamp.set(Value.kForward); //hatch clamp
+                hatchMechPickupState = 4;
             break;
 
             case 4:
-
-       
-            
-                hatchClamp.set(Value.kForward); //hatch clamp
-               
-               hatchMechPickupState = 5;
-            
-            break;
-
-            case 5:
-
-        //   try {Thread.sleep(1000);}
-        //   catch (InterruptedException e) {}
-         //   {
-                //hatchExtender.set(Value.kReverse);
-                hatchMechPickupState = 6;
-          //  }
-            break;
-
-            case 6:
-            {
-               // Robot.drivetrain.moveState = 0;           
-            }
-            return true;
+                
+            break;            
         }
         //System.out.println("Trackstate: " + hatchMechState);
         return false;
     }
-
 
     public boolean hatchSequence() //scores hatch
     {
@@ -113,69 +84,79 @@ public class HatchMech
             break;
 
             case 1:
-            if(Robot.sigmaSight.aimAndRange())
-            {
-                hatchMechState = 2;
-                Robot.drivetrain.sigmaDrive(0.0, 0.0);
-            }
+                if(Robot.sigmaSight.aimAndRange())
+                {
+                    hatchMechState = 2;
+                    Robot.drivetrain.sigmaDrive(0.0, 0.0);
+                }
             break;
 
             case 2:
-            if(Robot.drivetrain.driveStraight(36))
-            {
-                hatchMechState = 3;
-            }
+                if(Robot.drivetrain.driveStraight(36))
+                {
+                    hatchMechState = 3;
+                    counter = 0;
+                }
             break;
 
             case 3:
-            hatchExtender.set(Value.kForward);
-            
-            try {Thread.sleep(100);}
-            catch (InterruptedException e) {}
+                hatchExtender.set(Value.kForward);
+                    
+                try {Thread.sleep(10);}
+                catch (InterruptedException e) {}
 
-      //      if(counter(100))
-            {
-                //hatchClamp.set(Value.kReverse);
-             //   Robot.hatchMech.hatchExtender();
-             hatchMechState = 4;
-            }
+                if(counter >= 10)
+                {
+                    hatchMechState = 4;
+                    counter = 0;
+                }
+                counter++;
             break;
 
             case 4:
-        //    if(counter(100))
-        try {Thread.sleep(100);} //delay
-        catch (InterruptedException e) {}
+                // 100
+                try {Thread.sleep(10);} //delay
+                catch (InterruptedException e) {}
 
-            {
-                hatchClamp.set(Value.kReverse); //hatch clamp
-               // Robot.hatchMech.hatchEjector();
-               hatchMechState = 5;
-            }
+                if(counter >= 10)
+                {
+                    hatchClamp.set(Value.kReverse); //hatch clamp
+                    hatchMechState = 5;
+                    counter = 0;
+                }
+
+                counter++;
             break;
 
             case 5:
-          //  if(counter(1000))
+                // 100
+                try {Thread.sleep(10);}
+                catch (InterruptedException e) {}
 
-          try {Thread.sleep(100);}
-          catch (InterruptedException e) {}
-            {
-                hatchEjector.set(Value.kForward);
-                
-                hatchMechState = 6;
-            }
+                if (counter >= 10)
+                {
+                    hatchEjector.set(Value.kForward);
+                    
+                    hatchMechState = 6;
+                    counter = 0;
+                }
+                counter++;
             break;
          
             case 6:
-          //  if(counter(1000))
+                // 500
+                try {Thread.sleep(10);}
+                catch (InterruptedException e) {}
 
-          try {Thread.sleep(500);}
-          catch (InterruptedException e) {}
-            {
-                hatchEjector.set(Value.kReverse); //hatch ejecter again
-                hatchExtender.set(Value.kReverse); //retract hatch panel
-                hatchClamp.set(Value.kReverse);
-                hatchMechState = 7;
-            }
+                if (counter >= 50)
+                {
+                    hatchEjector.set(Value.kReverse); //hatch ejecter again
+                    hatchExtender.set(Value.kReverse); //retract hatch panel
+                    hatchClamp.set(Value.kReverse);
+                    hatchMechState = 7;
+                    counter = 0;
+                }
+                counter++;
             break;
 
             case 7:
@@ -189,8 +170,7 @@ public class HatchMech
     public void hatchEjector()
     {
          if(hatchEjector.get() == Value.kForward)
-         {
-            
+         {            
             hatchEjector.set(Value.kReverse);
             try {Thread.sleep(200);} 
             catch (InterruptedException e) {

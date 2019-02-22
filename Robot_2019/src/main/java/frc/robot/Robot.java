@@ -10,8 +10,8 @@ import frc.subsystems.ClimbMech;
 import frc.subsystems.Drivetrain;
 import frc.subsystems.HatchMech;
 
-
-public class Robot extends TimedRobot {
+public class Robot extends TimedRobot 
+{
 
     public static Autonomous autonomous;
     public static Follower follower;
@@ -39,7 +39,6 @@ public class Robot extends TimedRobot {
     public void robotPeriodic()
     {
         navX.updateAHRS();
-        //navX.testAngle();
         sigmaSight.updateValues();
         sigmaSight.testValues();
         ballMech.testArmEnc();
@@ -50,13 +49,11 @@ public class Robot extends TimedRobot {
     @Override
     public void autonomousInit() 
     {
-        //follower.setupFollower();
     }
 
     @Override
     public void autonomousPeriodic()
     {
-        //autonomous.runAutonomous();
     }
 
     @Override
@@ -73,7 +70,6 @@ public class Robot extends TimedRobot {
         }
         
         IO.ProcessControllers();
-        //IO.TestControllers();
     }
 
     @Override
@@ -82,7 +78,5 @@ public class Robot extends TimedRobot {
     @Override
     public void testPeriodic()
     {
-
     }
-    
 }

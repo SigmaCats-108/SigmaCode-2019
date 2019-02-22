@@ -2,7 +2,6 @@ package frc.robot;
 
 public class RobotMap
 {
-
 	// Robot Stat Values
 	public static final double ROBOT_TIME_STEP = 0.02; // 20ms
 	public static final double ROBOT_MAX_VELOCITY = 3.2624; // meters per second
@@ -56,5 +55,4 @@ public class RobotMap
 	{
 		STARTING, LOADING_FLOOR, LOADING_WALL, SCORING, CLIMBING;
 	}
-
 }

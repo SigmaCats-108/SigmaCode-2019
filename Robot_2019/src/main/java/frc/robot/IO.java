@@ -55,35 +55,33 @@ public class IO
     {
         //Main Controller
         
-        /**
-         * Changes the state of the Hatch Clamp
-         */
         if(!o_buttonB && !o_buttonX)
         {
+            /**
+            * Changes the state of the Hatch Clamp
+            */
             if(m_buttonA)
             {
                 Robot.hatchMech.hatchClamp();
             }
 
-        /**
-         * Changes the state of the Hatch Extender
-         */
+            /**
+             * Changes the state of the Hatch Extender
+            */
             if(m_buttonY)
             {
                 Robot.hatchMech.hatchExtender();
             }
         
-        /**
-         * Activates the pistons that shoot the hatch from the mechanism
-         */
+            /**
+             * Activates the pistons that shoot the hatch from the mechanism
+            */
             if(m_buttonB)
             Robot.hatchMech.hatchEjector();
           
-
-
-        /**
-         * Changes the state of the Robot Lifter
-         */
+            /**
+             * Changes the state of the Robot Lifter
+            */
             if(m_rightTrigger > 0.5)
             {
                 Robot.climbMech.liftRobot(false);
@@ -94,26 +92,9 @@ public class IO
             }
         }
 
-        // /**
-        //  * Activates the hatch scoring / aquiring mechanism
-        //  */
-        // if(m_buttonB)
-        // {
-        //     Robot.hatchMech.scoreHatch();
-        // }
-        // else
-        // {
-        //     Robot.hatchMech.resetHatchState();
-        // }
-        
-        /* if(!Robot.drivetrain.turnAngle(180) && m_buttonX)
-        {
-            Robot.drivetrain.turnState = 0;
-        } */
-
         /**
          * Changes the gearstate of the drivetrain
-         */
+        */
         if(m_leftTrigger > 0.5)
         {
             Robot.drivetrain.highGear(true);
@@ -125,7 +106,7 @@ public class IO
 
         /**
          * Runs the intake
-         */
+        */
         if(m_leftBumper)
         {
             Robot.ballMech.intake(0.6);
@@ -139,37 +120,9 @@ public class IO
             Robot.ballMech.intake(0.00); //Holds the ball in place (Set to zero if this becomes problamatic)
         }
 
-       
-
-        // Operator Controller
-
-        /**
-         * Sets the ballMech arm position
-         */
-        // if(o_buttonA)
-        // {
-        //     Robot.ballMech.setArm(RobotMap.ArmPosition.LOADING_FLOOR);
-        // }
-        // else if(o_buttonB)
-        // {
-        //     Robot.ballMech.setArm(RobotMap.ArmPosition.LOADING_WALL);
-        // }
-        // else if(o_buttonX)
-        // {
-        //     Robot.ballMech.setArm(RobotMap.ArmPosition.SCORING);
-        // }
-        // else if(o_buttonY)
-        // {
-        //     Robot.ballMech.setArm(RobotMap.ArmPosition.CLIMBING);
-        // }
-        // else
-        // {
-        //     Robot.ballMech.stopArm();
-        // }
-
         /**
          * Turns the arm motor based on button input
-         */
+        */
         if(o_buttonY && Robot.ballMech.upperArmSwitchRight.get())
         {
             Robot.ballMech.spinArm(0.90);
@@ -183,23 +136,9 @@ public class IO
             Robot.ballMech.stopArm();
         }
 
-        // if((Robot.ballMech.upperArmSwitchLeft.get() && Robot.ballMech.upperArmSwitchRight.get()) && o_leftAnalogY > .3)
-        // {
-            // if(Math.abs(o_leftAnalogY) > 0.3)
-            // Robot.ballMech.spinArm(o_leftAnalogY * 0.9);
-        // }
-
-        // if((Robot.ballMech.armSwitchLeft.get() && Robot.ballMech.armSwitchRight.get()) && o_leftAnalogY < .3)
-        // {
-        //     Robot.ballMech.spinArm(o_leftAnalogY * 0.9);
-        // }
-        
-
         if(o_buttonB)
         {
-            Robot.hatchMech.hatchSequence();
-
-         //   Robot.hatchMech.scoreHatch();
+            Robot.hatchMech.hatchScoreSequence();
         }
         else
         {
@@ -230,30 +169,6 @@ public class IO
         }
     }
 
-    public static void TestControllers()
-    {
-        // if(o_buttonA)
-        // {
-        //     Robot.test.push1();
-        // }
-        // if(o_buttonB)
-        // {
-        //     Robot.test.push2();
-        // }
-        // if(o_buttonX)
-        // {
-        //     Robot.test.push3();
-        // }
-        // if(o_buttonY)
-        // {
-        //     Robot.test.push4();
-        // }
-        // if(o_leftBumper)
-        // {
-        //     Robot.test.push5();
-        // }
-    }
-
     /**
      * Adds a deadband to our controller axis values
      */
@@ -268,5 +183,4 @@ public class IO
             return 1 * realValue;
         }
     }
-
 }

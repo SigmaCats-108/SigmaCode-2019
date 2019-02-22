@@ -1,6 +1,5 @@
 package frc.vision;
 
-//import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
@@ -33,14 +32,12 @@ public class SigmaSight
      */
     public void updateValues()
     {
-        //validTarget = tv.getBoolean(true);
         validTarget = isValidTarget();
         xVal = tx.getDouble(0.0);
         yVal = ty.getDouble(0.0);
         area = ta.getDouble(0.0);
         skew = ts.getDouble(0.0);
         updateLastKnownDirection();
-        //System.out.println("ValidTarget: " + validTarget);
     }
 
     /**
@@ -66,8 +63,6 @@ public class SigmaSight
         {
             targetDirection = Direction.LEFT;
         }
-        
-        //System.out.println(targetDirection);
     }
 
     /**
@@ -110,7 +105,6 @@ public class SigmaSight
         }
 
         distance_adjust = distanceKp * (desiredArea - area);
-        //distance_adjust = ((area / desiredArea) - 1) * -1;
 
         left_command = steering_adjust + distance_adjust * -1;
         right_command = -steering_adjust + distance_adjust * -1;
@@ -118,10 +112,7 @@ public class SigmaSight
         System.out.println("leftSpeed: " + left_command);
         Robot.drivetrain.sigmaDrive(left_command, right_command);
 
-        if( area > desiredArea - 0.5 && area < desiredArea + 0.5 && xVal > -1.2 && xVal < 1.2)
-            return true;
-        else
-            return false;
+        return (area > desiredArea - 0.5 && area < desiredArea + 0.5 && xVal > -1.2 && xVal < 1.2);
     }
 
     /**
@@ -129,29 +120,10 @@ public class SigmaSight
      */
     public void testValues()
     {
-        /*  This shuffleboard code causes the code crash upon deployment
-            Do not use until further testing
-        Shuffleboard.getTab("Limelight Values").add("tv", validTarget);
-        Shuffleboard.getTab("Limelight Values").add("tx", xVal);
-        Shuffleboard.getTab("Limelight Values").add("ty", yVal);
-        Shuffleboard.getTab("Limelight Values").add("ta", area);
-        Shuffleboard.getTab("Limelight Values").add("ts", skew);
-        */
-        /*
-        System.out.println("tX = " + xVal);
-        System.out.println("tX = " + xVal);
-        System.out.println("tX = " + xVal);
-        System.out.println("tX = " + xVal);
-        System.out.println("tX = " + xVal);
-        */
-
-      
-
         SmartDashboard.putBoolean("tv", validTarget);
         SmartDashboard.putNumber("tx", xVal);
         SmartDashboard.putNumber("ty", yVal);
         SmartDashboard.putNumber("ta", area);
         SmartDashboard.putNumber("ts", skew);
     }
-
 }

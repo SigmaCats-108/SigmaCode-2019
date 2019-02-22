@@ -14,7 +14,6 @@ public class ClimbMech
 	private static CANSparkMax rightClimbMotor = new CANSparkMax(RobotMap.CLIMBMECH_MOTOR_RIGHT, MotorType.kBrushed);
 	private static DoubleSolenoid liftPistons = new DoubleSolenoid(RobotMap.PCM2, RobotMap.HABLIFT_PISTON_FWD, RobotMap.HABLIFT_PISTON_REV);
     
-
     private int climbState = 0;
 
     public ClimbMech()

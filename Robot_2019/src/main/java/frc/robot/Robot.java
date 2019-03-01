@@ -54,6 +54,14 @@ public class Robot extends TimedRobot
     @Override
     public void autonomousPeriodic()
     {
+        IO.UpdateControllers();
+
+        if(!IO.o_buttonB && !IO.o_buttonX)
+        {
+            drivetrain.sigmaDrive(IO.m_leftAnalogY, IO.m_rightAnalogY);
+        }
+        
+        IO.ProcessControllers();
     }
 
     @Override

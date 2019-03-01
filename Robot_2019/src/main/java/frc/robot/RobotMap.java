@@ -49,6 +49,9 @@ public class RobotMap
 	public static final int ARM_CLUTCH_FWD = 6;
 	public static final int HABLIFT_PISTON_FWD = 7;
 	public static final int HABLIFT_PISTON_REV = 0;
+	public static final int SMALL_HABLIFT_PISTON_FWD = 2;
+	public static final int SMALL_HABLIFT_PISTON_REV = 5;
+	
 
 	// ENUMS
 	public enum ArmPosition 

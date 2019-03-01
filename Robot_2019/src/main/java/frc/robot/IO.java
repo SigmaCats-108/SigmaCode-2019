@@ -19,7 +19,7 @@ public class IO
     {
         m_buttonA = mainController.getRawButtonPressed(1);
         m_buttonB = mainController.getRawButtonPressed(2);
-        m_buttonX = mainController.getRawButton(3);
+        m_buttonX = mainController.getRawButtonPressed(3);
         m_buttonXRaw = mainController.getRawButton(3);
         m_buttonY = mainController.getRawButtonPressed(4);
         m_leftBumper = mainController.getRawButton(5);
@@ -63,6 +63,11 @@ public class IO
             if(m_buttonA)
             {
                 Robot.hatchMech.hatchClamp();
+            }
+
+            if(m_buttonX)
+            {
+                Robot.climbMech.level2Lift();
             }
 
             /**

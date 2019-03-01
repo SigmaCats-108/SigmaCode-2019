@@ -13,6 +13,7 @@ public class ClimbMech
 	private static CANSparkMax leftClimbMotor = new CANSparkMax(RobotMap.CLIMBMECH_MOTOR_LEFT, MotorType.kBrushed);
 	private static CANSparkMax rightClimbMotor = new CANSparkMax(RobotMap.CLIMBMECH_MOTOR_RIGHT, MotorType.kBrushed);
 	private static DoubleSolenoid liftPistons = new DoubleSolenoid(RobotMap.PCM2, RobotMap.HABLIFT_PISTON_FWD, RobotMap.HABLIFT_PISTON_REV);
+	private static DoubleSolenoid smallLiftPistons = new DoubleSolenoid(RobotMap.PCM2, RobotMap.SMALL_HABLIFT_PISTON_FWD, RobotMap.SMALL_HABLIFT_PISTON_REV);
     
     private int climbState = 0;
 
@@ -35,6 +36,18 @@ public class ClimbMech
          else
         {
             liftPistons.set(Value.kReverse);
+        }
+    }
+
+    public void level2Lift()
+	{
+        if(smallLiftPistons.get() == Value.kForward)
+        {
+            smallLiftPistons.set(Value.kReverse);
+        }
+        else
+        {
+            smallLiftPistons.set(Value.kForward);
         }
     }
 

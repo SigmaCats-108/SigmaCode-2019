@@ -160,6 +160,15 @@ public class HatchMech
 
     public void hatchEjector()
     {
+        hatchEjector.set(Value.kForward);
+        try {Thread.sleep(300);} 
+        catch (InterruptedException e) {}
+        hatchEjector.set(Value.kReverse);
+        try {Thread.sleep(100);} 
+        catch (InterruptedException e) {}
+
+        
+        /*
          if(hatchEjector.get() == Value.kForward)
          {            
             hatchEjector.set(Value.kReverse);
@@ -178,6 +187,7 @@ public class HatchMech
             hatchEjector.set(Value.kReverse);
 
         }
+       */ 
     }
 
     public void hatchClamp()

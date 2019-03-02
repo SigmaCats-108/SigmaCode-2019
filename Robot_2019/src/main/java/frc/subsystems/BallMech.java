@@ -7,7 +7,9 @@ import com.revrobotics.CANEncoder;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import frc.robot.IO;
 import frc.robot.RobotMap;
 
 /**
@@ -24,7 +26,7 @@ public class BallMech
 	private DigitalInput bumper1 = new DigitalInput(0);
 	public DigitalInput armSwitchRight = new DigitalInput(1);
 	public DigitalInput upperArmSwitchRight = new DigitalInput(3);
-
+	public boolean rumble = false;
 	public BallMech()
 	{
 		armMotor1.setIdleMode(IdleMode.kBrake);
@@ -43,16 +45,26 @@ public class BallMech
 		if(bumper1.get())
 		{
 			intakeMotor.set(speed);
+			IO.mainController.setRumble(GenericHID.RumbleType.kLeftRumble, 0);
 		}
 		else
 		{
 			intakeMotor.set(0.15);
+			IO.mainController.setRumble(GenericHID.RumbleType.kLeftRumble, 0.5);
 		}
 	}
 
 	public void outake(double speed)
 	{
-		intakeMotor.set(-speed);
+		IO.mainController.setRumble(GenericHID.RumbleType.kLeftRumble, 0);
+		if(!bumper1.get() && !IO.m_rightBumper)
+		{
+			intakeMotor.set(0.15);
+		}
+		else
+		{
+			intakeMotor.set(-speed);
+		}
 	}
 
 	public void spinArm(double speed)

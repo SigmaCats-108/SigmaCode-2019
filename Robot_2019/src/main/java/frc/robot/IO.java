@@ -1,7 +1,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.Timer;
+
 
 public class IO
 {
@@ -82,8 +82,9 @@ public class IO
              * Activates the pistons that shoot the hatch from the mechanism
             */
             if(m_buttonB)
-            Robot.hatchMech.hatchEjector();
-          
+            {
+                Robot.hatchMech.hatchEjector();
+            }
             /**
              * Changes the state of the Robot Lifter
             */
@@ -118,11 +119,12 @@ public class IO
         }
         else if(m_rightBumper)
         {
-            Robot.ballMech.outake(0.6);
+            Robot.ballMech.outake(0.8);
         }
         else
         {
-            Robot.ballMech.intake(0.00); //Holds the ball in place (Set to zero if this becomes problamatic)
+           // Robot.ballMech.intake(0.00); //Holds the ball in place (Set to zero if this becomes problamatic)
+            Robot.ballMech.outake(0.0);
         }
 
         /**
@@ -130,11 +132,11 @@ public class IO
         */
         if(o_buttonY && Robot.ballMech.upperArmSwitchRight.get())
         {
-            Robot.ballMech.spinArm(0.90);
+            Robot.ballMech.spinArm(0.95);
         }
         else if(o_buttonA && Robot.ballMech.armSwitchRight.get())
         {
-            Robot.ballMech.spinArm(-0.90);
+            Robot.ballMech.spinArm(-0.95);
         }
         else if (!(o_buttonY && o_buttonA))
         {

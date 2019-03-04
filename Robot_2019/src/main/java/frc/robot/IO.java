@@ -132,11 +132,11 @@ public class IO
         */
         if(o_buttonY && Robot.ballMech.upperArmSwitchRight.get())
         {
-            Robot.ballMech.spinArm(0.95);
+            Robot.ballMech.spinArm(0.90);
         }
         else if(o_buttonA && Robot.ballMech.armSwitchRight.get())
         {
-            Robot.ballMech.spinArm(-0.95);
+            Robot.ballMech.spinArm(-0.90);
         }
         else if (!(o_buttonY && o_buttonA))
         {

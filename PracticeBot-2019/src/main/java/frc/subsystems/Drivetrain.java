@@ -1,10 +1,22 @@
-package frc.subsystems;
+/**
+ * The Drivetrain class represents the robot's drive base and the functions
+ * used to control the robot's movement accross the field
+ * 
+ * - Motor Controllers
+ * - Gear Shifter Pneumatics
+ * - Sensors (encoders, gyro, accelerometer)
+ * - Control Functions (tankDrive, driveStraight, turnAngle, etc.)
+ */
+
+ package frc.subsystems;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.kauailabs.navx.frc.AHRS;
+import edu.wpi.first.wpilibj.SPI;
 import frc.robot.RobotMap;
 
 public class Drivetrain
@@ -21,6 +33,8 @@ public class Drivetrain
 	private static CANEncoder rightEncoder = rightSparkMax1.getEncoder();
 
 	private DifferentialDrive drive;
+
+	public AHRS AHRS;
 
 	public Drivetrain()
 	{
@@ -43,6 +57,9 @@ public class Drivetrain
 
 		// Sets drivetrain deadband, default is 0.02
 		drive.setDeadband(0.03);
+
+		// Initialize NavX MXP
+		AHRS = new AHRS(SPI.Port.kMXP);
 	}
 
 	/**
@@ -56,17 +73,19 @@ public class Drivetrain
 		drive.tankDrive(-leftSpeed * RobotMap.DRIVETRAIN_LEFT_PGAIN, -rightSpeed, false);
 	}
 
-	/**
-	 * Returns the left encoder value
-	 */
+    /**
+     * 
+     * @return The left drivetrain encoder position
+     */
 	public double getLeftEncoder()
 	{
 		return leftEncoder.getPosition();
-	}
-
-	/**
-	 * Returns the right encoder value
-	 */
+    }
+    
+    /**
+     * 
+     * @return The right drivetrain encoder position
+     */
 	public double getRightEncoder()
 	{
 		return rightEncoder.getPosition();

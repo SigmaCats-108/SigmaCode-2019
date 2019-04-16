@@ -17,4 +17,15 @@ public class RobotMap
 	public static final int DRIVETRAIN_RIGHT2 = 5;
 	public static final int DRIVETRAIN_RIGHT3 = 6;
 	public static final double DRIVETRAIN_LEFT_PGAIN = .986;
+
+	// Pneumatics ID Values
+	public static final int PCM1 = 0;
+	public static final int DRIVETRAIN_SHIFTER_FWD = 0;
+	public static final int DRIVETRAIN_SHIFTER_REV = 0;
+
+	// ENUMS
+	public enum EnumTemplate
+	{
+		VALUE1, VALUE2, VALUE3;
+	}
 }

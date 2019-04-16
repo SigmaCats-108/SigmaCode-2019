@@ -28,17 +28,17 @@ public class Follower
 
 	public void setupFollower()
 	{
-		leftFollower.configureEncoder(Robot.drivetrain.getLeftEncoder(), 1000, RobotMap.ROBOT_WHEEL_DIAMETER);
-		rightFollower.configureEncoder(Robot.drivetrain.getRightEncoder(), 1000, RobotMap.ROBOT_WHEEL_DIAMETER);
+		// leftFollower.configureEncoder(Robot.drivetrain.getLeftEncoder(), 1000, RobotMap.ROBOT_WHEEL_DIAMETER);
+		// rightFollower.configureEncoder(Robot.drivetrain.getRightEncoder(), 1000, RobotMap.ROBOT_WHEEL_DIAMETER);
 
-		leftFollower.configurePIDVA(1.0, 0.0, 0.0, 1 / RobotMap.ROBOT_MAX_VELOCITY, 0);
-		rightFollower.configurePIDVA(1.0, 0.0, 0.0, 1 / RobotMap.ROBOT_MAX_VELOCITY, 0);
+		// leftFollower.configurePIDVA(1.0, 0.0, 0.0, 1 / RobotMap.ROBOT_MAX_VELOCITY, 0);
+		// rightFollower.configurePIDVA(1.0, 0.0, 0.0, 1 / RobotMap.ROBOT_MAX_VELOCITY, 0);
 	}
 
 	public void followPath()
 	{
-		leftSpeed = leftFollower.calculate(Robot.encoders.leftDrive);
-		rightSpeed = rightFollower.calculate(Robot.encoders.rightDrive);
+		// leftSpeed = leftFollower.calculate(Robot.drivetrain.getLeftEncoder());
+		// rightSpeed = rightFollower.calculate(Robot.drivetrain.getRightEncoder());
 
 		System.out.println("Left Speed: " + leftSpeed + ", Right Speed: " + rightSpeed);
 		//Robot.drivetrain.sigmaDrive(leftSpeed, rightSpeed);

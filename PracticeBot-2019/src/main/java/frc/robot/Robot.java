@@ -72,6 +72,14 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+    IO.UpdateControllers();
+
+    if(!IO.o_buttonA && !IO.o_buttonB && !IO.o_buttonX && !IO.o_buttonY)
+    {
+        drivetrain.sigmaDrive(IO.m_leftAnalogY, IO.m_rightAnalogY);
+    }
+    
+    IO.ProcessControllers();
   }
 
   /**

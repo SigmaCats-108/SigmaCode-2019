@@ -1,10 +1,10 @@
 package frc.autonomous;
 
-import jaci.pathfinder.Waypoint;
-import jaci.pathfinder.Pathfinder;
-import jaci.pathfinder.Trajectory;
-import jaci.pathfinder.modifiers.TankModifier;
-import jaci.pathfinder.followers.EncoderFollower;
+import frc.pathfinder.Waypoint;
+import frc.pathfinder.Pathfinder;
+import frc.pathfinder.Trajectory;
+import frc.pathfinder.modifiers.TankModifier;
+import frc.pathfinder.followers.EncoderFollower;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
@@ -28,17 +28,17 @@ public class Follower
 
 	public void setupFollower()
 	{
-		// leftFollower.configureEncoder(Robot.drivetrain.getLeftEncoder(), 1000, RobotMap.ROBOT_WHEEL_DIAMETER);
-		// rightFollower.configureEncoder(Robot.drivetrain.getRightEncoder(), 1000, RobotMap.ROBOT_WHEEL_DIAMETER);
+		leftFollower.configureEncoder(Robot.drivetrain.getLeftEncoder(), 1000, RobotMap.ROBOT_WHEEL_DIAMETER);
+		rightFollower.configureEncoder(Robot.drivetrain.getRightEncoder(), 1000, RobotMap.ROBOT_WHEEL_DIAMETER);
 
-		// leftFollower.configurePIDVA(1.0, 0.0, 0.0, 1 / RobotMap.ROBOT_MAX_VELOCITY, 0);
-		// rightFollower.configurePIDVA(1.0, 0.0, 0.0, 1 / RobotMap.ROBOT_MAX_VELOCITY, 0);
+		leftFollower.configurePIDVA(1.0, 0.0, 0.0, 1 / RobotMap.ROBOT_MAX_VELOCITY, 0);
+		rightFollower.configurePIDVA(1.0, 0.0, 0.0, 1 / RobotMap.ROBOT_MAX_VELOCITY, 0);
 	}
 
 	public void followPath()
 	{
-		// leftSpeed = leftFollower.calculate(Robot.drivetrain.getLeftEncoder());
-		// rightSpeed = rightFollower.calculate(Robot.drivetrain.getRightEncoder());
+		leftSpeed = leftFollower.calculate(Robot.drivetrain.getLeftEncoder());
+		rightSpeed = rightFollower.calculate(Robot.drivetrain.getRightEncoder());
 
 		System.out.println("Left Speed: " + leftSpeed + ", Right Speed: " + rightSpeed);
 		//Robot.drivetrain.sigmaDrive(leftSpeed, rightSpeed);

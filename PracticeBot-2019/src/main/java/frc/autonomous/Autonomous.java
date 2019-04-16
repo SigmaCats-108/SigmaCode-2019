@@ -1,24 +1,27 @@
 package frc.autonomous;
 
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.Robot;
+import frc.robot.Robot;;
 
 public class Autonomous {
-
-    private static final String kDefaultAuto = "Default";
-    private static final String kCustomAuto = "My Auto";
-    private String m_autoSelected;
-    private final SendableChooser<String> m_chooser = new SendableChooser<>();
+    public static final String kDefaultAuto = "Default";
+    public static final String kCustomAuto = "My Auto";
 
     public Autonomous() {
-        m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
-        m_chooser.addOption("My Auto", kCustomAuto);
-        SmartDashboard.putData("Auto choices", m_chooser);
+        Robot.m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
+        Robot.m_chooser.addOption("My Auto", kCustomAuto);
+        SmartDashboard.putData("Auto choices", Robot.m_chooser);
     }
 
-    public void runAutonomous() {
-        // Robot.follower.followPath();
-        // Robot.drivetrain.sigmaDrive(0.3, 0.3);
+    public void runAutonomous(String autoMode) {
+        switch (autoMode) {
+            case kCustomAuto:
+              // Put custom auto code here
+              break;
+            case kDefaultAuto:
+            default:
+              // Put default auto code here
+              break;
+          }
     }
 }

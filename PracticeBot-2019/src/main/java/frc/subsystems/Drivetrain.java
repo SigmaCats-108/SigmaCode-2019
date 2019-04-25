@@ -77,17 +77,17 @@ public class Drivetrain
      * 
      * @return The left drivetrain encoder position
      */
-	public double getLeftEncoder()
+	public int getLeftEncoder()
 	{
-		return leftEncoder.getPosition();
+		return (int)(leftEncoder.getPosition() * 1000);
     }
     
     /**
      * 
      * @return The right drivetrain encoder position
      */
-	public double getRightEncoder()
+	public int getRightEncoder()
 	{
-		return rightEncoder.getPosition();
+		return (int)(rightEncoder.getPosition() * 1000);
 	}
 }

@@ -3,11 +3,13 @@ package frc.robot;
 public class RobotMap
 {
 	// Robot Stat Values
-	public static final double ROBOT_TIME_STEP = 0.02; // 20ms
-	public static final double ROBOT_MAX_VELOCITY = 3.2624; // meters per second
-	public static final double ROBOT_MAX_ACCELERATION = 0.2;
-	public static final double ROBOT_MAX_JERK = 0.5;
-	public static final int ROBOT_WHEEL_DIAMETER = 2;
+	public static final double ROBOT_TIME_STEP = 0.02; // Measured in seconds (20ms)
+	public static final double ROBOT_MAX_VELOCITY = 3.2624; // Measured in meters per second
+	public static final double ROBOT_MAX_ACCELERATION = 0.2; // Measured in meters per second squared
+	public static final double ROBOT_MAX_JERK = 0.5; // Measured in meters per second cubed
+	public static final int ROBOT_WHEEL_DIAMETER = 2; // Measured in meters
+	public static final int ROBOT_DRIVEBASE_WIDTH = 2; // Measured in meters
+	public static final int ENCODER_TICKS_PER_REV = 87000; // Encoder ticks per revolution
 
 	// Drivetrain ID Values
 	public static final int DRIVETRAIN_LEFT1 = 1;

@@ -59,7 +59,7 @@ public class IO
 
     public static void ProcessControllers()
     {
-        
+        Robot.drivetrain.sigmaDrive(IO.m_leftAnalogY, IO.m_rightAnalogY);
     }
 
     /**

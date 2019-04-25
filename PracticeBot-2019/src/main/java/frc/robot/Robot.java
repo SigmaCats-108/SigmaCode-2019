@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import frc.autonomous.Autonomous;
+import frc.autonomous.Follower;
 import frc.subsystems.Drivetrain;
 
 /**
@@ -26,6 +27,7 @@ public class Robot extends TimedRobot {
 
   public static Autonomous autonomous;
   public static Drivetrain drivetrain;
+  public static Follower follower;
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -35,6 +37,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     autonomous = new Autonomous();
     drivetrain = new Drivetrain();
+    follower = new Follower();
   }
 
   /**
@@ -73,12 +76,6 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     IO.UpdateControllers();
-
-    if(!IO.o_buttonA && !IO.o_buttonB && !IO.o_buttonX && !IO.o_buttonY)
-    {
-        drivetrain.sigmaDrive(IO.m_leftAnalogY, IO.m_rightAnalogY);
-    }
-    
     IO.ProcessControllers();
   }
 

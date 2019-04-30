@@ -1,7 +1,7 @@
 package frc.autonomous;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.Robot;;
+import frc.robot.Robot;
 
 public class Autonomous {
     public static final String kDefaultAuto = "Do Nothing";

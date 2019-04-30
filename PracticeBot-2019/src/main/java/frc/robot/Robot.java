@@ -60,6 +60,8 @@ public class Robot extends TimedRobot {
   public void autonomousInit() {
     m_autoSelected = m_chooser.getSelected();
     System.out.println("Auto selected: " + m_autoSelected);
+
+    follower.setupFollower();
   }
 
   /**
@@ -68,6 +70,13 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
     autonomous.runAutonomous(m_autoSelected);
+  }
+
+  /**
+   * This function is called once at the start of operator control
+   */
+  @Override
+  public void teleopInit() {
   }
 
   /**

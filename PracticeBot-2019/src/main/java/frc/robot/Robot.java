@@ -10,8 +10,8 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import frc.autonomous.Autonomous;
-import frc.autonomous.Follower;
 import frc.subsystems.Drivetrain;
+import frc.autonomous.Follower;
 
 /**
  * The VM is configured to automatically run this class, and to call the

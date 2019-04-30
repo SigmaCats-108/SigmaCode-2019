@@ -10,8 +10,7 @@ import frc.robot.RobotMap;
 
 public class Follower
 {
-	private double leftSpeed;
-	private double rightSpeed;
+	private double leftSpeed, rightSpeed;
 
 	private Trajectory.Config trajectoryConfig = new Trajectory.Config(Trajectory.FitMethod.HERMITE_CUBIC, Trajectory.Config.SAMPLES_HIGH, RobotMap.ROBOT_TIME_STEP, RobotMap.ROBOT_MAX_VELOCITY, RobotMap.ROBOT_MAX_ACCELERATION, RobotMap.ROBOT_MAX_JERK);
 

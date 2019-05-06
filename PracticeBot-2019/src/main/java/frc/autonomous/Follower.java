@@ -1,5 +1,6 @@
 package frc.autonomous;
 
+import java.io.File;
 import jaci.pathfinder.Waypoint;
 import jaci.pathfinder.Pathfinder;
 import jaci.pathfinder.Trajectory;
@@ -14,12 +15,18 @@ public class Follower
 
 	private Trajectory.Config trajectoryConfig = new Trajectory.Config(Trajectory.FitMethod.HERMITE_CUBIC, Trajectory.Config.SAMPLES_HIGH, RobotMap.ROBOT_TIME_STEP, RobotMap.ROBOT_MAX_VELOCITY, RobotMap.ROBOT_MAX_ACCELERATION, RobotMap.ROBOT_MAX_JERK);
 
+	/*
 	private Waypoint[] testRun = new Waypoint[] {
 		new Waypoint(0, 9, 0),
 		new Waypoint(10, 9, 0),
 	};
 
 	private Trajectory testRunTraj = Pathfinder.generate(testRun, trajectoryConfig);
+	*/
+
+	File trajPath = new File("../../../../../output/DriveStraight.pf1.csv");
+	private Trajectory testRunTraj = Pathfinder.readFromCSV(trajPath);
+
 	private TankModifier modifier = new TankModifier(testRunTraj).modify(RobotMap.ROBOT_DRIVEBASE_WIDTH);
 
 	private EncoderFollower leftFollower = new EncoderFollower(modifier.getLeftTrajectory());

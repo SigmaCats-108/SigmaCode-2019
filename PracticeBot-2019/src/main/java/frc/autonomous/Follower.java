@@ -24,16 +24,28 @@ public class Follower
 	private Trajectory testRunTraj = Pathfinder.generate(testRun, trajectoryConfig);
 	*/
 
-	File trajPath = new File("../../../../../output/DriveStraight.pf1.csv");
-	private Trajectory testRunTraj = Pathfinder.readFromCSV(trajPath);
+	File trajPath;
+	private Trajectory testRunTraj;
 
-	private TankModifier modifier = new TankModifier(testRunTraj).modify(RobotMap.ROBOT_DRIVEBASE_WIDTH);
+	private TankModifier modifier;
 
-	private EncoderFollower leftFollower = new EncoderFollower(modifier.getLeftTrajectory());
-	private EncoderFollower rightFollower = new EncoderFollower(modifier.getRightTrajectory());
+	private EncoderFollower leftFollower;
+	private EncoderFollower rightFollower;
+
+	public void grabTrajectory()
+	{
+		trajPath = new File("/home/deplopy/DriveStraight.pf1.csv");
+	
+		try{testRunTraj = Pathfinder.readFromCSV(trajPath);} catch (Exception e){System.out.println("Trajectory CSV not found");}
+
+		modifier = new TankModifier(testRunTraj).modify(RobotMap.ROBOT_DRIVEBASE_WIDTH);
+		leftFollower = new EncoderFollower(modifier.getLeftTrajectory());
+		rightFollower = new EncoderFollower(modifier.getRightTrajectory());
+	}
 
 	public void setupFollower()
 	{
+		grabTrajectory();
 		leftFollower.configureEncoder(Robot.drivetrain.getLeftEncoder(), RobotMap.ENCODER_TICKS_PER_REV, RobotMap.ROBOT_WHEEL_DIAMETER);
 		rightFollower.configureEncoder(Robot.drivetrain.getRightEncoder(), RobotMap.ENCODER_TICKS_PER_REV, RobotMap.ROBOT_WHEEL_DIAMETER);
 

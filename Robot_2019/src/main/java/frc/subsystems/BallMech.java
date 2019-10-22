@@ -57,13 +57,21 @@ public class BallMech
 	public void outake(double speed)
 	{
 		IO.mainController.setRumble(GenericHID.RumbleType.kLeftRumble, 0);
-		if(!bumper1.get() && !IO.m_rightBumper)
+		// if(!(!bumper1.get() && !IO.m_rightBumper))
+		// {
+		// 	intakeMotor.set(0.20);
+		// }
+		// else
+		// {
+		// 	intakeMotor.set(-speed);
+		// }
+		if(IO.m_rightBumper)
 		{
-			intakeMotor.set(0.15);
+			intakeMotor.set(-speed);
 		}
 		else
 		{
-			intakeMotor.set(-speed);
+			intakeMotor.set(0.25);
 		}
 	}
 

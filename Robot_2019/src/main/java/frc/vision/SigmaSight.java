@@ -115,6 +115,15 @@ public class SigmaSight
         return (area > desiredArea - 0.5 && area < desiredArea + 0.5 && xVal > -1.2 && xVal < 1.2);
     }
 
+    public boolean followTarget()
+    {
+        double distance = (RobotMap.HATCH_VISION_TARGET_HEIGHT - RobotMap.LIMELIGHT_MOUNT_HEIGHT) 
+        / Math.tan(RobotMap.LIMELIGHT_MOUNT_ANGLE + yVal); //calculate distance
+        double distanceSpeed = distance * distanceKp; //scaling the value
+        Robot.drivetrain.sigmaDrive(distanceSpeed, distanceSpeed); //motor control
+        return (distance < 0.5); //returns true when in range
+    }
+
     /**
      * Prints out the detected object's position values to the dashboard
      */

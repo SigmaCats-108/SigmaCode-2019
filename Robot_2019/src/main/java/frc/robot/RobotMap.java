@@ -34,7 +34,10 @@ public class RobotMap
 	public static final double HATCH_VISION_TURN_PGAIN = -0.008;
 	public static final double HATCH_VISION_DISTANCE_PGAIN = 0.3;
 	public static final double HATCH_VISION_MIN_AIM_COMMAND = 0.0;
-	public static final double HATCH_VISION_DESIRED_TARGET_AREA = 4.0;
+	public static final double LIMELIGHT_MOUNT_ANGLE = -5.0;
+	public static final double LIMELIGHT_MOUNT_HEIGHT = 4.0;
+	public static final double HATCH_VISION_TARGET_HEIGHT = 4.0;
+	public static final double HATCH_VISION_DESIRED_TARGET_AREA = 4.0;	
 
 	// Pneumatics ID Values
 	public static final int PCM1 = 0;

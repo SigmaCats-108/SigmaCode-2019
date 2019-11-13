@@ -23,29 +23,26 @@ public class HatchMech
         switch (hatchMechPickupState)
         {
             case 0:
-                if (!Robot.sigmaSight.isValidTarget())
-                {
-                    Robot.sigmaSight.seekTarget();
-                }
-                else
-                {
-                    hatchMechPickupState = 1;
-                }
+                // if (!Robot.sigmaSight.isValidTarget())
+                // {
+                //     Robot.sigmaSight.seekTarget();
+                // }
+                // else
+                // {
+                //     hatchMechPickupState = 1;
+                // }
+                hatchMechPickupState = 1;
             break;
 
             case 1:
                 if(Robot.sigmaSight.aimAndRange())
                 {
-                    hatchMechPickupState = 2;
+                    hatchMechPickupState = 4;
                     Robot.drivetrain.sigmaDrive(0.0, 0.0);
                 }
             break;
 
             case 2:
-                if(Robot.drivetrain.driveStraight(44))
-                {
-                    hatchMechPickupState = 3;
-                }
             break;
 
             case 3:
@@ -166,28 +163,6 @@ public class HatchMech
         hatchEjector.set(Value.kReverse);
         try {Thread.sleep(100);} 
         catch (InterruptedException e) {}
-
-        
-        /*
-         if(hatchEjector.get() == Value.kForward)
-         {            
-            hatchEjector.set(Value.kReverse);
-            try {Thread.sleep(200);} 
-            catch (InterruptedException e) {
-                
-            }
-            hatchEjector.set(Value.kForward);
-        } else
-        {
-            hatchEjector.set(Value.kForward);
-            try {Thread.sleep(200);} 
-            catch (InterruptedException e) {
-                
-            }
-            hatchEjector.set(Value.kReverse);
-
-        }
-       */ 
     }
 
     public void hatchClamp()

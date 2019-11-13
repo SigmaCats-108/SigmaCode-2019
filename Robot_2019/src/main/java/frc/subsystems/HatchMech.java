@@ -81,11 +81,11 @@ public class HatchMech
             break;
 
             case 2:
-                if(Robot.drivetrain.driveStraight(36))
-                {
-                    hatchMechState = 3;
-                    counter = 0;
-                }
+                // if(Robot.drivetrain.driveStraight(36))
+                // {
+                //     hatchMechState = 3;
+                //     counter = 0;
+                // }
             break;
 
             case 3:

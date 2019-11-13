@@ -94,13 +94,13 @@ public class ClimbMech
             catch (InterruptedException e) {}
             
             setClimbMotors(0.3);
-            if(Robot.drivetrain.driveStraight(12))
-            {
-                setClimbMotors(0.0);
-                Robot.drivetrain.sigmaDrive(0.0, 0.0);
-                climbState = 3;
-                return true;
-            }
+            // if(Robot.drivetrain.driveStraight(12))
+            // {
+            //     setClimbMotors(0.0);
+            //     Robot.drivetrain.sigmaDrive(0.0, 0.0);
+            //     climbState = 3;
+            //     return true;
+            // }
             break;
         }
         return false;

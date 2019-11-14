@@ -28,7 +28,7 @@ public class Drivetrain
 	private static DoubleSolenoid gearShifter = new DoubleSolenoid(RobotMap.PCM1, RobotMap.DRIVETRAIN_SHIFTER_FWD, RobotMap.DRIVETRAIN_SHIFTER_REV);
 
 	private double angleError, turnSpeed, targetEncVal = 0;
-	private double turn_Kp = 1/360, desiredAngle;
+	private double turn_Kp = 0.01, desiredAngle;
 	public int moveState = 0;
 	public int turnState = 0;
 	private final double ENC_TICKS_PER_INCH = 58.4 / 60;
@@ -81,25 +81,26 @@ public class Drivetrain
 			gearShifter.set(Value.kForward);
 	}
 
-	public boolean gyroDriveStraight(double distance)
+	public void gyroDriveStraight(double distance)
 	{
-		double driveKP = 0.03;
-		double desiredAngle = 0;
-		double angleError = desiredAngle - Robot.navX.angle;
-		double turnVal = angleError * driveKP;
-		double kp = 0.03; 
+		double turnKP = 0.003;
+		double kp = 0.02;
+		double angleError = 0 - Robot.navX.angle;
+		double turnVal = angleError * turnKP;
+		double encoderPos = (-leftEncoder.getPosition() + rightEncoder.getPosition()) / 2;
 		switch(moveState)
 		{
 			case 0:
-			targetEncVal = leftEncoder.getPosition() + (distance * ENC_TICKS_PER_INCH);
+			Robot.navX.resetAngle();
+			targetEncVal = encoderPos + (distance * ENC_TICKS_PER_INCH);
 			moveState = 1;
 			break;
 			
 			case 1:
-			double displacement = targetEncVal - leftEncoder.getPosition();
+			double displacement = targetEncVal - encoderPos;
 			double move_command = (displacement * kp) + turnVal;
-			sigmaDrive(move_command * -1, -move_command * -1);
-			if(leftEncoder.getPosition() > targetEncVal - 5)
+			sigmaDrive(move_command, -move_command * -1);
+			if(encoderPos > targetEncVal - 5)
 			{
 				moveState = 2;
 			}
@@ -107,9 +108,9 @@ public class Drivetrain
 
 			case 2:
 			sigmaDrive(0.0, 0.0);
-			return true;
+			break;
 		}
-		return false;
+		System.out.println(encoderPos);
 	}
 	
 		/*
@@ -198,7 +199,7 @@ public class Drivetrain
 	 * @param angle
 	 * @return
 	 */
-	public boolean turnAngle(double angle)
+	public void turnAngle(double angle)
 	{
 		switch(turnState)
 		{
@@ -218,12 +219,9 @@ public class Drivetrain
 			{
 				turnState++;		
 				sigmaDrive(0.0, 0.0);
-				return true;
 			}
 			break;
 		}
-
-		return false;
 	}
 
 	public double getLeftEncoder()

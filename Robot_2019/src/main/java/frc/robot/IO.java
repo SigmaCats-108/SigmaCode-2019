@@ -1,6 +1,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
+import frc.subsystems.Drivetrain;
 
 
 public class IO
@@ -17,8 +18,8 @@ public class IO
 
     public static void UpdateControllers()
     {
-        m_buttonA = mainController.getRawButtonPressed(1);
-        m_buttonB = mainController.getRawButtonPressed(2);
+        m_buttonA = mainController.getRawButton(1);
+        m_buttonB = mainController.getRawButton(2);
         m_buttonX = mainController.getRawButtonPressed(3);
         m_buttonXRaw = mainController.getRawButton(3);
         m_buttonY = mainController.getRawButtonPressed(4);
@@ -53,128 +54,141 @@ public class IO
 
     public static void ProcessControllers()
     {
+        if(m_buttonA)
+        {
+            Robot.drivetrain.turnAngle(90);
+        }
+        else
+        Robot.drivetrain.turnState = 0;
+
+        if(m_buttonB)
+        {
+            Robot.drivetrain.gyroDriveStraight(200);
+        }
+        else
+        Robot.drivetrain.moveState = 0;
+    }
         //Main Controller
         
-        if(!o_buttonB && !o_buttonX)
-        {
-            /**
-            * Changes the state of the Hatch Clamp
-            */
-            if(m_buttonA)
-            {
-                Robot.hatchMech.hatchClamp();
-            }
+        // if(!o_buttonB && !o_buttonX)
+        // {
+        //     /**
+        //     * Changes the state of the Hatch Clamp
+        //     */
+        //     if(m_buttonA)
+        //     {
+        //         Robot.hatchMech.hatchClamp();
+        //     }
 
-            if(m_buttonX)
-            {
-                Robot.climbMech.level2Lift();
-            }
+        //     if(m_buttonX)
+        //     {
+        //         Robot.climbMech.level2Lift();
+        //     }
 
-            /**
-             * Changes the state of the Hatch Extender
-            */
-            if(m_buttonY)
-            {
-                Robot.hatchMech.hatchExtender();
-            }
+        //     /**
+        //      * Changes the state of the Hatch Extender
+        //     */
+        //     if(m_buttonY)
+        //     {
+        //         Robot.hatchMech.hatchExtender();
+        //     }
         
-            /**
-             * Activates the pistons that shoot the hatch from the mechanism
-            */
-            if(m_buttonB)
-            {
-                Robot.hatchMech.hatchEjector();
-            }
-            /**
-             * Changes the state of the Robot Lifter
-            */
-            if(m_rightTrigger > 0.5)
-            {
-                Robot.climbMech.liftRobot(false);
-            }
-            else
-            {
-                Robot.climbMech.liftRobot(true);
-            }
-        }
+        //     /**
+        //      * Activates the pistons that shoot the hatch from the mechanism
+        //     */
+        //     if(m_buttonB)
+        //     {
+        //         Robot.hatchMech.hatchEjector();
+        //     }
+        //     /**
+        //      * Changes the state of the Robot Lifter
+        //     */
+        //     if(m_rightTrigger > 0.5)
+        //     {
+        //         Robot.climbMech.liftRobot(false);
+        //     }
+        //     else
+        //     {
+        //         Robot.climbMech.liftRobot(true);
+        //     }
+        // }
 
-        /**
-         * Changes the gearstate of the drivetrain
-        */
-        if(m_leftTrigger > 0.5)
-        {
-            Robot.drivetrain.highGear(true);
-        }
-        else
-        {
-            Robot.drivetrain.highGear(false);
-        }
+        // /**
+        //  * Changes the gearstate of the drivetrain
+        // */
+        // if(m_leftTrigger > 0.5)
+        // {
+        //     Robot.drivetrain.highGear(true);
+        // }
+        // else
+        // {
+        //     Robot.drivetrain.highGear(false);
+        // }
 
-        /**
-         * Runs the intake
-        */
-        if(m_leftBumper)
-        {
-            Robot.ballMech.intake(0.6);
-        }
-        else if(m_rightBumper)
-        {
-            Robot.ballMech.outake(0.8);
-        }
-        else
-        {
-           // Robot.ballMech.intake(0.00); //Holds the ball in place (Set to zero if this becomes problamatic)
-            Robot.ballMech.outake(0.0);
-        }
+        // /**
+        //  * Runs the intake
+        // */
+        // if(m_leftBumper)
+        // {
+        //     Robot.ballMech.intake(0.6);
+        // }
+        // else if(m_rightBumper)
+        // {
+        //     Robot.ballMech.outake(0.8);
+        // }
+        // else
+        // {
+        //    // Robot.ballMech.intake(0.00); //Holds the ball in place (Set to zero if this becomes problamatic)
+        //     Robot.ballMech.outake(0.0);
+        // }
 
-        /**
-         * Turns the arm motor based on button input
-        */
-        if(o_buttonY && Robot.ballMech.upperArmSwitchRight.get())
-        {
-            Robot.ballMech.spinArm(0.90);
-        }
-        else if(o_buttonA && Robot.ballMech.armSwitchRight.get())
-        {
-            Robot.ballMech.spinArm(-0.90);
-        }
-        else if (!(o_buttonY && o_buttonA))
-        {
-            Robot.ballMech.stopArm();
-        }
+        // /**
+        //  * Turns the arm motor based on button input
+        // */
+        // if(o_buttonY && Robot.ballMech.upperArmSwitchRight.get())
+        // {
+        //     Robot.ballMech.spinArm(0.90);
+        // }
+        // else if(o_buttonA && Robot.ballMech.armSwitchRight.get())
+        // {
+        //     Robot.ballMech.spinArm(-0.90);
+        // }
+        // else if (!(o_buttonY && o_buttonA))
+        // {
+        //     Robot.ballMech.stopArm();
+        // }
 
-        if(o_buttonB)
-        {
-            Robot.hatchMech.hatchScoreSequence();
-        }
-        else
-        {
-            Robot.hatchMech.hatchScoreState = 0;
-            Robot.hatchMech.hatchMechState = 0;
-        }
+        // if(o_buttonB)
+        // {
+        //     Robot.hatchMech.hatchScoreSequence();
+        // }
+        // else
+        // {
+        //     Robot.hatchMech.hatchScoreState = 0;
+        //     Robot.hatchMech.hatchMechState = 0;
+        // }
 
-        if (o_buttonX)
-        {
-            Robot.hatchMech.hatchPickupSequence();
-        }
-        else
-        {
-            Robot.hatchMech.hatchMechPickupState = 0;
-        }
+        // if (o_buttonX)
+        // {
+        //     Robot.hatchMech.hatchPickupSequence();
+        // }
+        // else
+        // {
+        //     Robot.hatchMech.hatchMechPickupState = 0;
+        // }
 
-        if(o_leftBumper)
-        {
-            Robot.climbMech.setClimbMotors(0.95);
-        }
-        else if(o_rightBumper)
-        {
-            Robot.climbMech.setClimbMotors(-0.95);
-        }
-        else
-        {
-            Robot.climbMech.setClimbMotors(0.0);
-        }
-    }
+        // if(o_leftBumper)
+        // {
+        //     Robot.climbMech.setClimbMotors(0.95);
+        // }
+        // else if(o_rightBumper)
+        // {
+        //     Robot.climbMech.setClimbMotors(-0.95);
+        // }
+        // else
+        // {
+        //     Robot.climbMech.setClimbMotors(0.0);
+        // }
 
     /**
      * Adds a deadband to our controller axis values

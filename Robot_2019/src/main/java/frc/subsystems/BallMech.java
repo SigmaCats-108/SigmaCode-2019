@@ -98,7 +98,7 @@ public class BallMech
 
 	public double testArmEnc()
 	{
-		System.out.println(armEncoder1.getPosition());
+		//System.out.println(armEncoder1.getPosition());
 		return armEncoder1.getPosition();
 	}
 }

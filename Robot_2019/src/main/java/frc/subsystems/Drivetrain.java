@@ -20,8 +20,8 @@ public class Drivetrain
 	private static CANSparkMax rightSparkMax2 = new CANSparkMax(RobotMap.DRIVETRAIN_RIGHT2, MotorType.kBrushless);
 	private static CANSparkMax rightSparkMax3 = new CANSparkMax(RobotMap.DRIVETRAIN_RIGHT3, MotorType.kBrushless);
 
-	private static CANEncoder leftEncoder = leftSparkMax1.getEncoder();
-	private static CANEncoder rightEncoder = rightSparkMax1.getEncoder();
+	public CANEncoder leftEncoder = leftSparkMax1.getEncoder();
+	public CANEncoder rightEncoder = rightSparkMax1.getEncoder();
 	
 	private DifferentialDrive drive;
 

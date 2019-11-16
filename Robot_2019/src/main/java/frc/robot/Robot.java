@@ -2,7 +2,6 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import frc.autos.Autonomous;
-import frc.autos.Follower;
 import frc.inputs.NavX;
 import frc.vision.SigmaSight;
 import frc.subsystems.BallMech;
@@ -14,7 +13,6 @@ public class Robot extends TimedRobot
 {
 
     public static Autonomous autonomous;
-    public static Follower follower;
     public static NavX navX;
     public static SigmaSight sigmaSight;
     public static BallMech ballMech;
@@ -26,7 +24,6 @@ public class Robot extends TimedRobot
     public void robotInit() 
     {
         autonomous = new Autonomous();
-        follower = new Follower();
         navX = new NavX();
         sigmaSight = new SigmaSight();
         ballMech = new BallMech();

@@ -7,7 +7,8 @@ public class RobotMap
 	public static final double ROBOT_MAX_VELOCITY = 3.2624; // meters per second
 	public static final double ROBOT_MAX_ACCELERATION = 0.2;
 	public static final double ROBOT_MAX_JERK = 0.5;
-	public static final int ROBOT_WHEEL_DIAMETER = 2;
+	public static final double ROBOT_WHEEL_DIAMETER = 2;
+	public static final int ENC_TICKS_PER_REV = 2;	
 
 	// Drivetrain ID Values
 	public static final int DRIVETRAIN_LEFT1 = 4;
